@@ -9,6 +9,10 @@
  * Themes: follows the operating system (prefers-color-scheme) by default.
  * Force a theme with data-theme="light" or data-theme="dark" on <html>.
  *
+ * Project hooks (see README "Project hooks"): a project may override, in its
+ * own unlayered stylesheet, the accent colours, --jm-radius-scale (0 = square
+ * corners, 1 = default) and --jm-font-family-heading. Nothing else.
+ *
  * Token names use British spelling ("colour"). Use the semantic tokens
  * (--jm-colour-text, --jm-colour-accent, ...) in components and projects;
  * the palette tokens (--jm-blue-600, ...) exist only to define them.
@@ -92,6 +96,7 @@
 
     /* Typography: system fonts only (no web fonts in v1). */
     --jm-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --jm-font-family-heading: var(--jm-font-family); /* hook: optional heading face */
     --jm-font-family-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     --jm-font-size-xs: 0.8125rem; /* 13px: captions only, never body text */
@@ -112,15 +117,17 @@
     /* Readable line length for prose. */
     --jm-measure: 70ch;
 
-    /* Corner radius. */
-    --jm-radius-sm: 2px;
-    --jm-radius-md: 4px;
-    --jm-radius-lg: 8px;
+    /* Corner radius. --jm-radius-scale is a project hook: 0 gives square corners. */
+    --jm-radius-scale: 1;
+    --jm-radius-sm: calc(2px * var(--jm-radius-scale));
+    --jm-radius-md: calc(4px * var(--jm-radius-scale));
+    --jm-radius-lg: calc(8px * var(--jm-radius-scale));
     --jm-radius-pill: 999px;
 
     /* Borders. */
     --jm-border-width: 1px;
     --jm-border-width-thick: 2px;
+    --jm-border-width-heavy: 5px; /* error-field and inset left borders */
 
     /* Focus: a two-tone ring (background-coloured gap, then a solid ring)
        stays visible on any surface, including accent-filled buttons. */
@@ -336,6 +343,7 @@
   h3,
   h4 {
     margin: 0 0 var(--jm-space-4);
+    font-family: var(--jm-font-family-heading);
     line-height: var(--jm-line-height-tight);
     font-weight: var(--jm-font-weight-bold);
   }
@@ -386,5 +394,574 @@
     :focus-visible {
       outline-color: Highlight;
     }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Components (phase 2). Semantic HTML first: each class styles a real
+   element (button, input, table, dl, details), it never replaces one.
+   ------------------------------------------------------------------ */
+@layer jm.components {
+  /* ---- Page layout ---- */
+  .jm-skip-link {
+    position: absolute;
+    left: var(--jm-space-3);
+    top: -100px;
+    z-index: 10;
+    padding: var(--jm-space-2) var(--jm-space-4);
+    background: var(--jm-colour-background);
+    color: var(--jm-colour-link);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-skip-link:focus {
+    top: var(--jm-space-3);
+  }
+
+  .jm-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .jm-page > main {
+    flex: 1 0 auto;
+  }
+
+  .jm-container {
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+    padding: var(--jm-space-6) var(--jm-space-4) var(--jm-space-8);
+  }
+
+  .jm-container--wide {
+    max-width: 80rem;
+  }
+
+  /* Vertical rhythm: direct children spaced evenly. */
+  .jm-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--jm-space-5);
+  }
+
+  .jm-stack > * {
+    margin-block: 0;
+  }
+
+  .jm-stack--tight {
+    gap: var(--jm-space-3);
+  }
+
+  .jm-stack--loose {
+    gap: var(--jm-space-7);
+  }
+
+  /* Horizontal group that wraps (button rows, filters). */
+  .jm-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--jm-space-3);
+  }
+
+  /* ---- Header and footer ---- */
+  .jm-header {
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+    background: var(--jm-colour-background);
+  }
+
+  .jm-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--jm-space-2) var(--jm-space-5);
+    max-width: 80rem;
+    margin-inline: auto;
+    padding: var(--jm-space-3) var(--jm-space-4);
+  }
+
+  .jm-header__name {
+    font-family: var(--jm-font-family-heading);
+    font-size: var(--jm-font-size-lg);
+    font-weight: var(--jm-font-weight-bold);
+    color: var(--jm-colour-text);
+    text-decoration: none;
+  }
+
+  .jm-header__name:visited {
+    color: var(--jm-colour-text);
+  }
+
+  .jm-header__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--jm-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jm-header__nav a,
+  .jm-header__nav a:visited {
+    display: inline-block;
+    padding-block: var(--jm-space-2);
+    border-bottom: 3px solid transparent;
+    color: var(--jm-colour-text);
+    text-decoration: none;
+  }
+
+  .jm-header__nav a:hover {
+    border-bottom-color: var(--jm-colour-border-strong);
+  }
+
+  .jm-header__nav a[aria-current="page"] {
+    border-bottom-color: var(--jm-colour-accent);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-footer {
+    border-top: var(--jm-border-width) solid var(--jm-colour-border);
+    background: var(--jm-colour-surface);
+    color: var(--jm-colour-text-secondary);
+    font-size: var(--jm-font-size-sm);
+  }
+
+  .jm-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--jm-space-3) var(--jm-space-5);
+    max-width: 80rem;
+    margin-inline: auto;
+    padding: var(--jm-space-5) var(--jm-space-4);
+  }
+
+  /* ---- Buttons ---- */
+  .jm-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--jm-space-2);
+    min-height: 2.75rem; /* 44px target */
+    margin: 0 0 2px; /* room for the bottom edge */
+    padding: var(--jm-space-2) var(--jm-space-4);
+    border: var(--jm-border-width-thick) solid transparent;
+    border-radius: var(--jm-radius-md);
+    background: var(--jm-colour-accent);
+    box-shadow: 0 2px 0 var(--jm-colour-accent-hover);
+    color: var(--jm-colour-on-accent);
+    font: inherit;
+    font-weight: var(--jm-font-weight-bold);
+    line-height: var(--jm-line-height-tight);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .jm-button:visited {
+    color: var(--jm-colour-on-accent);
+  }
+
+  .jm-button:hover {
+    background: var(--jm-colour-accent-hover);
+    color: var(--jm-colour-on-accent);
+    text-decoration: none;
+  }
+
+  .jm-button:active {
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+
+  .jm-button--secondary,
+  .jm-button--secondary:visited {
+    border-color: var(--jm-colour-border-strong);
+    background: var(--jm-colour-background);
+    box-shadow: 0 2px 0 var(--jm-colour-border-strong);
+    color: var(--jm-colour-text);
+  }
+
+  .jm-button--secondary:hover {
+    background: var(--jm-colour-surface);
+    color: var(--jm-colour-text);
+  }
+
+  /* Destructive actions only. */
+  .jm-button--warning,
+  .jm-button--warning:visited {
+    background: var(--jm-colour-error-text);
+    box-shadow: 0 2px 0 var(--jm-colour-text);
+    color: var(--jm-colour-background);
+  }
+
+  .jm-button--warning:hover {
+    background: var(--jm-colour-error-text);
+    color: var(--jm-colour-background);
+    text-decoration: underline;
+  }
+
+  .jm-button:disabled,
+  .jm-button[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ---- Form fields ---- */
+  .jm-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--jm-space-2);
+  }
+
+  .jm-field--error {
+    padding-left: var(--jm-space-4);
+    border-left: var(--jm-border-width-heavy) solid var(--jm-colour-error);
+  }
+
+  .jm-label {
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-label--large {
+    font-family: var(--jm-font-family-heading);
+    font-size: var(--jm-font-size-xl);
+    line-height: var(--jm-line-height-tight);
+  }
+
+  .jm-hint {
+    color: var(--jm-colour-text-secondary);
+  }
+
+  .jm-error-message {
+    color: var(--jm-colour-error-text);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-input,
+  .jm-select,
+  .jm-textarea {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: var(--jm-space-2) var(--jm-space-3);
+    border: var(--jm-border-width-thick) solid var(--jm-colour-border-strong);
+    border-radius: var(--jm-radius-sm);
+    background: var(--jm-colour-background);
+    color: var(--jm-colour-text);
+    font: inherit;
+  }
+
+  .jm-textarea {
+    min-height: 7rem;
+    resize: vertical;
+  }
+
+  .jm-select {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .jm-input--error,
+  .jm-select--error,
+  .jm-textarea--error {
+    border-color: var(--jm-colour-error);
+  }
+
+  /* Widths in characters, sized to the expected answer. */
+  .jm-input--width-2 { max-width: calc(2ch + 2.25rem); }
+  .jm-input--width-4 { max-width: calc(4ch + 2.25rem); }
+  .jm-input--width-10 { max-width: calc(10ch + 2.25rem); }
+  .jm-input--width-20 { max-width: calc(20ch + 2.25rem); }
+
+  .jm-fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--jm-space-2);
+  }
+
+  .jm-fieldset > legend {
+    padding: 0;
+    margin-bottom: var(--jm-space-2);
+  }
+
+  .jm-date {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--jm-space-4);
+  }
+
+  /* Checkbox and radio: input then label, as siblings. */
+  .jm-choices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--jm-space-2);
+  }
+
+  .jm-choices--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--jm-space-2) var(--jm-space-5);
+  }
+
+  .jm-choice {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    column-gap: var(--jm-space-3);
+    align-items: start;
+  }
+
+  .jm-choice__input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.25rem 0 0;
+    accent-color: var(--jm-colour-accent);
+    cursor: pointer;
+  }
+
+  .jm-choice__label {
+    padding-block: var(--jm-space-1);
+    cursor: pointer;
+  }
+
+  .jm-choice__hint {
+    grid-column: 2;
+    color: var(--jm-colour-text-secondary);
+  }
+
+  /* ---- Error summary (top of the page after a failed submit) ---- */
+  .jm-error-summary {
+    padding: var(--jm-space-5);
+    border: 4px solid var(--jm-colour-error);
+    border-radius: var(--jm-radius-sm);
+  }
+
+  .jm-error-summary__title {
+    margin: 0 0 var(--jm-space-3);
+    font-size: var(--jm-font-size-xl);
+  }
+
+  .jm-error-summary ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--jm-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jm-error-summary a,
+  .jm-error-summary a:visited {
+    color: var(--jm-colour-error-text);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  /* ---- Summary list (key and value pairs, "check your answers") ---- */
+  .jm-summary-list {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) 2fr auto;
+    margin: 0;
+  }
+
+  .jm-summary-list__row {
+    display: contents;
+  }
+
+  .jm-summary-list dt,
+  .jm-summary-list dd {
+    margin: 0;
+    padding: var(--jm-space-3) var(--jm-space-4) var(--jm-space-3) 0;
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+  }
+
+  .jm-summary-list dt {
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-summary-list__actions {
+    text-align: right;
+  }
+
+  .jm-summary-list--no-actions {
+    grid-template-columns: minmax(8rem, 1fr) 2fr;
+  }
+
+  @media (max-width: 40em) {
+    .jm-summary-list,
+    .jm-summary-list--no-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .jm-summary-list dt {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .jm-summary-list__actions {
+      text-align: left;
+    }
+  }
+
+  /* ---- Status tag (always a word, never colour alone) ---- */
+  .jm-tag {
+    display: inline-block;
+    padding: 0.125rem var(--jm-space-2);
+    border-radius: var(--jm-radius-sm);
+    background: var(--jm-colour-surface-sunken);
+    color: var(--jm-colour-text);
+    font-size: var(--jm-font-size-sm);
+    font-weight: var(--jm-font-weight-bold);
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .jm-tag--success { background: var(--jm-colour-success-background); color: var(--jm-colour-success-text); }
+  .jm-tag--warning { background: var(--jm-colour-warning-background); color: var(--jm-colour-warning-text); }
+  .jm-tag--error { background: var(--jm-colour-error-background); color: var(--jm-colour-error-text); }
+  .jm-tag--info { background: var(--jm-colour-info-background); color: var(--jm-colour-info-text); }
+
+  /* ---- Notification banner ---- */
+  .jm-banner {
+    padding: var(--jm-space-4) var(--jm-space-5);
+    border: var(--jm-border-width-thick) solid var(--jm-colour-info);
+    border-radius: var(--jm-radius-sm);
+    background: var(--jm-colour-info-background);
+  }
+
+  .jm-banner__title {
+    margin: 0 0 var(--jm-space-1);
+    color: var(--jm-colour-info-text);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-banner > :last-child {
+    margin-bottom: 0;
+  }
+
+  .jm-banner--success {
+    border-color: var(--jm-colour-success);
+    background: var(--jm-colour-success-background);
+  }
+
+  .jm-banner--success .jm-banner__title {
+    color: var(--jm-colour-success-text);
+  }
+
+  /* ---- Table ---- */
+  /* Wrap wide tables: <div class="jm-table-wrap" role="region" aria-label="..." tabindex="0"> */
+  .jm-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .jm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .jm-table caption {
+    padding-bottom: var(--jm-space-3);
+    font-family: var(--jm-font-family-heading);
+    font-size: var(--jm-font-size-lg);
+    font-weight: var(--jm-font-weight-bold);
+    text-align: left;
+  }
+
+  .jm-table th,
+  .jm-table td {
+    padding: var(--jm-space-3) var(--jm-space-4) var(--jm-space-3) 0;
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .jm-table thead th {
+    border-bottom: var(--jm-border-width-thick) solid var(--jm-colour-border-strong);
+    font-weight: var(--jm-font-weight-bold);
+    white-space: nowrap;
+  }
+
+  .jm-table tbody th {
+    font-weight: var(--jm-font-weight-normal);
+  }
+
+  .jm-table .jm-table__num {
+    text-align: right;
+  }
+
+  .jm-table--compact th,
+  .jm-table--compact td {
+    padding-block: var(--jm-space-2);
+    font-size: var(--jm-font-size-sm);
+  }
+
+  /* ---- Details (expand and collapse, no JavaScript) ---- */
+  .jm-details > summary {
+    display: inline-block;
+    cursor: pointer;
+    color: var(--jm-colour-link);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .jm-details > summary::before {
+    content: "";
+    display: inline-block;
+    margin-right: var(--jm-space-2);
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0.4em 0 0.4em 0.65em;
+    border-left-color: currentColor;
+    vertical-align: 0.05em;
+  }
+
+  .jm-details[open] > summary::before {
+    border-width: 0.65em 0.4em 0 0.4em;
+    border-color: currentColor transparent transparent;
+  }
+
+  .jm-details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .jm-details__text {
+    margin-top: var(--jm-space-3);
+    padding: var(--jm-space-3) var(--jm-space-4);
+    border-left: var(--jm-border-width-heavy) solid var(--jm-colour-border-strong);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Utilities: single-purpose helpers.
+   ------------------------------------------------------------------ */
+@layer jm.utilities {
+  /* Hidden on screen, read by screen readers. */
+  .jm-visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .jm-num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .jm-secondary-text {
+    color: var(--jm-colour-text-secondary);
   }
 }

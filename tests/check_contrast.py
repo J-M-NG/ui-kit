@@ -1,6 +1,14 @@
 """Check colour-token contrast in ui-kit.css for the light and dark themes.
 
-Usage: python3 tests/check_contrast.py [path/to/ui-kit.css]
+Usage:
+  python3 tests/check_contrast.py [path/to/ui-kit.css]
+  python3 tests/check_contrast.py [path/to/ui-kit.css] --project path/to/project.css
+
+With --project, colour overrides in the project's stylesheet (the accent hook)
+are applied on top of the kit before checking. The project file uses the same
+selectors as the kit: `:root` for light, and `:root[data-theme="dark"]` and/or
+`:root:not([data-theme="light"])` inside `@media (prefers-color-scheme: dark)`
+for dark. Values may be hex colours or kit palette tokens.
 
 Standard library only. Exits with status 1 if any pair is below its minimum,
 if a theme is missing a colour token, or if the two dark-theme blocks differ.
@@ -40,6 +48,7 @@ PAIRS += [
     ("link", "accent-subtle", TEXT),
     ("on-accent", "accent", TEXT),
     ("on-accent", "accent-hover", TEXT),
+    ("background", "error-text", TEXT),  # .jm-button--warning
 ]
 for status in ("success", "warning", "error", "info"):
     PAIRS += [
@@ -83,6 +92,26 @@ def declarations(block: str) -> dict[str, str]:
     return {m[0]: m[1].strip() for m in re.findall(r"(--jm-[\w-]+)\s*:\s*([^;]+);", block)}
 
 
+def project_overrides(css: str) -> tuple[dict[str, str], dict[str, str]]:
+    """Return (light, dark) --jm-colour-* overrides from a project stylesheet."""
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    light: dict[str, str] = {}
+    dark: dict[str, str] = {}
+    dark_media = [(m.start(), m.end()) for m in re.finditer(
+        r"@media[^{]*prefers-color-scheme:\s*dark[^{]*\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}", css)]
+    for m in re.finditer(r"([^{};]+)\{([^{}]*)\}", css):
+        selector = " ".join(m.group(1).split())
+        decls = {k: v for k, v in declarations(m.group(2)).items() if k.startswith("--jm-colour-")}
+        if not decls:
+            continue
+        in_dark_media = any(a <= m.start() < b for a, b in dark_media)
+        if 'data-theme="dark"' in selector or (in_dark_media and selector.endswith(':root:not([data-theme="light"])')):
+            dark.update(decls)
+        elif selector == ":root" and not in_dark_media:
+            light.update(decls)
+    return light, dark
+
+
 def resolve(value: str, scope: dict[str, str], palette: dict[str, str]) -> str:
     seen = 0
     while value.startswith("var("):
@@ -97,7 +126,16 @@ def resolve(value: str, scope: dict[str, str], palette: dict[str, str]) -> str:
 
 
 def main() -> int:
-    path = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parent.parent / "ui-kit.css")
+    args = sys.argv[1:]
+    project = None
+    if "--project" in args:
+        i = args.index("--project")
+        if i + 1 >= len(args) or not Path(args[i + 1]).is_file():
+            print("usage: check_contrast.py [ui-kit.css] --project path/to/project.css (file not found)")
+            return 2
+        project = Path(args[i + 1])
+        del args[i : i + 2]
+    path = Path(args[0] if args else Path(__file__).parent.parent / "ui-kit.css")
     css = path.read_text(encoding="utf-8")
 
     palette = {
@@ -114,7 +152,12 @@ def main() -> int:
         print("FAIL dark-theme blocks differ:", *diff, sep="\n  ")
         failures += 1
 
-    themes = {"light": light, "dark": dark_media}
+    themes = {"light": dict(light), "dark": dict(dark_media)}
+    if project:
+        p_light, p_dark = project_overrides(project.read_text(encoding="utf-8"))
+        print(f"Project overrides from {project}: {len(p_light)} light, {len(p_dark)} dark")
+        themes["light"].update(p_light)
+        themes["dark"].update(p_dark)
     light_colours = {k for k in light if k.startswith("--jm-colour-")}
     dark_colours = {k for k in dark_media if k.startswith("--jm-colour-")}
     if light_colours != dark_colours:
