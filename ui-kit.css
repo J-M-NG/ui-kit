@@ -1,0 +1,390 @@
+/*!
+ * ui-kit (unreleased, phase 1: tokens)
+ * https://github.com/J-M-NG/ui-kit
+ * MIT licence. See LICENSE.
+ *
+ * Layer order: jm.tokens, jm.base, jm.components, jm.utilities.
+ * Styles outside any layer (your project's CSS) always win, with no !important needed.
+ *
+ * Themes: follows the operating system (prefers-color-scheme) by default.
+ * Force a theme with data-theme="light" or data-theme="dark" on <html>.
+ *
+ * Token names use British spelling ("colour"). Use the semantic tokens
+ * (--jm-colour-text, --jm-colour-accent, ...) in components and projects;
+ * the palette tokens (--jm-blue-600, ...) exist only to define them.
+ */
+
+@layer jm.tokens, jm.base, jm.components, jm.utilities;
+
+@layer jm.tokens {
+  /* ------------------------------------------------------------------
+     Palette (theme independent). Do not use directly in components.
+     ------------------------------------------------------------------ */
+  :root {
+    --jm-grey-0: #ffffff;
+    --jm-grey-50: #f5f6f8;
+    --jm-grey-100: #eaecef;
+    --jm-grey-200: #d9dce1;
+    --jm-grey-300: #bcc1c8;
+    --jm-grey-400: #8a919b;
+    --jm-grey-500: #646b75;
+    --jm-grey-600: #4b515a;
+    --jm-grey-700: #363b42;
+    --jm-grey-800: #24282d;
+    --jm-grey-900: #17191c;
+    --jm-grey-950: #0e1012;
+
+    --jm-blue-50: #eef4fb;
+    --jm-blue-100: #d6e4f5;
+    --jm-blue-200: #adc8eb;
+    --jm-blue-300: #7fa8dd;
+    --jm-blue-400: #4f86cc;
+    --jm-blue-500: #2b67b5;
+    --jm-blue-600: #1f5296;
+    --jm-blue-700: #1a4378;
+    --jm-blue-800: #15355e;
+    --jm-blue-900: #0f2644;
+    --jm-blue-950: #0b1a2e;
+
+    --jm-green-50: #eaf6ee;
+    --jm-green-300: #6cc08a;
+    --jm-green-600: #1e7a43;
+    --jm-green-700: #17623a;
+    --jm-green-950: #0d2818;
+
+    --jm-amber-50: #fdf5e3;
+    --jm-amber-300: #f0b44c;
+    --jm-amber-600: #9a5b00;
+    --jm-amber-700: #7a4800;
+    --jm-amber-950: #2e1d02;
+
+    --jm-red-50: #fcecec;
+    --jm-red-300: #ee8a8a;
+    --jm-red-600: #c02b2b;
+    --jm-red-700: #9e2222;
+    --jm-red-950: #2e0f0f;
+
+    --jm-sky-50: #e8f5fa;
+    --jm-sky-300: #5fb6d6;
+    --jm-sky-600: #0b6e8f;
+    --jm-sky-700: #095a75;
+    --jm-sky-950: #062633;
+
+    --jm-purple-300: #c3a6e6;
+    --jm-purple-600: #6a3d9a;
+  }
+
+  /* ------------------------------------------------------------------
+     Theme-independent scales
+     ------------------------------------------------------------------ */
+  :root {
+    /* Spacing: 4px base. Use for margin, padding and gap. */
+    --jm-space-0: 0;
+    --jm-space-1: 0.25rem; /* 4px */
+    --jm-space-2: 0.5rem; /* 8px */
+    --jm-space-3: 0.75rem; /* 12px */
+    --jm-space-4: 1rem; /* 16px */
+    --jm-space-5: 1.5rem; /* 24px */
+    --jm-space-6: 2rem; /* 32px */
+    --jm-space-7: 3rem; /* 48px */
+    --jm-space-8: 4rem; /* 64px */
+    --jm-space-9: 6rem; /* 96px */
+
+    /* Typography: system fonts only (no web fonts in v1). */
+    --jm-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --jm-font-family-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    --jm-font-size-xs: 0.8125rem; /* 13px: captions only, never body text */
+    --jm-font-size-sm: 0.875rem; /* 14px */
+    --jm-font-size-md: 1rem; /* 16px: body */
+    --jm-font-size-lg: 1.1875rem; /* 19px: lead text, h4 */
+    --jm-font-size-xl: 1.5rem; /* 24px: h3 */
+    --jm-font-size-2xl: 2rem; /* 32px: h2 */
+    --jm-font-size-3xl: 2.5rem; /* 40px: h1 */
+
+    --jm-line-height-tight: 1.2;
+    --jm-line-height-normal: 1.5;
+
+    --jm-font-weight-normal: 400;
+    --jm-font-weight-medium: 500;
+    --jm-font-weight-bold: 700;
+
+    /* Readable line length for prose. */
+    --jm-measure: 70ch;
+
+    /* Corner radius. */
+    --jm-radius-sm: 2px;
+    --jm-radius-md: 4px;
+    --jm-radius-lg: 8px;
+    --jm-radius-pill: 999px;
+
+    /* Borders. */
+    --jm-border-width: 1px;
+    --jm-border-width-thick: 2px;
+
+    /* Focus: a two-tone ring (background-coloured gap, then a solid ring)
+       stays visible on any surface, including accent-filled buttons. */
+    --jm-focus-width: 3px;
+    --jm-focus-gap: 2px;
+
+    /* Breakpoints, for reference and JavaScript. Custom properties cannot be
+       used inside @media, so media queries repeat these literal values:
+       sm 40em (640px), md 48em (768px), lg 64em (1024px), xl 80em (1280px). */
+    --jm-breakpoint-sm: 40em;
+    --jm-breakpoint-md: 48em;
+    --jm-breakpoint-lg: 64em;
+    --jm-breakpoint-xl: 80em;
+
+    /* Motion. Set to 0ms under prefers-reduced-motion below. */
+    --jm-duration-fast: 120ms;
+    --jm-duration-normal: 200ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --jm-duration-fast: 0ms;
+      --jm-duration-normal: 0ms;
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Light theme (default).
+     Text pairs must reach 4.5:1; borders, focus and status marks 3:1.
+     Checked by tests/check_contrast.py.
+     ------------------------------------------------------------------ */
+  :root {
+    color-scheme: light;
+
+    --jm-colour-background: var(--jm-grey-0);
+    --jm-colour-surface: var(--jm-grey-50);
+    --jm-colour-surface-sunken: var(--jm-grey-100);
+
+    --jm-colour-text: var(--jm-grey-900);
+    --jm-colour-text-secondary: var(--jm-grey-600);
+
+    --jm-colour-border: var(--jm-grey-200); /* decorative dividers only */
+    --jm-colour-border-strong: var(--jm-grey-500); /* form controls: 3:1 */
+
+    --jm-colour-accent: var(--jm-blue-600);
+    --jm-colour-accent-hover: var(--jm-blue-700);
+    --jm-colour-accent-subtle: var(--jm-blue-50);
+    --jm-colour-on-accent: var(--jm-grey-0);
+
+    --jm-colour-link: var(--jm-blue-600);
+    --jm-colour-link-hover: var(--jm-blue-800);
+    --jm-colour-link-visited: var(--jm-purple-600);
+
+    --jm-colour-focus: var(--jm-blue-700);
+
+    --jm-colour-success: var(--jm-green-600);
+    --jm-colour-success-text: var(--jm-green-700);
+    --jm-colour-success-background: var(--jm-green-50);
+
+    --jm-colour-warning: var(--jm-amber-600);
+    --jm-colour-warning-text: var(--jm-amber-700);
+    --jm-colour-warning-background: var(--jm-amber-50);
+
+    --jm-colour-error: var(--jm-red-600);
+    --jm-colour-error-text: var(--jm-red-700);
+    --jm-colour-error-background: var(--jm-red-50);
+
+    --jm-colour-info: var(--jm-sky-600);
+    --jm-colour-info-text: var(--jm-sky-700);
+    --jm-colour-info-background: var(--jm-sky-50);
+
+    --jm-shadow-sm: 0 1px 2px rgb(14 16 18 / 0.08);
+    --jm-shadow-md: 0 2px 6px rgb(14 16 18 / 0.10), 0 1px 2px rgb(14 16 18 / 0.06);
+    --jm-shadow-lg: 0 8px 24px rgb(14 16 18 / 0.14), 0 2px 6px rgb(14 16 18 / 0.08);
+  }
+
+  /* ------------------------------------------------------------------
+     Dark theme. The two blocks below must stay identical;
+     tests/check_contrast.py fails if they differ.
+     ------------------------------------------------------------------ */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+
+      --jm-colour-background: var(--jm-grey-900);
+      --jm-colour-surface: var(--jm-grey-800);
+      --jm-colour-surface-sunken: var(--jm-grey-950);
+
+      --jm-colour-text: var(--jm-grey-50);
+      --jm-colour-text-secondary: var(--jm-grey-300);
+
+      --jm-colour-border: var(--jm-grey-700);
+      --jm-colour-border-strong: var(--jm-grey-400);
+
+      --jm-colour-accent: var(--jm-blue-300);
+      --jm-colour-accent-hover: var(--jm-blue-200);
+      --jm-colour-accent-subtle: var(--jm-blue-950);
+      --jm-colour-on-accent: var(--jm-grey-950);
+
+      --jm-colour-link: var(--jm-blue-300);
+      --jm-colour-link-hover: var(--jm-blue-200);
+      --jm-colour-link-visited: var(--jm-purple-300);
+
+      --jm-colour-focus: var(--jm-blue-300);
+
+      --jm-colour-success: var(--jm-green-300);
+      --jm-colour-success-text: var(--jm-green-300);
+      --jm-colour-success-background: var(--jm-green-950);
+
+      --jm-colour-warning: var(--jm-amber-300);
+      --jm-colour-warning-text: var(--jm-amber-300);
+      --jm-colour-warning-background: var(--jm-amber-950);
+
+      --jm-colour-error: var(--jm-red-300);
+      --jm-colour-error-text: var(--jm-red-300);
+      --jm-colour-error-background: var(--jm-red-950);
+
+      --jm-colour-info: var(--jm-sky-300);
+      --jm-colour-info-text: var(--jm-sky-300);
+      --jm-colour-info-background: var(--jm-sky-950);
+
+      --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.40);
+      --jm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.30);
+      --jm-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --jm-colour-background: var(--jm-grey-900);
+    --jm-colour-surface: var(--jm-grey-800);
+    --jm-colour-surface-sunken: var(--jm-grey-950);
+
+    --jm-colour-text: var(--jm-grey-50);
+    --jm-colour-text-secondary: var(--jm-grey-300);
+
+    --jm-colour-border: var(--jm-grey-700);
+    --jm-colour-border-strong: var(--jm-grey-400);
+
+    --jm-colour-accent: var(--jm-blue-300);
+    --jm-colour-accent-hover: var(--jm-blue-200);
+    --jm-colour-accent-subtle: var(--jm-blue-950);
+    --jm-colour-on-accent: var(--jm-grey-950);
+
+    --jm-colour-link: var(--jm-blue-300);
+    --jm-colour-link-hover: var(--jm-blue-200);
+    --jm-colour-link-visited: var(--jm-purple-300);
+
+    --jm-colour-focus: var(--jm-blue-300);
+
+    --jm-colour-success: var(--jm-green-300);
+    --jm-colour-success-text: var(--jm-green-300);
+    --jm-colour-success-background: var(--jm-green-950);
+
+    --jm-colour-warning: var(--jm-amber-300);
+    --jm-colour-warning-text: var(--jm-amber-300);
+    --jm-colour-warning-background: var(--jm-amber-950);
+
+    --jm-colour-error: var(--jm-red-300);
+    --jm-colour-error-text: var(--jm-red-300);
+    --jm-colour-error-background: var(--jm-red-950);
+
+    --jm-colour-info: var(--jm-sky-300);
+    --jm-colour-info-text: var(--jm-sky-300);
+    --jm-colour-info-background: var(--jm-sky-950);
+
+    --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.40);
+    --jm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.30);
+    --jm-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.35);
+  }
+
+  /* Composite focus ring, built from the colour tokens above. */
+  :root {
+    --jm-focus-ring: 0 0 0 var(--jm-focus-gap) var(--jm-colour-background),
+      0 0 0 calc(var(--jm-focus-gap) + var(--jm-focus-width)) var(--jm-colour-focus);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Base: minimal element defaults so pages pick up the tokens.
+   Components arrive in phase 2.
+   ------------------------------------------------------------------ */
+@layer jm.base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Keep the hidden attribute working when a class sets display.
+     !important inside a layer beats normal unlayered rules. */
+  [hidden] {
+    display: none !important;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--jm-colour-background);
+    color: var(--jm-colour-text);
+    font-family: var(--jm-font-family);
+    font-size: var(--jm-font-size-md);
+    line-height: var(--jm-line-height-normal);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0 0 var(--jm-space-4);
+    line-height: var(--jm-line-height-tight);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  h1 { font-size: var(--jm-font-size-3xl); }
+  h2 { font-size: var(--jm-font-size-2xl); }
+  h3 { font-size: var(--jm-font-size-xl); }
+  h4 { font-size: var(--jm-font-size-lg); }
+
+  p {
+    margin: 0 0 var(--jm-space-4);
+    max-width: var(--jm-measure);
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: var(--jm-font-family-mono);
+    font-size: 0.9375em;
+  }
+
+  a {
+    color: var(--jm-colour-link);
+    text-decoration-thickness: max(1px, 0.0625rem);
+    text-underline-offset: 0.15em;
+  }
+
+  a:visited {
+    color: var(--jm-colour-link-visited);
+  }
+
+  a:hover {
+    color: var(--jm-colour-link-hover);
+    text-decoration-thickness: max(3px, 0.1875rem);
+  }
+
+  /* Visible focus on every interactive element (WCAG 2.2: 2.4.7, 2.4.11).
+     The transparent outline keeps a ring in Windows forced-colours mode,
+     where box-shadow is removed. */
+  :focus-visible {
+    outline: var(--jm-focus-width) solid transparent;
+    outline-offset: var(--jm-focus-gap);
+    box-shadow: var(--jm-focus-ring);
+  }
+
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline-color: Highlight;
+    }
+  }
+}

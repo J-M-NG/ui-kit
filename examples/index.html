@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ui-kit: tokens</title>
+  <link rel="stylesheet" href="../ui-kit.css">
+  <style>
+    /* Page-only layout for this sheet. Not part of the kit. */
+    .sheet { max-width: 72rem; margin: 0 auto; padding: var(--jm-space-6) var(--jm-space-4) var(--jm-space-8); }
+    .sheet section { margin-top: var(--jm-space-7); }
+    .sheet-header { display: flex; flex-wrap: wrap; gap: var(--jm-space-4); align-items: end; justify-content: space-between; }
+    .theme-switch { display: flex; gap: var(--jm-space-2); align-items: center; }
+    .theme-switch button {
+      font: inherit; padding: var(--jm-space-1) var(--jm-space-3); cursor: pointer;
+      color: var(--jm-colour-text); background: var(--jm-colour-surface);
+      border: var(--jm-border-width) solid var(--jm-colour-border-strong); border-radius: var(--jm-radius-md);
+    }
+    .theme-switch button[aria-pressed="true"] { background: var(--jm-colour-accent); color: var(--jm-colour-on-accent); border-color: var(--jm-colour-accent); }
+    .grid { display: grid; gap: var(--jm-space-4); grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); padding: 0; margin: 0; list-style: none; }
+    .swatch { border: var(--jm-border-width) solid var(--jm-colour-border); border-radius: var(--jm-radius-lg); overflow: hidden; background: var(--jm-colour-background); }
+    .swatch-chip { height: 4rem; border-bottom: var(--jm-border-width) solid var(--jm-colour-border); }
+    .swatch-label { padding: var(--jm-space-2) var(--jm-space-3); font-size: var(--jm-font-size-sm); }
+    .swatch-label code { display: block; overflow-wrap: anywhere; }
+    .swatch-value { color: var(--jm-colour-text-secondary); }
+    .pair { padding: var(--jm-space-3) var(--jm-space-4); border-radius: var(--jm-radius-md); }
+    .pair strong { display: block; }
+    .pair code { display: block; margin-top: var(--jm-space-2); font-size: var(--jm-font-size-sm); }
+    .scale-row { display: grid; grid-template-columns: 9rem 1fr; gap: var(--jm-space-4); align-items: center; padding: var(--jm-space-2) 0; border-bottom: var(--jm-border-width) solid var(--jm-colour-border); }
+    .scale-row code { font-size: var(--jm-font-size-sm); }
+    .bar { height: var(--jm-space-4); background: var(--jm-colour-accent); border-radius: var(--jm-radius-sm); }
+    .box { height: 5rem; background: var(--jm-colour-surface); border: var(--jm-border-width) solid var(--jm-colour-border-strong); display: grid; place-items: center; font-size: var(--jm-font-size-sm); }
+    .focus-demo { display: flex; flex-wrap: wrap; gap: var(--jm-space-5); align-items: center; padding: var(--jm-space-5); }
+    .focus-demo .on-accent-block { background: var(--jm-colour-accent); color: var(--jm-colour-on-accent); padding: var(--jm-space-2) var(--jm-space-4); border-radius: var(--jm-radius-md); }
+    .forced-focus { box-shadow: var(--jm-focus-ring); }
+    table { border-collapse: collapse; width: 100%; font-size: var(--jm-font-size-sm); }
+    th, td { text-align: left; padding: var(--jm-space-2) var(--jm-space-3); border-bottom: var(--jm-border-width) solid var(--jm-colour-border); }
+    @media (max-width: 40em) { .scale-row { grid-template-columns: 1fr; gap: var(--jm-space-2); } }
+  </style>
+</head>
+<body>
+<main class="sheet" id="main">
+  <div class="sheet-header">
+    <div>
+      <h1>Tokens</h1>
+      <p>Design tokens in <code>ui-kit.css</code>, shown in the current theme. Every text pair on this page is checked for 4.5:1 contrast, and every border, focus ring and status mark for 3:1, by <code>tests/check_contrast.py</code>.</p>
+    </div>
+    <div class="theme-switch" role="group" aria-label="Theme" hidden>
+      <button type="button" data-set-theme="system" aria-pressed="true">System</button>
+      <button type="button" data-set-theme="light" aria-pressed="false">Light</button>
+      <button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+
+  <section aria-labelledby="surfaces">
+    <h2 id="surfaces">Surfaces, text and borders</h2>
+    <ul class="grid" data-swatches="background surface surface-sunken text text-secondary border border-strong"></ul>
+  </section>
+
+  <section aria-labelledby="accent">
+    <h2 id="accent">Accent, links and focus</h2>
+    <ul class="grid" data-swatches="accent accent-hover accent-subtle on-accent link link-hover link-visited focus"></ul>
+  </section>
+
+  <section aria-labelledby="status">
+    <h2 id="status">Status</h2>
+    <p>Each status has a mark colour (icons, borders), a text colour and a tinted background. Never rely on colour alone: pair it with a word or icon.</p>
+    <div class="grid">
+      <div class="pair" style="background: var(--jm-colour-success-background); border-left: 4px solid var(--jm-colour-success)">
+        <strong style="color: var(--jm-colour-success-text)">Success</strong>
+        <span>Body text on the success background.</span>
+        <code>--jm-colour-success-*</code>
+      </div>
+      <div class="pair" style="background: var(--jm-colour-warning-background); border-left: 4px solid var(--jm-colour-warning)">
+        <strong style="color: var(--jm-colour-warning-text)">Warning</strong>
+        <span>Body text on the warning background.</span>
+        <code>--jm-colour-warning-*</code>
+      </div>
+      <div class="pair" style="background: var(--jm-colour-error-background); border-left: 4px solid var(--jm-colour-error)">
+        <strong style="color: var(--jm-colour-error-text)">Error</strong>
+        <span>Body text on the error background.</span>
+        <code>--jm-colour-error-*</code>
+      </div>
+      <div class="pair" style="background: var(--jm-colour-info-background); border-left: 4px solid var(--jm-colour-info)">
+        <strong style="color: var(--jm-colour-info-text)">Information</strong>
+        <span>Body text on the information background.</span>
+        <code>--jm-colour-info-*</code>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="links">
+    <h2 id="links">Links and focus</h2>
+    <p>A <a href="#links">link to this section</a> and a <a href="index.html">link to this page</a> (visited). Press Tab to see the focus ring; it has a gap in the background colour so it stays visible on accent-filled elements.</p>
+    <div class="focus-demo">
+      <span class="on-accent-block forced-focus">Focus ring on an accent block</span>
+      <span class="forced-focus" style="padding: var(--jm-space-2) var(--jm-space-4)">Focus ring on the background</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="type">
+    <h2 id="type">Type scale</h2>
+    <p>System font stack, no web fonts. Body text is <code>--jm-font-size-md</code> (16px).</p>
+    <div class="scale-row"><code>3xl / h1, 40px</code><span style="font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 700">Monthly summary</span></div>
+    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 700">Monthly summary</span></div>
+    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 700">Monthly summary</span></div>
+    <div class="scale-row"><code>lg / h4, 19px</code><span style="font-size: var(--jm-font-size-lg)">Monthly summary for 7 November 2026</span></div>
+    <div class="scale-row"><code>md / body, 16px</code><span style="font-size: var(--jm-font-size-md)">Monthly summary for 7 November 2026</span></div>
+    <div class="scale-row"><code>sm, 14px</code><span style="font-size: var(--jm-font-size-sm)">Monthly summary for 7 November 2026</span></div>
+    <div class="scale-row"><code>xs, 13px</code><span style="font-size: var(--jm-font-size-xs)">Captions only</span></div>
+    <div class="scale-row"><code>mono</code><code style="font-size: var(--jm-font-size-md)">run_id = 2026-11-07-a</code></div>
+  </section>
+
+  <section aria-labelledby="space">
+    <h2 id="space">Spacing</h2>
+    <p>4px base. Use for margin, padding and gap.</p>
+    <div class="scale-row"><code>--jm-space-1, 0.25rem (4px)</code><div class="bar" style="width: var(--jm-space-1)"></div></div>
+    <div class="scale-row"><code>--jm-space-2, 0.5rem (8px)</code><div class="bar" style="width: var(--jm-space-2)"></div></div>
+    <div class="scale-row"><code>--jm-space-3, 0.75rem (12px)</code><div class="bar" style="width: var(--jm-space-3)"></div></div>
+    <div class="scale-row"><code>--jm-space-4, 1rem (16px)</code><div class="bar" style="width: var(--jm-space-4)"></div></div>
+    <div class="scale-row"><code>--jm-space-5, 1.5rem (24px)</code><div class="bar" style="width: var(--jm-space-5)"></div></div>
+    <div class="scale-row"><code>--jm-space-6, 2rem (32px)</code><div class="bar" style="width: var(--jm-space-6)"></div></div>
+    <div class="scale-row"><code>--jm-space-7, 3rem (48px)</code><div class="bar" style="width: var(--jm-space-7)"></div></div>
+    <div class="scale-row"><code>--jm-space-8, 4rem (64px)</code><div class="bar" style="width: var(--jm-space-8)"></div></div>
+    <div class="scale-row"><code>--jm-space-9, 6rem (96px)</code><div class="bar" style="width: var(--jm-space-9)"></div></div>
+  </section>
+
+  <section aria-labelledby="radius">
+    <h2 id="radius">Radius and shadow</h2>
+    <ul class="grid">
+      <li class="box" style="border-radius: var(--jm-radius-sm)"><code>--jm-radius-sm</code></li>
+      <li class="box" style="border-radius: var(--jm-radius-md)"><code>--jm-radius-md</code></li>
+      <li class="box" style="border-radius: var(--jm-radius-lg)"><code>--jm-radius-lg</code></li>
+      <li class="box" style="border-radius: var(--jm-radius-pill)"><code>--jm-radius-pill</code></li>
+      <li class="box" style="box-shadow: var(--jm-shadow-sm); border-color: var(--jm-colour-border)"><code>--jm-shadow-sm</code></li>
+      <li class="box" style="box-shadow: var(--jm-shadow-md); border-color: var(--jm-colour-border)"><code>--jm-shadow-md</code></li>
+      <li class="box" style="box-shadow: var(--jm-shadow-lg); border-color: var(--jm-colour-border)"><code>--jm-shadow-lg</code></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="breakpoints">
+    <h2 id="breakpoints">Breakpoints</h2>
+    <p>Custom properties cannot be used inside <code>@media</code>, so write these values literally in media queries.</p>
+    <table>
+      <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Pixels at 16px base</th></tr></thead>
+      <tbody>
+        <tr><td><code>--jm-breakpoint-sm</code></td><td>40em</td><td>640</td></tr>
+        <tr><td><code>--jm-breakpoint-md</code></td><td>48em</td><td>768</td></tr>
+        <tr><td><code>--jm-breakpoint-lg</code></td><td>64em</td><td>1024</td></tr>
+        <tr><td><code>--jm-breakpoint-xl</code></td><td>80em</td><td>1280</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script>
+  // Progressive enhancement: builds the colour swatch lists and the theme switch.
+  // Without JavaScript the page still shows every section except the swatch lists.
+  (function () {
+    var root = document.documentElement;
+
+    function resolveColour(name) {
+      // Read the computed colour by applying the token to a probe element.
+      var probe = document.createElement('span');
+      probe.style.color = 'var(' + name + ')';
+      document.body.appendChild(probe);
+      var rgb = getComputedStyle(probe).color.match(/\d+/g).slice(0, 3);
+      probe.remove();
+      return '#' + rgb.map(function (n) { return (+n).toString(16).padStart(2, '0'); }).join('');
+    }
+
+    // Map each palette hex value to its palette token name (for example --jm-blue-600).
+    // Browsers block reading rules from file:// stylesheets, so names are skipped there.
+    var paletteNames = {};
+    try { (function collect(rules) {
+      Array.prototype.forEach.call(rules, function (rule) {
+        if (rule.cssRules) collect(rule.cssRules);
+        if (!rule.style) return;
+        for (var i = 0; i < rule.style.length; i++) {
+          var prop = rule.style[i];
+          var value = rule.style.getPropertyValue(prop).trim().toLowerCase();
+          if (/^--jm-[a-z]+-\d+$/.test(prop) && /^#[0-9a-f]{6}$/.test(value)) paletteNames[value] = prop;
+        }
+      });
+    })(document.styleSheets[0].cssRules); } catch (e) {}
+
+    function renderSwatches() {
+      document.querySelectorAll('[data-swatches]').forEach(function (list) {
+        list.innerHTML = '';
+        list.dataset.swatches.split(' ').forEach(function (token) {
+          var name = '--jm-colour-' + token;
+          var hex = resolveColour(name);
+          var li = document.createElement('li');
+          li.className = 'swatch';
+          li.innerHTML = '<div class="swatch-chip" style="background: var(' + name + ')"></div>' +
+            '<div class="swatch-label"><code>' + name + '</code><span class="swatch-value">' +
+            hex + (paletteNames[hex] ? ' (' + paletteNames[hex] + ')' : '') + '</span></div>';
+          list.appendChild(li);
+        });
+      });
+    }
+
+    var buttons = document.querySelectorAll('[data-set-theme]');
+    function setTheme(theme) {
+      if (theme === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', theme);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setTheme === theme)); });
+      try { localStorage.setItem('jm-theme', theme); } catch (e) {}
+      renderSwatches();
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.setTheme); }); });
+    document.querySelector('.theme-switch').hidden = false;
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderSwatches);
+
+    var saved = null;
+    try { saved = localStorage.getItem('jm-theme'); } catch (e) {}
+    setTheme(saved || 'system');
+  })();
+</script>
+</body>
+</html>
