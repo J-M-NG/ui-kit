@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ui-kit: components</title>
+  <link rel="stylesheet" href="../ui-kit.css">
+  <style>
+    /* Page-only: how each example is framed. Not part of the kit. */
+    .example { padding: var(--jm-space-5); border: var(--jm-border-width) solid var(--jm-colour-border); border-radius: var(--jm-radius-md); }
+    .example-code { margin: 0; font-size: var(--jm-font-size-sm); color: var(--jm-colour-text-secondary); }
+    .theme-switch button[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: 3px; }
+  </style>
+</head>
+<body>
+<div class="jm-page">
+  <a class="jm-skip-link" href="#main">Skip to main content</a>
+
+  <header class="jm-header">
+    <div class="jm-header__inner">
+      <a class="jm-header__name" href="components.html">ui-kit</a>
+      <nav class="jm-header__nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Tokens</a></li>
+          <li><a href="components.html" aria-current="page">Components</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="jm-container jm-stack jm-stack--loose">
+    <div class="jm-stack jm-stack--tight">
+      <h1>Components</h1>
+      <p>Every phase 2 component in each of its states. Each one styles a real HTML element, so it works without JavaScript and with assistive technology.</p>
+      <div class="jm-cluster theme-switch" role="group" aria-label="Theme" hidden>
+        <span class="jm-secondary-text">Theme:</span>
+        <button class="jm-button jm-button--secondary" type="button" data-set-theme="system" aria-pressed="true">System</button>
+        <button class="jm-button jm-button--secondary" type="button" data-set-theme="light" aria-pressed="false">Light</button>
+        <button class="jm-button jm-button--secondary" type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+
+    <section class="jm-stack" aria-labelledby="buttons">
+      <h2 id="buttons">Buttons</h2>
+      <p>Say what the button does. Use one primary button per screen; warning buttons only for actions that destroy something.</p>
+      <div class="example jm-cluster">
+        <button class="jm-button" type="button">Save and continue</button>
+        <button class="jm-button jm-button--secondary" type="button">Save as draft</button>
+        <button class="jm-button jm-button--warning" type="button">Delete task</button>
+        <button class="jm-button" type="button" disabled>Submit (disabled)</button>
+        <a class="jm-button jm-button--secondary" href="#buttons">Link styled as a button</a>
+      </div>
+      <p class="example-code"><code>.jm-button</code>, <code>--secondary</code>, <code>--warning</code>; works on <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code>.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="text-input">
+      <h2 id="text-input">Text input, textarea and select</h2>
+      <div class="example jm-stack">
+        <div class="jm-field">
+          <label class="jm-label" for="task-title">Task title</label>
+          <div class="jm-hint" id="task-title-hint">Say what done looks like</div>
+          <input class="jm-input" id="task-title" name="task-title" type="text" aria-describedby="task-title-hint">
+        </div>
+
+        <div class="jm-field">
+          <label class="jm-label" for="run-id">Run ID</label>
+          <input class="jm-input jm-input--width-10" id="run-id" name="run-id" type="text" spellcheck="false" value="2026-11-07a">
+        </div>
+
+        <div class="jm-field jm-field--error">
+          <label class="jm-label" for="email">Email address</label>
+          <p class="jm-error-message" id="email-error"><span class="jm-visually-hidden">Error:</span> Enter an email address in the correct format, like name@example.com</p>
+          <input class="jm-input jm-input--error" id="email" name="email" type="email" autocomplete="email" value="name.example.com" aria-describedby="email-error" aria-invalid="true">
+        </div>
+
+        <div class="jm-field">
+          <label class="jm-label" for="details">Details (optional)</label>
+          <div class="jm-hint" id="details-hint">Include links and the files involved</div>
+          <textarea class="jm-textarea" id="details" name="details" rows="4" aria-describedby="details-hint"></textarea>
+        </div>
+
+        <div class="jm-field">
+          <label class="jm-label" for="board">Board</label>
+          <select class="jm-select" id="board" name="board">
+            <option>ui-kit</option>
+            <option>LLM cheating arena</option>
+            <option>Agent message board</option>
+          </select>
+        </div>
+      </div>
+      <p class="example-code"><code>.jm-field</code> (<code>--error</code>), <code>.jm-label</code>, <code>.jm-hint</code>, <code>.jm-error-message</code>, <code>.jm-input</code> (<code>--width-2/4/10/20</code>, <code>--error</code>), <code>.jm-textarea</code>, <code>.jm-select</code>.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="choices">
+      <h2 id="choices">Radios and checkboxes</h2>
+      <div class="example jm-stack">
+        <fieldset class="jm-fieldset">
+          <legend class="jm-label jm-label--large">Who should verify the task?</legend>
+          <div class="jm-hint">Choose an agent that did not do the task</div>
+          <div class="jm-choices">
+            <div class="jm-choice">
+              <input class="jm-choice__input" id="verifier-qa" name="verifier" type="radio" value="qa" checked>
+              <label class="jm-choice__label" for="verifier-qa">qa agent</label>
+            </div>
+            <div class="jm-choice">
+              <input class="jm-choice__input" id="verifier-orchestrator" name="verifier" type="radio" value="orchestrator" aria-describedby="verifier-orchestrator-hint">
+              <label class="jm-choice__label" for="verifier-orchestrator">Orchestrator</label>
+              <div class="jm-choice__hint" id="verifier-orchestrator-hint">Slower, but sees the whole plan</div>
+            </div>
+            <div class="jm-choice">
+              <input class="jm-choice__input" id="verifier-me" name="verifier" type="radio" value="me">
+              <label class="jm-choice__label" for="verifier-me">Me</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="jm-fieldset">
+          <legend class="jm-label">Notify me</legend>
+          <div class="jm-choices jm-choices--inline">
+            <div class="jm-choice">
+              <input class="jm-choice__input" id="notify-claim" name="notify" type="checkbox" value="claim" checked>
+              <label class="jm-choice__label" for="notify-claim">When it is claimed</label>
+            </div>
+            <div class="jm-choice">
+              <input class="jm-choice__input" id="notify-verified" name="notify" type="checkbox" value="verified">
+              <label class="jm-choice__label" for="notify-verified">When it is verified</label>
+            </div>
+            <div class="jm-choice">
+              <input class="jm-choice__input" id="notify-off" name="notify" type="checkbox" value="off" disabled>
+              <label class="jm-choice__label" for="notify-off">Daily summary (not available yet)</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="jm-field jm-field--error">
+          <fieldset class="jm-fieldset" aria-describedby="due-hint due-error">
+            <legend class="jm-label">Due date</legend>
+            <div class="jm-hint" id="due-hint">For example, 27 11 2026</div>
+            <p class="jm-error-message" id="due-error"><span class="jm-visually-hidden">Error:</span> Due date must be in the future</p>
+            <div class="jm-date">
+              <div class="jm-field">
+                <label for="due-day">Day</label>
+                <input class="jm-input jm-input--width-2 jm-input--error" id="due-day" name="due-day" inputmode="numeric" value="7">
+              </div>
+              <div class="jm-field">
+                <label for="due-month">Month</label>
+                <input class="jm-input jm-input--width-2 jm-input--error" id="due-month" name="due-month" inputmode="numeric" value="11">
+              </div>
+              <div class="jm-field">
+                <label for="due-year">Year</label>
+                <input class="jm-input jm-input--width-4 jm-input--error" id="due-year" name="due-year" inputmode="numeric" value="2026">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <p class="example-code"><code>.jm-fieldset</code>, <code>.jm-choices</code> (<code>--inline</code>), <code>.jm-choice</code> with <code>__input</code>, <code>__label</code>, <code>__hint</code>; <code>.jm-date</code>.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="error-summary">
+      <h2 id="error-summary">Error summary</h2>
+      <p>Show at the top of the page after a failed submit. Each link moves focus to the field with the problem. Give it <code>tabindex="-1"</code> and move focus to it when the page loads.</p>
+      <div class="jm-error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1">
+        <h3 class="jm-error-summary__title" id="error-summary-title">There is a problem</h3>
+        <ul>
+          <li><a href="#email">Enter an email address in the correct format, like name@example.com</a></li>
+          <li><a href="#due-day">Due date must be in the future</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="summary-list">
+      <h2 id="summary-list">Summary list</h2>
+      <div class="example">
+        <dl class="jm-summary-list">
+          <div class="jm-summary-list__row">
+            <dt>Task title</dt>
+            <dd>Add contrast check to CI</dd>
+            <dd class="jm-summary-list__actions"><a href="#task-title">Change<span class="jm-visually-hidden"> task title</span></a></dd>
+          </div>
+          <div class="jm-summary-list__row">
+            <dt>Verifier</dt>
+            <dd>qa agent</dd>
+            <dd class="jm-summary-list__actions"><a href="#verifier-qa">Change<span class="jm-visually-hidden"> verifier</span></a></dd>
+          </div>
+          <div class="jm-summary-list__row">
+            <dt>Due date</dt>
+            <dd>27 November 2026</dd>
+            <dd class="jm-summary-list__actions"><a href="#due-day">Change<span class="jm-visually-hidden"> due date</span></a></dd>
+          </div>
+        </dl>
+      </div>
+      <p class="example-code"><code>.jm-summary-list</code> (<code>--no-actions</code>), <code>__row</code>, <code>__actions</code>. Rows stack below 640px.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="tags">
+      <h2 id="tags">Status tags</h2>
+      <p>A tag is always a word; colour only reinforces it.</p>
+      <div class="example jm-cluster">
+        <span class="jm-tag">Open</span>
+        <span class="jm-tag jm-tag--info">In progress</span>
+        <span class="jm-tag jm-tag--warning">Needs review</span>
+        <span class="jm-tag jm-tag--success">Verified</span>
+        <span class="jm-tag jm-tag--error">Rejected</span>
+      </div>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="banners">
+      <h2 id="banners">Notification banners</h2>
+      <div class="jm-banner" role="region" aria-labelledby="banner-info-title">
+        <p class="jm-banner__title" id="banner-info-title">2 claims need a second check</p>
+        <p>Verify them before they count as done. <a href="#tables">Go to tasks needing review</a></p>
+      </div>
+      <div class="jm-banner jm-banner--success" role="alert" aria-labelledby="banner-success-title">
+        <p class="jm-banner__title" id="banner-success-title">Task posted</p>
+        <p>Agents can now claim “Add contrast check to CI”.</p>
+      </div>
+      <p class="example-code"><code>.jm-banner</code> (information, <code>role="region"</code>), <code>.jm-banner--success</code> (after an action, <code>role="alert"</code>).</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="tables">
+      <h2 id="tables">Table</h2>
+      <div class="jm-table-wrap" role="region" aria-labelledby="tasks-caption" tabindex="0">
+        <table class="jm-table">
+          <caption id="tasks-caption">Tasks this week</caption>
+          <thead>
+            <tr>
+              <th scope="col">Task</th>
+              <th scope="col">Agent</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="jm-table__num">Attempts</th>
+              <th scope="col" class="jm-table__num">Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><a href="#tables">Add contrast check to CI</a></th><td>executor</td><td><span class="jm-tag jm-tag--warning">Needs review</span></td><td class="jm-table__num">1</td><td class="jm-table__num">14:02</td></tr>
+            <tr><th scope="row"><a href="#tables">Write status tag examples</a></th><td>executor</td><td><span class="jm-tag jm-tag--info">In progress</span></td><td class="jm-table__num">2</td><td class="jm-table__num">13:40</td></tr>
+            <tr><th scope="row"><a href="#tables">Review token names</a></th><td>qa</td><td><span class="jm-tag jm-tag--success">Verified</span></td><td class="jm-table__num">1</td><td class="jm-table__num">12:15</td></tr>
+            <tr><th scope="row"><a href="#tables">Fix focus ring in forced colours</a></th><td>executor</td><td><span class="jm-tag jm-tag--error">Rejected</span></td><td class="jm-table__num">3</td><td class="jm-table__num">11:58</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="example-code"><code>.jm-table</code> (<code>--compact</code>), <code>.jm-table__num</code> for numbers (right-aligned, tabular figures); wrap in <code>.jm-table-wrap</code> with <code>role="region"</code>, a label and <code>tabindex="0"</code> so a wide table scrolls by keyboard.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="details-h">
+      <h2 id="details-h">Details</h2>
+      <details class="jm-details">
+        <summary>What happens after I post a task?</summary>
+        <div class="jm-details__text">Any agent can claim it. When the agent says it is done, the verifier you chose checks the work before it counts as done.</div>
+      </details>
+      <p class="example-code"><code>.jm-details</code> on <code>&lt;details&gt;</code>; opens and closes without JavaScript.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="layout">
+      <h2 id="layout">Page layout</h2>
+      <p>This page is built from the layout classes: <code>.jm-page</code> (header, main and footer, footer at the bottom), <code>.jm-skip-link</code>, <code>.jm-header</code>, <code>.jm-container</code> (<code>--wide</code>), <code>.jm-stack</code> (<code>--tight</code>, <code>--loose</code>), <code>.jm-cluster</code> and <code>.jm-footer</code>. Press Tab once to see the skip link.</p>
+    </section>
+  </main>
+
+  <footer class="jm-footer">
+    <div class="jm-footer__inner">
+      <span>ui-kit, MIT licence</span>
+      <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Progressive enhancement: theme switch only. Everything else works without JavaScript.
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-theme]');
+    function setTheme(theme) {
+      if (theme === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', theme);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setTheme === theme)); });
+      try { localStorage.setItem('jm-theme', theme); } catch (e) {}
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.setTheme); }); });
+    document.querySelector('.theme-switch').hidden = false;
+    var saved = null;
+    try { saved = localStorage.getItem('jm-theme'); } catch (e) {}
+    setTheme(saved || 'system');
+  })();
+</script>
+</body>
+</html>
