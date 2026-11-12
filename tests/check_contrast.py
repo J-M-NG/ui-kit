@@ -58,6 +58,16 @@ for status in ("success", "warning", "error", "info"):
     ]
 
 
+# Chart series and heat cells (see the chart and heat tokens in ui-kit.css).
+for bg in ("background", "surface", "surface-sunken"):
+    for series in ("1", "2", "3", "4", "5", "other"):
+        PAIRS.append((f"chart-{series}", bg, NON_TEXT))  # marks; also used as label text on background
+for step in range(1, 6):
+    PAIRS.append((f"heat-text-{step}", f"heat-{step}", TEXT))
+for series in ("1", "2", "3", "4", "5"):
+    PAIRS.append((f"chart-{series}", "background", TEXT))  # direct labels use the series colour as text
+
+
 def luminance(hex_colour: str) -> float:
     h = hex_colour.lstrip("#")
     channels = [int(h[i : i + 2], 16) / 255 for i in (0, 2, 4)]

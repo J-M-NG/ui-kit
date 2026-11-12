@@ -199,6 +199,28 @@
     --jm-colour-info-text: var(--jm-sky-700);
     --jm-colour-info-background: var(--jm-sky-50);
 
+    /* Chart series, in fixed order: always use 1, 2, 3 ... so one colour keeps one meaning.
+       Five or fewer series; grey for "other". Label series directly; never rely on colour alone. */
+    --jm-colour-chart-1: var(--jm-blue-600);
+    --jm-colour-chart-2: var(--jm-amber-600);
+    --jm-colour-chart-3: var(--jm-purple-600);
+    --jm-colour-chart-4: var(--jm-green-700);
+    --jm-colour-chart-5: var(--jm-red-700);
+    --jm-colour-chart-other: var(--jm-grey-500);
+
+    /* Sequential scale for heat cells and ranked values: five steps with the matching text colour.
+       Light theme: darkest = largest. Dark theme: lightest = largest. Always print the value in the cell. */
+    --jm-colour-heat-1: var(--jm-blue-100);
+    --jm-colour-heat-2: var(--jm-blue-200);
+    --jm-colour-heat-3: var(--jm-blue-300);
+    --jm-colour-heat-4: var(--jm-blue-600);
+    --jm-colour-heat-5: var(--jm-blue-800);
+    --jm-colour-heat-text-1: var(--jm-grey-900);
+    --jm-colour-heat-text-2: var(--jm-grey-900);
+    --jm-colour-heat-text-3: var(--jm-grey-900);
+    --jm-colour-heat-text-4: var(--jm-grey-0);
+    --jm-colour-heat-text-5: var(--jm-grey-0);
+
     --jm-shadow-sm: 0 1px 2px rgb(14 16 18 / 0.08);
     --jm-shadow-md: 0 2px 6px rgb(14 16 18 / 0.10), 0 1px 2px rgb(14 16 18 / 0.06);
     --jm-shadow-lg: 0 8px 24px rgb(14 16 18 / 0.14), 0 2px 6px rgb(14 16 18 / 0.08);
@@ -249,6 +271,24 @@
       --jm-colour-info-text: var(--jm-sky-300);
       --jm-colour-info-background: var(--jm-sky-950);
 
+      --jm-colour-chart-1: var(--jm-blue-300);
+      --jm-colour-chart-2: var(--jm-amber-300);
+      --jm-colour-chart-3: var(--jm-purple-300);
+      --jm-colour-chart-4: var(--jm-green-300);
+      --jm-colour-chart-5: var(--jm-red-300);
+      --jm-colour-chart-other: var(--jm-grey-400);
+
+      --jm-colour-heat-1: var(--jm-blue-900);
+      --jm-colour-heat-2: var(--jm-blue-800);
+      --jm-colour-heat-3: var(--jm-blue-700);
+      --jm-colour-heat-4: var(--jm-blue-300);
+      --jm-colour-heat-5: var(--jm-blue-200);
+      --jm-colour-heat-text-1: var(--jm-grey-0);
+      --jm-colour-heat-text-2: var(--jm-grey-0);
+      --jm-colour-heat-text-3: var(--jm-grey-0);
+      --jm-colour-heat-text-4: var(--jm-grey-900);
+      --jm-colour-heat-text-5: var(--jm-grey-900);
+
       --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.40);
       --jm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.30);
       --jm-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.35);
@@ -294,6 +334,24 @@
     --jm-colour-info: var(--jm-sky-300);
     --jm-colour-info-text: var(--jm-sky-300);
     --jm-colour-info-background: var(--jm-sky-950);
+
+    --jm-colour-chart-1: var(--jm-blue-300);
+    --jm-colour-chart-2: var(--jm-amber-300);
+    --jm-colour-chart-3: var(--jm-purple-300);
+    --jm-colour-chart-4: var(--jm-green-300);
+    --jm-colour-chart-5: var(--jm-red-300);
+    --jm-colour-chart-other: var(--jm-grey-400);
+
+    --jm-colour-heat-1: var(--jm-blue-900);
+    --jm-colour-heat-2: var(--jm-blue-800);
+    --jm-colour-heat-3: var(--jm-blue-700);
+    --jm-colour-heat-4: var(--jm-blue-300);
+    --jm-colour-heat-5: var(--jm-blue-200);
+    --jm-colour-heat-text-1: var(--jm-grey-0);
+    --jm-colour-heat-text-2: var(--jm-grey-0);
+    --jm-colour-heat-text-3: var(--jm-grey-0);
+    --jm-colour-heat-text-4: var(--jm-grey-900);
+    --jm-colour-heat-text-5: var(--jm-grey-900);
 
     --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.40);
     --jm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.30);
@@ -894,6 +952,8 @@
   }
 
   .jm-table .jm-table__num {
+    font-family: var(--jm-font-family-mono);
+    font-size: 0.95em;
     text-align: right;
   }
 
@@ -1079,6 +1139,7 @@
 
   .jm-figures dd {
     margin: 0;
+    font-family: var(--jm-font-family-mono);
     font-size: var(--jm-font-size-xl);
     font-weight: var(--jm-font-weight-bold);
     font-variant-numeric: tabular-nums;
@@ -1183,6 +1244,7 @@
 
   .jm-trail time,
   .jm-trail__meta {
+    font-family: var(--jm-font-family-mono);
     color: var(--jm-colour-text-secondary);
     font-size: var(--jm-font-size-sm);
     font-variant-numeric: tabular-nums;
@@ -1228,11 +1290,12 @@
     display: block;
     width: var(--jm-bar, 0%);
     height: 100%;
-    background: var(--jm-colour-accent);
+    background: var(--jm-series, var(--jm-colour-accent));
     border-radius: var(--jm-radius-sm);
   }
 
   .jm-bars__value {
+    font-family: var(--jm-font-family-mono);
     text-align: right;
     font-variant-numeric: tabular-nums;
   }
@@ -1247,6 +1310,68 @@
       grid-row: 2;
     }
   }
+
+  /* Series colours, in fixed order (see the chart tokens). Set on a bar, line or label. */
+  .jm-series-1 { --jm-series: var(--jm-colour-chart-1); }
+  .jm-series-2 { --jm-series: var(--jm-colour-chart-2); }
+  .jm-series-3 { --jm-series: var(--jm-colour-chart-3); }
+  .jm-series-4 { --jm-series: var(--jm-colour-chart-4); }
+  .jm-series-5 { --jm-series: var(--jm-colour-chart-5); }
+  .jm-series-other { --jm-series: var(--jm-colour-chart-other); }
+
+  /* Chart with a title that says what to see, the unit, and one plain note.
+     <figure class="jm-chart"><figcaption class="jm-chart__title">...</figcaption>
+     <p class="jm-chart__note">unit and annotation</p> ...chart... </figure>
+     Two text levels only: the title, and the grey note. */
+  .jm-chart {
+    margin: 0;
+  }
+
+  .jm-chart__title {
+    margin: 0 0 var(--jm-space-1);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-chart__note {
+    margin: 0 0 var(--jm-space-3);
+    color: var(--jm-colour-text-secondary);
+    font-size: var(--jm-font-size-sm);
+  }
+
+  /* Line chart in inline SVG with direct labels at the line ends instead of a legend.
+     <svg class="jm-lines" role="img" aria-label="..."> <polyline class="jm-series-1" points="..."/>
+     <text class="jm-series-1" x y>Label</text> */
+  .jm-lines {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 28rem;
+    overflow: visible;
+  }
+
+  .jm-lines polyline {
+    fill: none;
+    stroke: var(--jm-series);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .jm-lines text {
+    fill: var(--jm-series, var(--jm-colour-text));
+    font-size: 14px; /* user units: the viewBox is about 1:1 with pixels at phone width */
+    font-weight: var(--jm-font-weight-bold);
+    paint-order: stroke;
+    stroke: var(--jm-colour-background);
+    stroke-width: 3px;
+  }
+
+  /* Heat cells: sequential scale. Print the value in the cell. */
+  .jm-heat-1 { background: var(--jm-colour-heat-1); color: var(--jm-colour-heat-text-1); }
+  .jm-heat-2 { background: var(--jm-colour-heat-2); color: var(--jm-colour-heat-text-2); }
+  .jm-heat-3 { background: var(--jm-colour-heat-3); color: var(--jm-colour-heat-text-3); }
+  .jm-heat-4 { background: var(--jm-colour-heat-4); color: var(--jm-colour-heat-text-4); }
+  .jm-heat-5 { background: var(--jm-colour-heat-5); color: var(--jm-colour-heat-text-5); }
 
   /* Sparkline: an inline SVG with role="img" and an aria-label that states the trend. */
   .jm-spark {
@@ -1326,7 +1451,9 @@
     white-space: nowrap !important;
   }
 
+  /* Numbers, ids and timestamps: monospace with tabular figures. Use for those value types only. */
   .jm-num {
+    font-family: var(--jm-font-family-mono);
     font-variant-numeric: tabular-nums;
   }
 

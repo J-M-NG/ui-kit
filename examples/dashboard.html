@@ -69,18 +69,48 @@
     </section>
 
     <section class="jm-panel" aria-labelledby="bars-title">
-        <div class="jm-panel__header"><h2 class="jm-panel__title" id="bars-title">Claims by status</h2></div>
-        <div class="jm-panel__body">
+      <div class="jm-panel__header"><h2 class="jm-panel__title" id="bars-title">Claims</h2></div>
+      <div class="jm-panel__body jm-stack">
+        <figure class="jm-chart">
+          <figcaption class="jm-chart__title">Most claims are verified; few are rejected</figcaption>
+          <p class="jm-chart__note">Number of claims by status, 12 November 2026. Rejected claims are all from one agent.</p>
           <ul class="jm-bars">
             <li style="--jm-bar: 62%"><span class="jm-bars__label">Verified</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">31</span></li>
             <li style="--jm-bar: 28%"><span class="jm-bars__label">In progress</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">14</span></li>
             <li style="--jm-bar: 8%"><span class="jm-bars__label">Needs review</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">4</span></li>
             <li style="--jm-bar: 4%"><span class="jm-bars__label">Rejected</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">2</span></li>
           </ul>
-          <p class="jm-secondary-text" style="margin-top: var(--jm-space-4)">Trend over 7 days:
-            <svg class="jm-spark" viewBox="0 0 96 24" role="img" aria-label="Verified claims per day rose from 2 to 9 over 7 days"><polyline points="2,20 18,18 34,19 50,12 66,14 82,8 94,4"/></svg>
-          </p>
-        </div>
+        </figure>
+
+        <figure class="jm-chart">
+          <figcaption class="jm-chart__title">Verified claims overtook new claims on 9 November</figcaption>
+          <p class="jm-chart__note">Claims per day, 6 to 12 November 2026. Lines are labelled at their ends.</p>
+          <svg class="jm-lines" viewBox="0 0 320 140" role="img" aria-label="Claims per day from 6 to 12 November. Verified rose from 2 to 9; new claims fell from 8 to 5.">
+            <polyline class="jm-series-1" points="6,120 44,110 82,90 120,70 158,50 196,34 228,24"/>
+            <polyline class="jm-series-2" points="6,36 44,40 82,56 120,66 158,72 196,76 228,80"/>
+            <text class="jm-series-1" x="236" y="28">Verified 9</text>
+            <text class="jm-series-2" x="236" y="84">New 5</text>
+          </svg>
+        </figure>
+
+        <figure class="jm-chart">
+          <figcaption class="jm-chart__title">Claims verified, by agent and weekday</figcaption>
+          <p class="jm-chart__note">Counts. Stronger-coloured cells are larger values; the number is always shown.</p>
+          <div class="jm-table-wrap" role="region" aria-label="Claims verified by agent and weekday" tabindex="0">
+            <table class="jm-table jm-table--compact">
+              <thead><tr><th scope="col">Agent</th><th scope="col" class="jm-table__num">Mon</th><th scope="col" class="jm-table__num">Tue</th><th scope="col" class="jm-table__num">Wed</th><th scope="col" class="jm-table__num">Thu</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">cloud-worker</th><td class="jm-table__num jm-heat-5">12</td><td class="jm-table__num jm-heat-3">6</td><td class="jm-table__num jm-heat-4">9</td><td class="jm-table__num jm-heat-1">1</td></tr>
+                <tr><th scope="row">alice</th><td class="jm-table__num jm-heat-2">3</td><td class="jm-table__num jm-heat-1">0</td><td class="jm-table__num jm-heat-2">4</td><td class="jm-table__num jm-heat-3">7</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+
+        <p class="jm-secondary-text">Trend over 7 days:
+          <svg class="jm-spark" viewBox="0 0 96 24" role="img" aria-label="Verified claims per day rose from 2 to 9 over 7 days"><polyline points="2,20 18,18 34,19 50,12 66,14 82,8 94,4"/></svg>
+        </p>
+      </div>
     </section>
 
     <section class="jm-panel" aria-labelledby="trail-title">
