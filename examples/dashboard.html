@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ui-kit: dashboard patterns</title>
+  <link rel="stylesheet" href="../ui-kit.css">
+</head>
+<body>
+<a class="jm-skip-link" href="#main">Skip to main content</a>
+<div class="jm-app">
+  <nav class="jm-app__sidebar" aria-label="Main">
+    <p class="jm-header__name"><a href="dashboard.html">Task tracker</a></p>
+    <ul class="jm-sidenav">
+      <li><a href="dashboard.html" aria-current="page">Overview</a></li>
+      <li><a href="index.html">Tokens</a></li>
+      <li><a href="components.html">Components</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" class="jm-app__main jm-stack jm-stack--loose">
+    <div class="jm-stack jm-stack--tight">
+      <h1>Dashboard patterns</h1>
+      <p>Built only from kit classes: the sidebar layout, panels, key figures, a sortable and filterable table, a bar chart, a trail of events, and empty, loading and error states. The data is made up.</p>
+    </div>
+
+    <section class="jm-panel" aria-labelledby="tasks-title">
+      <div class="jm-panel__header">
+        <h2 class="jm-panel__title" id="tasks-title">Tasks</h2>
+        <p class="jm-secondary-text" role="status" data-jm-filter-status="tasks">5 rows</p>
+      </div>
+      <div class="jm-panel__body jm-stack jm-stack--tight">
+        <form class="jm-filters" role="search" onsubmit="return false">
+          <div class="jm-field">
+            <label class="jm-label" for="task-filter">Filter tasks</label>
+            <input class="jm-input jm-input--width-20" id="task-filter" type="search" data-jm-filter="tasks" aria-controls="tasks">
+          </div>
+        </form>
+      </div>
+      <div class="jm-table-wrap" role="region" aria-label="Tasks table" tabindex="0">
+        <table class="jm-table" id="tasks" data-jm-sortable>
+          <thead>
+            <tr>
+              <th scope="col" data-sort="text">Task</th>
+              <th scope="col" data-sort="text">Owner</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="jm-table__num" data-sort="number">Claims</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Add contrast check to CI</th><td>cloud-worker</td><td><span class="jm-tag jm-tag--success">Verified</span></td><td class="jm-table__num">12</td></tr>
+            <tr><th scope="row">Refresh flu forecast</th><td>alice</td><td><span class="jm-tag jm-tag--warning">Needs review</span></td><td class="jm-table__num">4</td></tr>
+            <tr><th scope="row">Seed demo board</th><td>cloud-worker</td><td><span class="jm-tag jm-tag--info">In progress</span></td><td class="jm-table__num">9</td></tr>
+            <tr><th scope="row">Rotate agent tokens</th><td>alice</td><td><span class="jm-tag jm-tag--error">Rejected</span></td><td class="jm-table__num">1</td></tr>
+            <tr><th scope="row">Write handover note</th><td>cloud-worker</td><td><span class="jm-tag">Open</span></td><td class="jm-table__num">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="jm-stack jm-stack--tight" aria-labelledby="figures-title">
+      <h2 id="figures-title">Key figures</h2>
+      <dl class="jm-figures">
+        <div><dt>Open tasks</dt><dd>14</dd></div>
+        <div><dt>Verified this week</dt><dd>31<span class="jm-figures__note">up from 24 last week</span></dd></div>
+        <div><dt>Disputed claims</dt><dd>2</dd></div>
+        <div><dt>Median time to verify</dt><dd>3.5 hours</dd></div>
+      </dl>
+    </section>
+
+    <section class="jm-panel" aria-labelledby="bars-title">
+      <div class="jm-panel__header"><h2 class="jm-panel__title" id="bars-title">Claims</h2></div>
+      <div class="jm-panel__body jm-stack">
+        <figure class="jm-chart">
+          <figcaption class="jm-chart__title">Most claims are verified; few are rejected</figcaption>
+          <p class="jm-chart__note">Number of claims by status, 12 November 2026. Rejected claims are all from one agent.</p>
+          <ul class="jm-bars">
+            <li style="--jm-bar: 62%"><span class="jm-bars__label">Verified</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">31</span></li>
+            <li style="--jm-bar: 28%"><span class="jm-bars__label">In progress</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">14</span></li>
+            <li style="--jm-bar: 8%"><span class="jm-bars__label">Needs review</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">4</span></li>
+            <li style="--jm-bar: 4%"><span class="jm-bars__label">Rejected</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">2</span></li>
+          </ul>
+        </figure>
+
+        <figure class="jm-chart">
+          <figcaption class="jm-chart__title">Verified claims overtook new claims on 9 November</figcaption>
+          <p class="jm-chart__note">Claims per day, 6 to 12 November 2026. Lines are labelled at their ends.</p>
+          <svg class="jm-lines" viewBox="0 0 320 140" role="img" aria-label="Claims per day from 6 to 12 November. Verified rose from 2 to 9; new claims fell from 8 to 5.">
+            <polyline class="jm-series-1" points="6,120 44,110 82,90 120,70 158,50 196,34 228,24"/>
+            <polyline class="jm-series-2" points="6,36 44,40 82,56 120,66 158,72 196,76 228,80"/>
+            <text class="jm-series-1" x="236" y="28">Verified 9</text>
+            <text class="jm-series-2" x="236" y="84">New 5</text>
+          </svg>
+        </figure>
+
+        <figure class="jm-chart">
+          <figcaption class="jm-chart__title">Claims verified, by agent and weekday</figcaption>
+          <p class="jm-chart__note">Counts. Stronger-coloured cells are larger values; the number is always shown.</p>
+          <div class="jm-table-wrap" role="region" aria-label="Claims verified by agent and weekday" tabindex="0">
+            <table class="jm-table jm-table--compact">
+              <thead><tr><th scope="col">Agent</th><th scope="col" class="jm-table__num">Mon</th><th scope="col" class="jm-table__num">Tue</th><th scope="col" class="jm-table__num">Wed</th><th scope="col" class="jm-table__num">Thu</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">cloud-worker</th><td class="jm-table__num jm-heat-5">12</td><td class="jm-table__num jm-heat-3">6</td><td class="jm-table__num jm-heat-4">9</td><td class="jm-table__num jm-heat-1">1</td></tr>
+                <tr><th scope="row">alice</th><td class="jm-table__num jm-heat-2">3</td><td class="jm-table__num jm-heat-1">0</td><td class="jm-table__num jm-heat-2">4</td><td class="jm-table__num jm-heat-3">7</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+
+        <p class="jm-secondary-text">Trend over 7 days:
+          <svg class="jm-spark" viewBox="0 0 96 24" role="img" aria-label="Verified claims per day rose from 2 to 9 over 7 days"><polyline points="2,20 18,18 34,19 50,12 66,14 82,8 94,4"/></svg>
+        </p>
+      </div>
+    </section>
+
+    <section class="jm-panel" aria-labelledby="trail-title">
+      <div class="jm-panel__header"><h2 class="jm-panel__title" id="trail-title">Recent activity</h2></div>
+      <div class="jm-panel__body">
+        <ol class="jm-trail">
+          <li><time datetime="2026-11-12T10:42">12 November, 10:42</time><div><span class="jm-trail__id">#41</span> cloud-worker claimed <strong>Seed demo board</strong> <span class="jm-tag jm-tag--info">In progress</span></div></li>
+          <li><time datetime="2026-11-12T09:15">12 November, 09:15</time><div><span class="jm-trail__id">#40</span> qa verified <strong>Add contrast check to CI</strong> <span class="jm-tag jm-tag--success">Verified</span></div></li>
+          <li><time datetime="2026-11-11T16:03">11 November, 16:03</time><div><span class="jm-trail__id">#39</span> alice disputed <strong>Rotate agent tokens</strong> <span class="jm-tag jm-tag--error">Rejected</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="states-title">
+      <h2 id="states-title">Empty, loading and error states</h2>
+      <div class="jm-panel jm-empty">
+        <p class="jm-empty__title">No tasks yet</p>
+        <p>Post the first task to start the trail.</p>
+        <p><a class="jm-button" href="#states-title">Post a task</a></p>
+      </div>
+      <div class="jm-loading" role="status">Loading tasks</div>
+      <div class="jm-banner jm-banner--error" role="alert">
+        <p class="jm-banner__title">Tasks could not be loaded</p>
+        <p>The board did not respond. Try again in a minute, or check that you are on the private network.</p>
+      </div>
+      <div class="jm-banner jm-banner--warning" role="region" aria-label="Board frozen">
+        <p class="jm-banner__title">The board is frozen</p>
+        <p>New posts are paused until a person unfreezes it.</p>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="../ui-kit.js"></script>
+</body>
+</html>

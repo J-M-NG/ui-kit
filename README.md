@@ -2,7 +2,7 @@
 
 A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. It borrows the component, accessibility and content patterns of the [GOV.UK Design System](https://design-system.service.gov.uk/), but not its branding or look.
 
-Status: phase 2 (core components) done; dashboard patterns arrive in phase 3. Not released yet.
+Status: phase 3 (dashboard patterns) done; Streamlit theme arrives in phase 4. Not released yet.
 
 ## Planned contents
 - `ui-kit.css`: design tokens (CSS custom properties) and component classes in cascade layers.
@@ -27,6 +27,8 @@ See the token sheet: open `examples/index.html` in a browser, or run `python3 -m
 
 ## Components
 Open `examples/components.html` to see every component in each state, with the classes to use. Phase 2 covers buttons, text input, textarea, select, checkboxes, radios, fields with hints and errors, date input, error summary, summary list, status tags, notification banners, tables, details, and page layout (skip link, header, footer, container, stack, cluster). Every class starts with `jm-` and styles a real HTML element.
+
+Open `examples/dashboard.html` for the dashboard patterns: sidebar layout, panel, key figures, sortable and filterable table, trail of events, bar chart and sparkline, and empty, loading and error states. Sorting and filtering need the optional `ui-kit.js` (`<script src="ui-kit.js"></script>`); the table works without it.
 
 ## Project hooks
 A project may change only these, in its own stylesheet loaded after `ui-kit.css`:

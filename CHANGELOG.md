@@ -4,6 +4,10 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 ### Added
+- Chart tokens: fixed-order series colours `--jm-colour-chart-1` to `-5` and `-other`, and a five-step sequential scale `--jm-colour-heat-1` to `-5` with matching text colours, for both themes; `jm-series-*`, `jm-heat-*`, `jm-chart` (title and note), `jm-lines` (line chart with direct labels). `tests/check_contrast.py` now checks 93 pairs per theme.
+- Phase 3 dashboard patterns: sidebar layout (`jm-app`, `jm-sidenav`), flat panel (`jm-panel`), key figures (`jm-figures`), filter bar (`jm-filters`), sortable table headers (`jm-sort`), trail of events (`jm-trail`), list-based bar chart (`jm-bars`), sparkline (`jm-spark`), empty and loading states (`jm-empty`, `jm-loading`), warning and error banners.
+- Optional `ui-kit.js` (no dependencies): sortable tables (`data-jm-sortable`) and a table text filter (`data-jm-filter`). Everything works without it.
+- `examples/dashboard.html`, covered by `npm test`.
 - Phase 2 components in a `jm.components` layer: buttons (primary, secondary, warning, disabled), text input (with widths), textarea, select, checkboxes and radios, fields with hint and error message, date input, error summary, summary list, status tags, notification banners, table, details, skip link, header, footer, page layout (`jm-page`, `jm-container`, `jm-stack`, `jm-cluster`).
 - `jm.utilities` layer: `jm-visually-hidden`, `jm-num`, `jm-secondary-text`.
 - Project hooks: `--jm-radius-scale`, `--jm-font-family-heading`, and accent colour overrides; `tests/check_contrast.py --project` checks a project's overrides.
@@ -16,4 +20,5 @@ All notable changes to this project are recorded here. The format follows [Keep 
 - Repository setup: `README.md`, `LICENSE` (MIT), `CLAUDE.md` pointing to the vault project notes, `.claude/` agent configuration.
 
 ### Changed
+- Numbers, ids and timestamps (numeric table columns, key figures, bar values, trail times, `jm-num`) use the monospace font with tabular figures.
 - Token sheet status examples use a full border instead of a coloured left edge.
