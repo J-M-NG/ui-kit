@@ -2,13 +2,14 @@
 
 A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. It borrows the component, accessibility and content patterns of the [GOV.UK Design System](https://design-system.service.gov.uk/), but not its branding or look.
 
-Status: phase 3 (dashboard patterns) done; Streamlit theme arrives in phase 4. Not released yet.
+Status: phase 3 dashboard patterns and portfolio on GitHub Pages; phase 4 (Streamlit theme, helpers, component-request workflow) pending merge. Not released yet (no git tag).
 
 ## Planned contents
 - `ui-kit.css`: design tokens (CSS custom properties) and component classes in cascade layers.
 - `ui-kit.js`: optional, dependency-free behaviour (for example sortable tables). Every component works without it.
 - `examples/`: pages showing every component and state; they are the documentation and the accessibility test target.
-- `streamlit/`: a theme and small helpers so Streamlit dashboards match.
+- `streamlit/`: [`config.toml`](streamlit/config.toml) theme (copy to `.streamlit/config.toml`), [`helpers.py`](streamlit/helpers.py) for tags and figures via `st.html`; see [streamlit/README.md](streamlit/README.md).
+- [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md): backlog when adopting projects need a pattern the kit does not ship yet.
 
 ## Principles
 - WCAG 2.2 AA: text contrast at least 4.5:1, visible focus, keyboard-only use, works at 400% zoom.
@@ -27,6 +28,14 @@ See the token sheet: open `examples/index.html` in a browser, or run `python3 -m
 
 ## Components
 Open `examples/components.html` to see every component in each state, with the classes to use. Phase 2 covers buttons, text input, textarea, select, checkboxes, radios, fields with hints and errors, date input, error summary, summary list, status tags, notification banners, tables, details, and page layout (skip link, header, footer, container, stack, cluster). Every class starts with `jm-` and styles a real HTML element.
+
+## Streamlit
+
+Copy `streamlit/config.toml` to your app’s `.streamlit/config.toml`, load `ui-kit.css` in the app, and use `streamlit/helpers.py` for `jm-tag`, `jm-figures` and `jm-summary-list` HTML. Full steps and a code sample are in [streamlit/README.md](streamlit/README.md).
+
+When a Streamlit layout needs a pattern that is not in the kit, log it in [COMPONENT_REQUESTS.md](COMPONENT_REQUESTS.md) and build an interim `jm-` solution with kit tokens (see root `CLAUDE.md`).
+
+## Dashboard examples
 
 Open `examples/dashboard.html` for the dashboard patterns: sidebar layout, panel, key figures, sortable and filterable table, trail of events, bar chart and sparkline, and empty, loading and error states. Sorting and filtering need the optional `ui-kit.js` (`<script src="ui-kit.js"></script>`); the table works without it.
 

@@ -4,6 +4,8 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 ### Added
+- `COMPONENT_REQUESTS.md` and `CLAUDE.md` guidance for logging missing `jm-` patterns from adopting projects.
+- `streamlit/config.toml` (light and dark theme mapped to `--jm-colour-*`), `streamlit/helpers.py`, `streamlit/README.md`; `tests/test_streamlit_helpers.py` in `npm test`.
 - Chart tokens: fixed-order series colours `--jm-colour-chart-1` to `-5` and `-other`, and a five-step sequential scale `--jm-colour-heat-1` to `-5` with matching text colours, for both themes; `jm-series-*`, `jm-heat-*`, `jm-chart` (title and note), `jm-lines` (line chart with direct labels). `tests/check_contrast.py` now checks 93 pairs per theme.
 - Phase 3 dashboard patterns: sidebar layout (`jm-app`, `jm-sidenav`), flat panel (`jm-panel`), key figures (`jm-figures`), filter bar (`jm-filters`), sortable table headers (`jm-sort`), trail of events (`jm-trail`), list-based bar chart (`jm-bars`), sparkline (`jm-spark`), empty and loading states (`jm-empty`, `jm-loading`), warning and error banners.
 - Optional `ui-kit.js` (no dependencies): sortable tables (`data-jm-sortable`) and a table text filter (`data-jm-filter`). Everything works without it.
