@@ -1,5 +1,5 @@
 /*!
- * ui-kit v1.1.0 (tokens, components, dashboard patterns)
+ * ui-kit 1.0.0, untagged (tokens, components, dashboard patterns)
  * https://github.com/J-M-NG/ui-kit
  * MIT licence. See LICENSE.
  *
@@ -94,9 +94,11 @@
     --jm-space-8: 4rem; /* 64px */
     --jm-space-9: 6rem; /* 96px */
 
-    /* Typography: system body; serif-forward headings (hook can reset to sans). */
+    /* Typography: system sans for body and component labels; serif for page and
+       section headings (h1 to h3) only. The heading stack ends in common Linux and
+       Android serifs so it never falls back to a generic Times. Hook: set to sans. */
     --jm-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    --jm-font-family-heading: "Palatino Linotype", Palatino, Georgia, "Iowan Old Style", serif; /* hook: optional heading face */
+    --jm-font-family-heading: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif", "DejaVu Serif", serif;
     --jm-font-family-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     --jm-font-size-xs: 0.8125rem; /* 13px: captions only, never body text */
@@ -112,6 +114,7 @@
 
     --jm-font-weight-normal: 400;
     --jm-font-weight-medium: 500;
+    --jm-font-weight-semibold: 600;
     --jm-font-weight-bold: 700;
 
     /* Readable line length for prose. */
@@ -403,17 +406,21 @@
     margin: 0 0 var(--jm-space-4);
     font-family: var(--jm-font-family-heading);
     line-height: var(--jm-line-height-tight);
-    font-weight: var(--jm-font-weight-bold);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   h1 {
-    font-size: var(--jm-font-size-3xl);
-    font-weight: var(--jm-font-weight-bold);
-    letter-spacing: -0.035em;
+    font-size: clamp(2rem, 1.5rem + 2vw, var(--jm-font-size-3xl));
+    letter-spacing: -0.02em;
   }
-  h2 { font-size: var(--jm-font-size-2xl); letter-spacing: -0.02em; }
+  h2 { font-size: var(--jm-font-size-2xl); letter-spacing: -0.01em; }
   h3 { font-size: var(--jm-font-size-xl); }
-  h4 { font-size: var(--jm-font-size-lg); }
+
+  /* h4 is a component-level label: sans, like panel and card titles. */
+  h4 {
+    font-family: var(--jm-font-family);
+    font-size: var(--jm-font-size-lg);
+  }
 
   p {
     margin: 0 0 var(--jm-space-4);
@@ -512,6 +519,11 @@
     margin-block: 0;
   }
 
+  /* A button in a stack keeps its own width instead of stretching. */
+  .jm-stack > .jm-button {
+    align-self: flex-start;
+  }
+
   .jm-stack--tight {
     gap: var(--jm-space-3);
   }
@@ -531,24 +543,24 @@
   /* ---- Header and footer ---- */
   .jm-header {
     border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
-    background: var(--jm-colour-background);
+    background: var(--jm-colour-surface);
   }
 
   .jm-header__inner {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--jm-space-3) var(--jm-space-5);
+    gap: var(--jm-space-2) var(--jm-space-5);
     max-width: 80rem;
     margin-inline: auto;
-    padding: var(--jm-space-4) var(--jm-space-4);
+    padding: var(--jm-space-3) var(--jm-space-4);
   }
 
   .jm-header__name {
+    margin-right: auto;
     font-family: var(--jm-font-family-heading);
-    font-size: var(--jm-font-size-xl);
-    font-weight: var(--jm-font-weight-bold);
+    font-size: var(--jm-font-size-lg);
+    font-weight: var(--jm-font-weight-semibold);
     color: var(--jm-colour-text);
     text-decoration: none;
   }
@@ -560,7 +572,7 @@
   .jm-header__nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 var(--jm-space-4);
+    gap: var(--jm-space-1);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -572,12 +584,27 @@
     padding: var(--jm-space-1) var(--jm-space-3);
     border-radius: var(--jm-radius-md);
     color: var(--jm-colour-text-secondary);
+    font-size: var(--jm-font-size-sm);
     text-decoration: none;
   }
 
   .jm-header__nav a:hover {
-    background: var(--jm-colour-surface);
+    background: var(--jm-colour-surface-sunken);
     color: var(--jm-colour-text);
+  }
+
+  /* Phones: name and utilities on the first row, navigation on its own row. */
+  @media (max-width: 47.99em) {
+    .jm-header__nav {
+      order: 1;
+      flex-basis: 100%;
+      margin-inline: calc(-1 * var(--jm-space-3));
+    }
+
+    .jm-header__nav ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    }
   }
 
   .jm-header__nav a[aria-current="page"] {
@@ -643,13 +670,13 @@
   .jm-button--secondary,
   .jm-button--secondary:visited {
     border-color: var(--jm-colour-border-strong);
-    background: var(--jm-colour-background);
+    background: transparent;
     box-shadow: none;
     color: var(--jm-colour-text);
   }
 
   .jm-button--secondary:hover {
-    background: var(--jm-colour-surface);
+    background: var(--jm-colour-surface-sunken);
     color: var(--jm-colour-text);
   }
 
@@ -810,9 +837,10 @@
 
   .jm-error-summary__title {
     margin: 0 0 var(--jm-space-3);
-    font-family: var(--jm-font-family-heading);
+    color: var(--jm-colour-error-text);
+    font-family: var(--jm-font-family);
     font-size: var(--jm-font-size-lg);
-    font-weight: var(--jm-font-weight-medium);
+    font-weight: var(--jm-font-weight-bold);
   }
 
   .jm-error-summary ul {
@@ -900,7 +928,7 @@
     border: var(--jm-border-width) solid var(--jm-colour-border);
     border-left: var(--jm-border-width-heavy) solid var(--jm-colour-info);
     border-radius: var(--jm-radius-lg);
-    background: var(--jm-colour-surface);
+    background: var(--jm-colour-info-background);
   }
 
   .jm-banner__title {
@@ -938,9 +966,8 @@
 
   .jm-table caption {
     padding-bottom: var(--jm-space-3);
-    font-family: var(--jm-font-family-heading);
     font-size: var(--jm-font-size-lg);
-    font-weight: var(--jm-font-weight-bold);
+    font-weight: var(--jm-font-weight-semibold);
     text-align: left;
   }
 
@@ -953,11 +980,10 @@
   }
 
   .jm-table thead th {
-    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
-    background: var(--jm-colour-surface);
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border-strong);
     color: var(--jm-colour-text-secondary);
     font-size: var(--jm-font-size-sm);
-    font-weight: var(--jm-font-weight-medium);
+    font-weight: var(--jm-font-weight-semibold);
     white-space: nowrap;
   }
 
@@ -966,9 +992,12 @@
   }
 
   .jm-table .jm-table__num {
+    text-align: right;
+  }
+
+  .jm-table td.jm-table__num {
     font-family: var(--jm-font-family-mono);
     font-size: 0.95em;
-    text-align: right;
   }
 
   .jm-table--compact th,
@@ -1095,10 +1124,11 @@
     text-underline-offset: 0.25em;
   }
 
-  /* Flat panel: a border only. One surface treatment per level, no shadow or tint. */
+  /* Flat panel: a raised surface and a border, no shadow. Put content in __body. */
   .jm-panel {
     border: var(--jm-border-width) solid var(--jm-colour-border);
-    border-radius: var(--jm-radius-md);
+    border-radius: var(--jm-radius-lg);
+    background: var(--jm-colour-surface);
   }
 
   .jm-panel__header {
@@ -1113,7 +1143,10 @@
 
   .jm-panel__title {
     margin: 0;
-    font-size: var(--jm-font-size-lg);
+    font-family: var(--jm-font-family);
+    font-size: var(--jm-font-size-md);
+    font-weight: var(--jm-font-weight-semibold);
+    letter-spacing: 0;
   }
 
   .jm-panel__body {
@@ -1124,8 +1157,8 @@
     margin-bottom: 0;
   }
 
-  /* A table that fills the panel edge to edge. */
-  .jm-panel .jm-table-wrap {
+  /* A table placed directly in the panel (not in __body) lines up with the header. */
+  .jm-panel > .jm-table-wrap {
     padding-inline: var(--jm-space-4);
   }
 
@@ -1154,19 +1187,21 @@
   }
 
   .jm-figures dd {
-    margin: 0;
-    font-family: var(--jm-font-family-mono);
-    font-size: var(--jm-font-size-xl);
-    font-weight: var(--jm-font-weight-bold);
-    font-variant-numeric: tabular-nums;
+    margin: var(--jm-space-1) 0 0;
+    font-size: var(--jm-font-size-2xl);
+    font-weight: var(--jm-font-weight-semibold);
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: -0.01em;
     line-height: var(--jm-line-height-tight);
   }
 
   .jm-figures__note {
     display: block;
+    margin-top: var(--jm-space-1);
     color: var(--jm-colour-text-secondary);
     font-size: var(--jm-font-size-sm);
     font-weight: var(--jm-font-weight-normal);
+    letter-spacing: 0;
   }
 
   @media (max-width: 30em) {
@@ -1351,7 +1386,7 @@
 
   .jm-chart__title {
     margin: 0 0 var(--jm-space-1);
-    font-weight: var(--jm-font-weight-bold);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   .jm-chart__note {
@@ -1410,40 +1445,25 @@
 
   /* Empty, loading and error states. */
   .jm-empty {
-    padding: var(--jm-space-6) var(--jm-space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--jm-space-2);
+    padding: var(--jm-space-7) var(--jm-space-4);
     text-align: center;
   }
 
-  /* Optional CSS-only motif above the title (no image assets). */
-  .jm-empty--pattern::before {
-    content: "";
-    display: block;
-    width: 5rem;
-    height: 3.25rem;
-    margin: 0 auto var(--jm-space-4);
-    border: var(--jm-border-width) dashed var(--jm-colour-border-strong);
-    border-radius: var(--jm-radius-lg);
-    background:
-      linear-gradient(165deg, var(--jm-colour-accent-subtle) 40%, transparent 40%),
-      repeating-linear-gradient(
-        -12deg,
-        transparent,
-        transparent 6px,
-        var(--jm-colour-border) 6px,
-        var(--jm-colour-border) 7px
-      );
-    opacity: 0.85;
+  .jm-empty > * {
+    margin: 0;
+  }
+
+  .jm-empty > :last-child:not(:first-child) {
+    margin-top: var(--jm-space-3);
   }
 
   .jm-empty__title {
-    margin: 0 0 var(--jm-space-2);
-    font-family: var(--jm-font-family-heading);
-    font-size: var(--jm-font-size-xl);
-    font-weight: var(--jm-font-weight-medium);
-  }
-
-  .jm-empty > :last-child {
-    margin-bottom: 0;
+    font-size: var(--jm-font-size-lg);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   /* Loading: tell people in words (role="status"); the bar is decoration. */
@@ -1463,22 +1483,6 @@
     border-top-color: var(--jm-colour-accent);
     border-radius: 50%;
     animation: jm-spin 0.9s linear infinite;
-  }
-
-  /* Static block motif instead of the spinner (still use role="status" text). */
-  .jm-loading--blocks::before {
-    width: 3.5rem;
-    height: 1.125rem;
-    border: none;
-    border-radius: var(--jm-radius-sm);
-    animation: none;
-    background: linear-gradient(
-      90deg,
-      var(--jm-colour-border) 0 28%,
-      var(--jm-colour-surface-sunken) 28% 52%,
-      var(--jm-colour-border) 52% 72%,
-      var(--jm-colour-surface-sunken) 72% 100%
-    );
   }
 
   @keyframes jm-spin {
@@ -1542,7 +1546,7 @@
   }
 
   .jm-pagination a:hover {
-    background: var(--jm-colour-surface);
+    background: var(--jm-colour-surface-sunken);
   }
 
   .jm-pagination [aria-current="page"] {
@@ -1553,10 +1557,11 @@
   }
 
   /* Tabs: pair tab buttons with panels; ui-kit.js wires keyboard and selection when data-jm-tabs is set. */
+  /* Selected tab: an accent underline, so tabs work on any surface. */
   .jm-tabs__list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--jm-space-1);
+    gap: var(--jm-space-4);
     margin: 0 0 var(--jm-space-4);
     padding: 0;
     border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
@@ -1564,41 +1569,37 @@
   }
 
   .jm-tabs__tab {
-    margin: 0;
-    padding: var(--jm-space-2) var(--jm-space-4);
-    border: var(--jm-border-width) solid transparent;
-    border-bottom: 0;
-    border-radius: var(--jm-radius-sm) var(--jm-radius-sm) 0 0;
+    margin: 0 0 calc(-1 * var(--jm-border-width));
+    padding: var(--jm-space-2) 0;
+    border: 0;
+    border-bottom: var(--jm-border-width-thick) solid transparent;
     background: none;
-    color: var(--jm-colour-link);
+    color: var(--jm-colour-text-secondary);
     font: inherit;
     font-size: var(--jm-font-size-sm);
     font-weight: var(--jm-font-weight-medium);
     cursor: pointer;
   }
 
-  .jm-tabs__tab[aria-selected="true"] {
-    border-color: var(--jm-colour-border);
-    border-bottom-color: var(--jm-colour-background);
-    margin-bottom: calc(-1 * var(--jm-border-width));
-    background: var(--jm-colour-background);
+  .jm-tabs__tab:hover {
     color: var(--jm-colour-text);
-    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-tabs__tab[aria-selected="true"] {
+    border-bottom-color: var(--jm-colour-accent);
+    color: var(--jm-colour-text);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   .jm-tabs__panel {
     margin: 0;
   }
 
-  .jm-tabs__panel[hidden] {
-    display: none;
-  }
-
   /* Card: bordered content block with optional header/footer (distinct from dashboard .jm-panel). */
   .jm-card {
     border: var(--jm-border-width) solid var(--jm-colour-border);
-    border-radius: var(--jm-radius-md);
-    background: var(--jm-colour-background);
+    border-radius: var(--jm-radius-lg);
+    background: var(--jm-colour-surface);
   }
 
   .jm-card__header,
@@ -1614,7 +1615,10 @@
 
   .jm-card__title {
     margin: 0;
-    font-size: var(--jm-font-size-lg);
+    font-family: var(--jm-font-family);
+    font-size: var(--jm-font-size-md);
+    font-weight: var(--jm-font-weight-semibold);
+    letter-spacing: 0;
   }
 
   .jm-card__body {
@@ -1633,7 +1637,7 @@
     padding: 0;
     border: var(--jm-border-width) solid var(--jm-colour-border-strong);
     border-radius: var(--jm-radius-md);
-    background: var(--jm-colour-background);
+    background: var(--jm-colour-surface);
     color: var(--jm-colour-text);
     box-shadow: var(--jm-shadow-lg);
   }
@@ -1653,7 +1657,10 @@
 
   .jm-dialog__title {
     margin: 0;
-    font-size: var(--jm-font-size-xl);
+    font-family: var(--jm-font-family);
+    font-size: var(--jm-font-size-lg);
+    font-weight: var(--jm-font-weight-semibold);
+    letter-spacing: 0;
     line-height: var(--jm-line-height-tight);
   }
 

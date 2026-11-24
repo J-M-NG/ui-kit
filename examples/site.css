@@ -1,0 +1,125 @@
+/* Documentation site chrome for the portfolio and examples/. Not part of the kit:
+   adopting projects copy ui-kit.css (and optionally ui-kit.js), never this file. */
+
+/* Theme switch: a compact segmented control in the header. */
+.theme-switch {
+  display: inline-flex;
+  border: var(--jm-border-width) solid var(--jm-colour-border-strong);
+  border-radius: var(--jm-radius-md);
+  overflow: hidden;
+}
+
+.theme-switch button {
+  min-height: 2rem;
+  margin: 0;
+  padding: 0 var(--jm-space-3);
+  border: 0;
+  background: transparent;
+  color: var(--jm-colour-text-secondary);
+  font: inherit;
+  font-size: var(--jm-font-size-sm);
+  cursor: pointer;
+}
+
+.theme-switch button + button {
+  border-left: var(--jm-border-width) solid var(--jm-colour-border-strong);
+}
+
+.theme-switch button:hover {
+  background: var(--jm-colour-surface-sunken);
+  color: var(--jm-colour-text);
+}
+
+.theme-switch button[aria-pressed="true"] {
+  background: var(--jm-colour-accent-subtle);
+  color: var(--jm-colour-text);
+  font-weight: var(--jm-font-weight-semibold);
+}
+
+/* Page intro: kicker, h1, lead. */
+.site-intro {
+  max-width: 46rem;
+}
+
+.site-kicker {
+  margin: 0;
+  color: var(--jm-colour-text-secondary);
+  font-size: var(--jm-font-size-sm);
+  font-weight: var(--jm-font-weight-medium);
+}
+
+.site-lead {
+  font-size: var(--jm-font-size-lg);
+  color: var(--jm-colour-text-secondary);
+}
+
+.site-actions {
+  margin-top: var(--jm-space-3);
+}
+
+/* Example frame: the live sample, then its class list underneath. */
+.example {
+  padding: var(--jm-space-5);
+  border: var(--jm-border-width) solid var(--jm-colour-border);
+  border-radius: var(--jm-radius-lg);
+  background: var(--jm-colour-surface);
+}
+
+.example-code {
+  margin: 0;
+  color: var(--jm-colour-text-secondary);
+  font-size: var(--jm-font-size-sm);
+}
+
+/* Responsive grids for the portfolio. */
+.site-split {
+  display: grid;
+  align-items: start;
+  gap: var(--jm-space-6);
+}
+
+.site-hero {
+  align-items: center;
+}
+
+.site-grid {
+  display: grid;
+  gap: var(--jm-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40em) {
+  .site-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 64em) {
+  .site-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .site-split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .site-hero { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--jm-space-7); }
+}
+
+@media (min-width: 40em) and (max-width: 63.99em) {
+  .site-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.site-chapter {
+  height: 100%;
+}
+
+.site-chapter .jm-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--jm-space-2);
+}
+
+.site-chapter a {
+  font-weight: var(--jm-font-weight-semibold);
+}
+
+.site-chapter p {
+  margin: 0;
+  color: var(--jm-colour-text-secondary);
+  font-size: var(--jm-font-size-sm);
+}

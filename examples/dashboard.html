@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ui-kit: composition</title>
   <link rel="stylesheet" href="../ui-kit.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js"></script>
   <style>
     /* Page-only: jm-app inside jm-page should grow with content, not force a second viewport height. */
     .jm-page > .jm-app { min-height: 0; flex: 1 0 auto; }
@@ -25,13 +27,17 @@
           <li><a href="content-style.html">Content style</a></li>
         </ul>
       </nav>
+      <div class="theme-switch" role="group" aria-label="Theme" hidden>
+        <button type="button" data-set-theme="system" aria-pressed="true">System</button>
+        <button type="button" data-set-theme="light" aria-pressed="false">Light</button>
+        <button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+      </div>
     </div>
   </header>
 
   <div class="jm-app">
     <nav class="jm-app__sidebar" aria-label="On this page">
-      <p class="jm-secondary-text">Chapter 3</p>
-      <p class="jm-header__name">Composition</p>
+      <p class="jm-secondary-text">On this page</p>
       <ul class="jm-sidenav">
         <li><a href="#tasks-title">Tasks table</a></li>
         <li><a href="#figures-title">Key figures</a></li>
@@ -42,9 +48,10 @@
     </nav>
 
     <main id="main" class="jm-app__main jm-stack jm-stack--loose">
-      <div class="jm-stack jm-stack--tight">
+      <div class="site-intro jm-stack jm-stack--tight">
+        <p class="site-kicker">Chapter 3</p>
         <h1>Composition</h1>
-        <p>Product dashboards built from kit classes: cards, figures, charts and trails with token colours — not a service portal layout. Optional <code>ui-kit.js</code> adds sortable headers and client-side filtering.</p>
+        <p class="site-lead">A working dashboard built only from kit classes. Optional <code>ui-kit.js</code> adds sortable headers and filtering; the numbers are illustrative.</p>
       </div>
 
       <section class="jm-panel" aria-labelledby="tasks-title">
@@ -82,15 +89,17 @@
         </div>
       </section>
 
-      <section class="jm-stack jm-stack--tight" aria-labelledby="figures-title">
-        <h2 id="figures-title">Key figures</h2>
-        <p>Top-line metrics in a definition list; notes sit beside the value without breaking the scan line.</p>
-        <dl class="jm-figures">
-          <div><dt>Open tasks</dt><dd>14</dd></div>
-          <div><dt>Verified this week</dt><dd>31<span class="jm-figures__note">up from 24 last week</span></dd></div>
-          <div><dt>Disputed claims</dt><dd>2</dd></div>
-          <div><dt>Median time to verify</dt><dd>3.5 hours</dd></div>
-        </dl>
+      <section class="jm-panel" aria-labelledby="figures-title">
+        <div class="jm-panel__header"><h2 class="jm-panel__title" id="figures-title">Key figures</h2></div>
+        <div class="jm-panel__body jm-stack jm-stack--tight">
+          <p class="jm-secondary-text">Top-line metrics in a definition list; a note sits under the value without breaking the scan line.</p>
+          <dl class="jm-figures">
+            <div><dt>Open tasks</dt><dd>14</dd></div>
+            <div><dt>Verified this week</dt><dd>31<span class="jm-figures__note">up from 24 last week</span></dd></div>
+            <div><dt>Disputed claims</dt><dd>2</dd></div>
+            <div><dt>Median time to verify</dt><dd>3.5 h</dd></div>
+          </dl>
+        </div>
       </section>
 
       <section class="jm-panel" aria-labelledby="bars-title">
@@ -154,12 +163,12 @@
       <section class="jm-stack" aria-labelledby="states-title">
         <h2 id="states-title">Empty and error states</h2>
         <p>Panels, loading text and banners for when data is missing, slow or failed.</p>
-        <div class="jm-panel jm-empty jm-empty--pattern">
+        <div class="jm-panel jm-empty">
           <p class="jm-empty__title">No tasks yet</p>
-          <p>Create a task to populate this view.</p>
-          <p><a class="jm-button" href="#states-title">Create task</a></p>
+          <p class="jm-secondary-text">Tasks you create or claim appear here.</p>
+          <a class="jm-button" href="#states-title">Create a task</a>
         </div>
-        <div class="jm-loading jm-loading--blocks" role="status">Loading tasks</div>
+        <div class="jm-loading" role="status">Loading tasks</div>
         <div class="jm-banner jm-banner--error" role="alert">
           <p class="jm-banner__title">Tasks could not be loaded</p>
           <p>Try again in a minute, or check the network.</p>
@@ -174,7 +183,7 @@
 
   <footer class="jm-footer">
     <div class="jm-footer__inner">
-      <span>ui-kit, MIT licence</span>
+      <span>ui-kit · MIT licence</span>
       <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
     </div>
   </footer>

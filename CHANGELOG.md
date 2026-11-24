@@ -2,53 +2,39 @@
 
 All notable changes to this project are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+No version has been tagged yet. Earlier drafts of this file listed 1.0.1 and 1.1.0 as separate releases on the same day; they were never tagged, so their changes are folded into 1.0.0 below. Tag `v1.0.0` on the commit you want to freeze.
+
 ## [Unreleased]
 
-## [1.1.0] - 2026-11-24
+### Changed
+- Surfaces: the page sits on `--jm-colour-background` (grey-50 in light) and `jm-panel`, `jm-card`, `jm-dialog` and the header sit on `--jm-colour-surface`, so raised content reads as raised in both themes. Table headers use a rule instead of a filled band; the information banner uses its own tint like the other banners; hover states use `--jm-colour-surface-sunken`.
+- Type: one pairing rule. Serif (`--jm-font-family-heading`) for h1 to h3 only; h4, panel, card, dialog, caption, chart, error-summary and empty-state titles use the system sans at semibold. Headings use weight 600 (new token `--jm-font-weight-semibold`) with milder tracking; h1 scales from 2rem on phones to 2.75rem. The heading stack now ends in Noto Serif and DejaVu Serif instead of a generic serif.
+- Key figures use tabular sans figures instead of monospace; numeric table headers are no longer monospace (cells still are).
+- Tabs mark the selected tab with an accent underline, so they work on any surface.
+- `jm-empty` centres its content properly. Buttons placed directly in a `jm-stack` keep their own width.
+- Header: on phones the navigation takes its own row under the name; nav links are smaller.
+- Secondary buttons are transparent, so they sit correctly on any surface.
+
+### Removed
+- `jm-empty--pattern` and `jm-loading--blocks` (never tagged): they rendered as broken-looking boxes. Use plain `jm-empty` and `jm-loading`.
+- `presets/default-serif.css`, which only restated the defaults. `presets/matt-warm.css` is renamed `presets/teal.css` and its dark hover now uses a palette colour.
+
+### Fixed
+- Documentation site: one shared header with a compact theme switch on every page (`examples/site.css`, `examples/site.js`); the chosen theme now persists across all pages, including Composition and Content style.
+- Portfolio rebuilt: panels had no inner padding, and the identity block, "signature" bar, placeholder metrics and duplicate links were removed. The hooks demo now really is scoped to its preview (radius and heading font previously changed the whole page).
+- Foundation type scale shows the actual heading face and sizes; status samples match the banners.
+- Streamlit `chartCategoricalColors` matches `--jm-colour-chart-1` again; README claims about tests corrected.
+
+## [1.0.0] - not tagged
+
 ### Added
-- Theme **presets** in `presets/` (default-serif, minimal-square, matt-warm) using hooks only.
-- `examples/content-style.html` content voice guide; portfolio identity block and dashboard hero section.
-- CSS-only empty (`jm-empty--pattern`) and loading (`jm-loading--blocks`) motifs.
-
-### Changed
-- Editorial type: Palatino-first headings, larger h1, warmer light page background (grey-50).
-- Bar charts use chart token sequence; dashboard and Streamlit alignment docs updated.
-
-## [1.0.1] - 2026-11-24
-### Changed
-- Default personality: serif heading stack, slightly rounder radius, brighter blue accent, flat buttons (no GDS-style bottom shadow).
-- Header nav uses pill-style current page; lighter footer; softer error summary, tags, banners and table headers.
-- Example and portfolio copy uses neutral product voice instead of service-government phrasing.
-
-## [1.0.0] - 2026-11-24
-### Added
-- Portfolio hero (`index.html`) with light/dark/system theme toggle and live project-hooks demo.
-- Common components: breadcrumbs, pagination, tabs, cards, native dialog; optional `ui-kit.js` support for tabs and dialogs.
-- GitHub Actions workflow running `npm test`; pull request template with accessibility checklist.
-- Axe coverage for root portfolio page.
-
-### Changed
-- Restored default cool grey/blue palette (pre–palette experiments).
-- README and `LICENSE` updated for v1.0.0 release (copyright Matt Ng).
-
-### Added (phases 0–4, included in v1.0.0)
-- `COMPONENT_REQUESTS.md` and `CLAUDE.md` guidance for logging missing `jm-` patterns from adopting projects.
-- `streamlit/config.toml` (light and dark theme mapped to `--jm-colour-*`), `streamlit/helpers.py`, `streamlit/README.md`; `tests/test_streamlit_helpers.py` in `npm test`.
-- Chart tokens: fixed-order series colours `--jm-colour-chart-1` to `-5` and `-other`, and a five-step sequential scale `--jm-colour-heat-1` to `-5` with matching text colours, for both themes; `jm-series-*`, `jm-heat-*`, `jm-chart` (title and note), `jm-lines` (line chart with direct labels). `tests/check_contrast.py` now checks 93 pairs per theme.
-- Phase 3 dashboard patterns: sidebar layout (`jm-app`, `jm-sidenav`), flat panel (`jm-panel`), key figures (`jm-figures`), filter bar (`jm-filters`), sortable table headers (`jm-sort`), trail of events (`jm-trail`), list-based bar chart (`jm-bars`), sparkline (`jm-spark`), empty and loading states (`jm-empty`, `jm-loading`), warning and error banners.
-- Optional `ui-kit.js` (no dependencies): sortable tables (`data-jm-sortable`) and a table text filter (`data-jm-filter`). Everything works without it.
-- `examples/dashboard.html`, covered by `npm test`.
-- Phase 2 components in a `jm.components` layer: buttons (primary, secondary, warning, disabled), text input (with widths), textarea, select, checkboxes and radios, fields with hint and error message, date input, error summary, summary list, status tags, notification banners, table, details, skip link, header, footer, page layout (`jm-page`, `jm-container`, `jm-stack`, `jm-cluster`).
-- `jm.utilities` layer: `jm-visually-hidden`, `jm-num`, `jm-secondary-text`.
-- Project hooks: `--jm-radius-scale`, `--jm-font-family-heading`, and accent colour overrides; `tests/check_contrast.py --project` checks a project's overrides.
-- `examples/components.html`.
-- `tests/a11y.mjs` (axe-core in Playwright, both themes, two widths) and `npm test`.
-- `ui-kit.css` design tokens: palette; semantic colours for light and dark themes (surfaces, text, borders, accent, links, focus, success, warning, error, info); spacing, type, radius, shadow, focus ring, breakpoint and motion tokens. All prefixed `--jm-`, in cascade layers `jm.tokens`, `jm.base`, `jm.components`, `jm.utilities`.
-- Minimal base layer: body font and colours, headings, links, `:focus-visible` ring, `[hidden]` fix.
-- `examples/index.html` token sheet with a light, dark and system theme switch.
-- `tests/check_contrast.py` contrast check (WCAG 2.2 AA) over 64 token pairs per theme.
-- Repository setup: `README.md`, `LICENSE` (MIT), `CLAUDE.md` pointing to the vault project notes, `.claude/` agent configuration.
-
-### Changed
-- Numbers, ids and timestamps (numeric table columns, key figures, bar values, trail times, `jm-num`) use the monospace font with tabular figures.
-- Token sheet status examples use a full border instead of a coloured left edge.
+- Tokens: palette; semantic colours for light and dark themes (surfaces, text, borders, accent, links, focus, success, warning, error, info); chart series (`--jm-colour-chart-1` to `-5`, `-other`) and a five-step sequential heat scale; spacing, type, radius, shadow, focus ring, breakpoint and motion tokens. All prefixed `--jm-`, in cascade layers `jm.tokens`, `jm.base`, `jm.components`, `jm.utilities`.
+- Project hooks: `--jm-radius-scale`, `--jm-font-family-heading` and the accent colour tokens; `tests/check_contrast.py --project` checks a project's overrides. Optional presets in `presets/`.
+- Components: buttons (primary, secondary, warning, disabled), text input (with widths), textarea, select, checkboxes and radios, fields with hint and error message, date input, error summary, summary list, status tags, notification banners, table, details, skip link, header, footer, breadcrumbs, pagination, tabs, card, dialog; layout (`jm-page`, `jm-container`, `jm-stack`, `jm-cluster`).
+- Dashboard patterns: sidebar layout (`jm-app`, `jm-sidenav`), panel, key figures, filter bar, sortable table headers, trail, bar chart, line chart, heat cells, sparkline, empty and loading states, warning and error banners.
+- Utilities: `jm-visually-hidden`, `jm-num`, `jm-secondary-text`.
+- Optional `ui-kit.js` (no dependencies): sortable tables, table filter, tabs, dialog opening. Everything works without it.
+- Streamlit: `streamlit/config.toml`, `streamlit/helpers.py` and adoption notes.
+- Documentation: `index.html` and the Foundation, Components, Composition and Content style chapters in `examples/`.
+- Checks: `npm test` runs the contrast check (186 pairs), Streamlit helper tests and axe-core on every page in light and dark at 1280px and 375px; GitHub Actions runs it on every push and pull request. Pull request template with an accessibility checklist.
+- `COMPONENT_REQUESTS.md` and `CLAUDE.md` guidance for logging missing `jm-` patterns. MIT licence, copyright Matt Ng.

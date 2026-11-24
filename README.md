@@ -2,15 +2,15 @@
 
 ![test](https://github.com/J-M-NG/ui-kit/actions/workflows/test.yml/badge.svg)
 
-A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible patterns (semantic HTML, error summaries, visible focus) with a calm product voice — serif headings, flat buttons, cool grey and blue tokens you can override with hooks.
+A small, framework-free house style for products and dashboards: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Semantic HTML, visible focus and WCAG 2.2 AA contrast in light and dark; serif headings over a system sans, flat controls, cool grey and blue tokens you can override with hooks.
 
-**Status:** v1.1.0 (phases 0–4 complete). Portfolio at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/). Copy `ui-kit.css` from the latest [release tag](https://github.com/J-M-NG/ui-kit/releases).
+**Status:** 1.0.0, not yet tagged. Until a release is tagged, copy `ui-kit.css` from a specific commit on `main` so your copy does not move under you. Documentation site: [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/).
 
 ## What's in the repo
 - `ui-kit.css` — tokens, base styles and `jm-` components in cascade layers.
 - `ui-kit.js` — optional behaviour: sortable tables, filters, tabs, dialogs.
-- `index.html` — portfolio hero with theme toggle and live project-hooks demo.
-- `examples/` — Foundation, Components, Composition and Content style (documentation and axe targets).
+- `index.html` — documentation home with a live project-hooks demo.
+- `examples/` — Foundation, Components, Composition and Content style chapters (also the axe test targets). `examples/site.css` and `site.js` are the documentation site's own chrome (theme switch, example frames), not part of the kit.
 - `presets/` — optional hook-only stylesheets ([`presets/README.md`](presets/README.md)).
 - `streamlit/` — [`config.toml`](streamlit/config.toml), [`helpers.py`](streamlit/helpers.py); see [streamlit/README.md](streamlit/README.md).
 - [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md) — backlog for patterns not in the kit yet.
@@ -24,8 +24,9 @@ A small, framework-free house style for my projects: design tokens and component
 ## Principles
 - WCAG 2.2 AA: contrast, visible focus, keyboard use, 400% zoom.
 - Semantic HTML first; classes style real elements.
-- No build step, no framework; system body type and distinctive heading face by default; OS-driven light/dark themes.
-- Example copy uses product and dashboard language — borrow patterns, not tone.
+- No build step, no framework, no web fonts; OS-driven light and dark themes.
+- Type: serif for page and section headings (h1 to h3), system sans for everything else; monospace only for code, ids, timestamps and table numbers.
+- Copy follows [`examples/content-style.html`](examples/content-style.html).
 
 ## Tokens
 Use semantic tokens (`--jm-colour-text`, `--jm-colour-accent`, …), not palette steps (`--jm-blue-600`, …). Force a theme with `data-theme` on `<html>`, or follow the OS default.
@@ -55,16 +56,20 @@ In your own stylesheet loaded **after** `ui-kit.css`:
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --jm-colour-accent: #5fb6d6;
+    --jm-colour-accent-hover: #e8f5fa;
     --jm-colour-link: #5fb6d6;
+    --jm-colour-focus: #5fb6d6;
   }
 }
 :root[data-theme="dark"] {
   --jm-colour-accent: #5fb6d6;
+  --jm-colour-accent-hover: #e8f5fa;
   --jm-colour-link: #5fb6d6;
+  --jm-colour-focus: #5fb6d6;
 }
 ```
 
-The portfolio [`index.html`](index.html) includes a live hooks demo (accent, radius, heading font).
+Set every accent token in both themes, as above. [`index.html`](index.html) has a live demo of all three hooks.
 
 ## Checks
 ```bash

@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ui-kit: content style</title>
   <link rel="stylesheet" href="../ui-kit.css">
-  <style>
-    .example { padding: var(--jm-space-5); border: var(--jm-border-width) solid var(--jm-colour-border); border-radius: var(--jm-radius-lg); }
-  </style>
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js"></script>
 </head>
 <body>
 <div class="jm-page">
@@ -24,62 +23,80 @@
           <li><a href="content-style.html" aria-current="page">Content style</a></li>
         </ul>
       </nav>
+      <div class="theme-switch" role="group" aria-label="Theme" hidden>
+        <button type="button" data-set-theme="system" aria-pressed="true">System</button>
+        <button type="button" data-set-theme="light" aria-pressed="false">Light</button>
+        <button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+      </div>
     </div>
   </header>
 
   <main id="main" class="jm-container jm-stack jm-stack--loose">
-    <div class="jm-stack jm-stack--tight">
-      <p class="jm-secondary-text">Guide</p>
+    <div class="site-intro jm-stack jm-stack--tight">
+      <p class="site-kicker">Chapter 4</p>
       <h1>Content style</h1>
-      <p>How to write copy that fits the kit: plain, active sentences; British spelling; accessible patterns without government-service tone.</p>
+      <p class="site-lead">Short, specific copy that says what happens. These rules keep headings, buttons and messages consistent across projects that use the kit.</p>
     </div>
 
     <section class="jm-stack" aria-labelledby="voice">
       <h2 id="voice">Voice</h2>
       <ul class="jm-stack jm-stack--tight">
-        <li>Prefer <strong>you</strong> and name the action (“Save changes”, not “Save and continue”).</li>
-        <li>Headings state the topic; buttons state the outcome.</li>
-        <li>Errors say what to fix, with an example when format matters.</li>
-        <li>Status tags always include a word; never rely on colour alone.</li>
+        <li>Write to the reader as “you”, in active sentences.</li>
+        <li>Headings name the topic; buttons name the outcome.</li>
+        <li>Lead with the useful part: the number, the status, the next step.</li>
+        <li>Status tags are always a word. Colour only reinforces it.</li>
       </ul>
     </section>
 
     <section class="jm-stack" aria-labelledby="headings">
       <h2 id="headings">Headings</h2>
-      <p>Editorial serif by default; body stays system UI. Use sentence case unless a proper noun needs capitals.</p>
-      <div class="example jm-stack jm-panel">
-        <h3>Good</h3>
-        <p><strong>Tasks this week</strong> — scannable, specific.</p>
-        <h3>Avoid</h3>
-        <p><strong>Your tasks</strong> — vague service phrasing when the screen already shows tasks.</p>
+      <p>Use sentence case. Make each heading specific enough to scan without the content below it.</p>
+      <div class="site-grid site-grid--2">
+        <article class="jm-card">
+          <div class="jm-card__header"><h3 class="jm-card__title">Do</h3></div>
+          <div class="jm-card__body"><p><strong>Tasks due this week</strong></p><p class="jm-secondary-text">Says what is listed and for when.</p></div>
+        </article>
+        <article class="jm-card">
+          <div class="jm-card__header"><h3 class="jm-card__title">Avoid</h3></div>
+          <div class="jm-card__body"><p><strong>Your tasks</strong></p><p class="jm-secondary-text">Vague when the page already shows tasks.</p></div>
+        </article>
       </div>
     </section>
 
     <section class="jm-stack" aria-labelledby="actions">
       <h2 id="actions">Buttons and links</h2>
+      <p>One primary button per view. Start with a verb and name the object. Link text describes the destination, never “click here”.</p>
       <div class="example jm-cluster">
         <button class="jm-button" type="button">Export CSV</button>
         <button class="jm-button jm-button--secondary" type="button">Cancel</button>
         <button class="jm-button jm-button--warning" type="button">Delete board</button>
       </div>
-      <p>Use one primary button per view. Link text should describe the destination (“Open composition demo”).</p>
     </section>
 
     <section class="jm-stack" aria-labelledby="errors">
-      <h2 id="errors">Errors and validation</h2>
+      <h2 id="errors">Errors</h2>
+      <p>Say what to fix, not what went wrong. Give an example when the format matters, and use the same words in the summary and beside the field.</p>
       <div class="jm-error-summary" role="alert" aria-labelledby="err-title" tabindex="-1">
         <h3 class="jm-error-summary__title" id="err-title">Fix these fields</h3>
         <ul>
           <li><a href="#errors">Enter a board name with at least three characters</a></li>
         </ul>
       </div>
-      <p class="jm-secondary-text">British spelling: “colour” in documentation; user-facing product copy may follow your product’s locale.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="spelling">
+      <h2 id="spelling">Spelling and numbers</h2>
+      <ul class="jm-stack jm-stack--tight">
+        <li>British spelling in the kit and its documentation (“colour”, “organise”). Product copy follows the product’s locale.</li>
+        <li>Numerals for all numbers in interfaces: “3 tasks”, not “three tasks”.</li>
+        <li>Dates as “24 November 2026”; times as “14:02”.</li>
+      </ul>
     </section>
   </main>
 
   <footer class="jm-footer">
     <div class="jm-footer__inner">
-      <span>ui-kit · MIT</span>
+      <span>ui-kit · MIT licence</span>
       <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
     </div>
   </footer>

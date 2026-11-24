@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ui-kit: foundation</title>
   <link rel="stylesheet" href="../ui-kit.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js"></script>
   <style>
     /* Page-only layout for this sheet. Not part of the kit. */
-    .sheet section { margin-top: var(--jm-space-7); }
-    .sheet-header { display: flex; flex-wrap: wrap; gap: var(--jm-space-4); align-items: end; justify-content: space-between; }
-    .theme-switch button[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: 3px; }
+    .sheet section > h2 { margin-bottom: var(--jm-space-4); }
     .grid { display: grid; gap: var(--jm-space-4); grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); padding: 0; margin: 0; list-style: none; }
     .swatch { border: var(--jm-border-width) solid var(--jm-colour-border); border-radius: var(--jm-radius-lg); overflow: hidden; background: var(--jm-colour-background); }
     .swatch-chip { height: 4rem; border-bottom: var(--jm-border-width) solid var(--jm-colour-border); }
     .swatch-label { padding: var(--jm-space-2) var(--jm-space-3); font-size: var(--jm-font-size-sm); }
     .swatch-label code { display: block; overflow-wrap: anywhere; }
     .swatch-value { color: var(--jm-colour-text-secondary); }
-    .pair { padding: var(--jm-space-3) var(--jm-space-4); border-radius: var(--jm-radius-md); }
+    .pair { padding: var(--jm-space-3) var(--jm-space-4); border: var(--jm-border-width) solid var(--jm-colour-border); border-left-width: var(--jm-border-width-heavy); border-radius: var(--jm-radius-lg); }
     .pair strong { display: block; }
     .pair code { display: block; margin-top: var(--jm-space-2); font-size: var(--jm-font-size-sm); }
     .scale-row { display: grid; grid-template-columns: 9rem 1fr; gap: var(--jm-space-4); align-items: center; padding: var(--jm-space-2) 0; border-bottom: var(--jm-border-width) solid var(--jm-colour-border); }
@@ -46,23 +46,20 @@
           <li><a href="content-style.html">Content style</a></li>
         </ul>
       </nav>
+      <div class="theme-switch" role="group" aria-label="Theme" hidden>
+        <button type="button" data-set-theme="system" aria-pressed="true">System</button>
+        <button type="button" data-set-theme="light" aria-pressed="false">Light</button>
+        <button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+      </div>
     </div>
   </header>
 
   <main id="main" class="jm-container jm-stack jm-stack--loose sheet">
-  <div class="sheet-header">
-    <div class="jm-stack jm-stack--tight">
-      <p class="jm-secondary-text">Chapter 1</p>
-      <h1>Foundation</h1>
-      <p>Everything in the kit rests on these tokens in <code>ui-kit.css</code>. Use semantic colour tokens (<code>--jm-colour-text</code>, not palette names). The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
-      <p class="jm-secondary-text">Swatches update when you change theme. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and borders, focus rings and status marks for 3:1.</p>
-    </div>
-    <div class="jm-cluster theme-switch" role="group" aria-label="Theme" hidden>
-      <span class="jm-secondary-text">Theme:</span>
-      <button class="jm-button jm-button--secondary" type="button" data-set-theme="system" aria-pressed="true">System</button>
-      <button class="jm-button jm-button--secondary" type="button" data-set-theme="light" aria-pressed="false">Light</button>
-      <button class="jm-button jm-button--secondary" type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
-    </div>
+  <div class="site-intro jm-stack jm-stack--tight">
+    <p class="site-kicker">Chapter 1</p>
+    <h1>Foundation</h1>
+    <p class="site-lead">Everything in the kit rests on these tokens. Use the semantic colour tokens (<code>--jm-colour-text</code>), not palette names. The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
+    <p class="jm-secondary-text">Swatches update when you change theme. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and borders, focus rings and status marks for 3:1.</p>
   </div>
 
   <section aria-labelledby="surfaces">
@@ -79,22 +76,22 @@
     <h2 id="status">Status</h2>
     <p>Each status has a mark colour (icons, borders), a text colour and a tinted background. Never rely on colour alone: pair it with a word or icon.</p>
     <div class="grid">
-      <div class="pair" style="background: var(--jm-colour-success-background); border: 2px solid var(--jm-colour-success)">
+      <div class="pair" style="background: var(--jm-colour-success-background); border-left-color: var(--jm-colour-success)">
         <strong style="color: var(--jm-colour-success-text)">Success</strong>
         <span>Body text on the success background.</span>
         <code>--jm-colour-success-*</code>
       </div>
-      <div class="pair" style="background: var(--jm-colour-warning-background); border: 2px solid var(--jm-colour-warning)">
+      <div class="pair" style="background: var(--jm-colour-warning-background); border-left-color: var(--jm-colour-warning)">
         <strong style="color: var(--jm-colour-warning-text)">Warning</strong>
         <span>Body text on the warning background.</span>
         <code>--jm-colour-warning-*</code>
       </div>
-      <div class="pair" style="background: var(--jm-colour-error-background); border: 2px solid var(--jm-colour-error)">
+      <div class="pair" style="background: var(--jm-colour-error-background); border-left-color: var(--jm-colour-error)">
         <strong style="color: var(--jm-colour-error-text)">Error</strong>
         <span>Body text on the error background.</span>
         <code>--jm-colour-error-*</code>
       </div>
-      <div class="pair" style="background: var(--jm-colour-info-background); border: 2px solid var(--jm-colour-info)">
+      <div class="pair" style="background: var(--jm-colour-info-background); border-left-color: var(--jm-colour-info)">
         <strong style="color: var(--jm-colour-info-text)">Information</strong>
         <span>Body text on the information background.</span>
         <code>--jm-colour-info-*</code>
@@ -113,11 +110,11 @@
 
   <section aria-labelledby="type">
     <h2 id="type">Type scale</h2>
-    <p>System font stack, no web fonts. Body text is <code>--jm-font-size-md</code> (16px).</p>
-    <div class="scale-row"><code>3xl / h1, 40px</code><span style="font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 700">Monthly summary</span></div>
-    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 700">Monthly summary</span></div>
-    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 700">Monthly summary</span></div>
-    <div class="scale-row"><code>lg / h4, 19px</code><span style="font-size: var(--jm-font-size-lg)">Monthly summary for 7 November 2026</span></div>
+    <p>No web fonts. Page and section headings (h1 to h3) use the serif stack in <code>--jm-font-family-heading</code>; body text, labels and component titles use the system sans. Body text is <code>--jm-font-size-md</code> (16px).</p>
+    <div class="scale-row"><code>3xl / h1, 44px (32px on phones)</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 600; letter-spacing: -0.02em">Monthly summary</span></div>
+    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 600; letter-spacing: -0.01em">Monthly summary</span></div>
+    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 600">Monthly summary</span></div>
+    <div class="scale-row"><code>lg / h4 and titles, 19px</code><span style="font-size: var(--jm-font-size-lg); font-weight: 600">Monthly summary for 7 November 2026</span></div>
     <div class="scale-row"><code>md / body, 16px</code><span style="font-size: var(--jm-font-size-md)">Monthly summary for 7 November 2026</span></div>
     <div class="scale-row"><code>sm, 14px</code><span style="font-size: var(--jm-font-size-sm)">Monthly summary for 7 November 2026</span></div>
     <div class="scale-row"><code>xs, 13px</code><span style="font-size: var(--jm-font-size-xs)">Captions only</span></div>
@@ -168,7 +165,7 @@
 
   <footer class="jm-footer">
     <div class="jm-footer__inner">
-      <span>ui-kit, MIT licence</span>
+      <span>ui-kit · MIT licence</span>
       <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
     </div>
   </footer>
@@ -178,8 +175,6 @@
   // Progressive enhancement: builds the colour swatch lists and the theme switch.
   // Without JavaScript the page still shows every section except the swatch lists.
   (function () {
-    var root = document.documentElement;
-
     function resolveColour(name) {
       // Read the computed colour by applying the token to a probe element.
       var probe = document.createElement('span');
@@ -221,21 +216,10 @@
       });
     }
 
-    var buttons = document.querySelectorAll('[data-set-theme]');
-    function setTheme(theme) {
-      if (theme === 'system') root.removeAttribute('data-theme');
-      else root.setAttribute('data-theme', theme);
-      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setTheme === theme)); });
-      try { localStorage.setItem('jm-theme', theme); } catch (e) {}
-      renderSwatches();
-    }
-    buttons.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.setTheme); }); });
-    document.querySelector('.theme-switch').hidden = false;
+    // The theme switch itself lives in site.js; re-read the swatches whenever it changes.
+    document.addEventListener('site:themechange', renderSwatches);
     matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderSwatches);
-
-    var saved = null;
-    try { saved = localStorage.getItem('jm-theme'); } catch (e) {}
-    setTheme(saved || 'system');
+    renderSwatches();
   })();
 </script>
 </body>
