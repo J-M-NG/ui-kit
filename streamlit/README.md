@@ -1,20 +1,14 @@
 # Streamlit adoption
 
-Phase 4 maps Streamlit chrome to the same semantic colours as `ui-kit.css`, and provides small HTML helpers for patterns Streamlit does not style natively (tags, key figures, summary lists).
+Maps Streamlit chrome to the same semantic colours as `ui-kit.css`, and provides small HTML helpers for patterns Streamlit does not style natively (tags, key figures, summary lists).
 
 ## 1. Theme
 
-Copy `streamlit/config.toml` from this repository into your app as **`.streamlit/config.toml`** (create the folder if needed). Light and dark blocks follow `--jm-colour-*` tokens (accent `#2b67b5` light / `#7fa8dd` dark; page background `#f5f6f8` light to match the kit’s warmer surface). Viewers can still switch theme from Streamlit’s app menu.
+Copy `streamlit/config.toml` from this repository into your app as **`.streamlit/config.toml`** (create the folder if needed). Light and dark blocks follow the `--jm-colour-*` tokens: accent `#2b67b5` light and `#7fa8dd` dark, page background `#f5f6f8` light and `#17191c` dark, and chart colours in the same order as `--jm-colour-chart-1` to `-5`. Viewers can still switch theme from Streamlit’s app menu.
 
-### Does not look like default Streamlit
+With this config, primary actions use the kit's blue instead of Streamlit's default red, and backgrounds, sidebar and charts match pages built with the kit.
 
-Out of the box, Streamlit uses saturated red primary buttons and bright white chrome. With this config plus `ui-kit.css` on custom HTML:
-
-- Primary actions use the same blue accent as the kit (not Streamlit red).
-- Background and sidebar greys align with `--jm-colour-background` / `--jm-colour-surface`.
-- Chart categorical colours match `--jm-colour-chart-1` … `5`.
-
-**Manual check:** run your app, toggle light/dark in Streamlit’s menu, and confirm widgets and any `st.html` blocks share one accent. A screenshot is optional; the contrast script and `npm test` Streamlit smoke test cover token alignment in this repo.
+**Check by hand:** the values in `config.toml` are copied from `ui-kit.css`, and nothing tests that they stay in sync. After changing a colour token, update `config.toml`, run your app in both themes, and confirm widgets and any `st.html` blocks share one accent. `npm test` covers the HTML helpers only.
 
 ## 2. Load `ui-kit.css`
 
