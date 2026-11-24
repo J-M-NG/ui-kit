@@ -189,7 +189,7 @@
       return '#' + rgb.map(function (n) { return (+n).toString(16).padStart(2, '0'); }).join('');
     }
 
-    // Map each palette hex value to its palette token name (for example --jm-magenta-bloom-500).
+    // Map each palette hex value to its palette token name (for example --jm-charcoal-blue-500).
     // Browsers block reading rules from file:// stylesheets, so names are skipped there.
     var paletteNames = {};
     try { (function collect(rules) {
