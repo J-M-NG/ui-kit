@@ -32,8 +32,8 @@
     </div>
   </header>
 
-  <main id="main" class="jm-container jm-stack jm-stack--loose">
-    <section class="site-split site-hero" aria-labelledby="hero-title">
+  <main id="main" class="jm-container jm-container--wide jm-with-toc">
+    <section class="site-split site-hero jm-with-toc__intro" aria-labelledby="hero-title">
       <div class="site-intro jm-stack jm-stack--tight">
         <p class="site-kicker">House style</p>
         <h1 id="hero-title">The CSS I use for forms, tables and dashboards</h1>
@@ -68,6 +68,19 @@
         </div>
       </section>
     </section>
+    <nav class="jm-toc" aria-label="On this page">
+      <details class="jm-toc__details">
+        <summary class="jm-toc__summary">On this page <span class="jm-toc__current"></span></summary>
+        <p class="jm-toc__title">On this page</p>
+        <ol class="jm-toc__list">
+          <li><a href="#hooks-title">Changing the look</a></li>
+          <li><a href="#chapters-title">The pages</a></li>
+          <li><a href="#start">Using it in a project</a></li>
+        </ol>
+      </details>
+    </nav>
+
+    <div class="jm-with-toc__main jm-stack jm-stack--loose">
 
     <section class="jm-stack" aria-labelledby="hooks-title">
       <div class="site-intro jm-stack jm-stack--tight">
@@ -130,6 +143,7 @@
         <li>Check colour changes with <code>tests/check_contrast.py --project your.css</code>.</li>
       </ol>
     </section>
+    </div>
   </main>
 
   <footer class="jm-footer">
@@ -181,5 +195,6 @@
     apply();
   })();
 </script>
+<script src="ui-kit.js"></script>
 </body>
 </html>

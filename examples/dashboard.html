@@ -36,16 +36,21 @@
   </header>
 
   <div class="jm-app">
-    <nav class="jm-app__sidebar" aria-label="On this page">
-      <p class="jm-secondary-text">On this page</p>
-      <ul class="jm-sidenav">
-        <li><a href="#tasks-title">Tasks table</a></li>
-        <li><a href="#figures-title">Key figures</a></li>
-        <li><a href="#bars-title">Charts</a></li>
-        <li><a href="#trail-title">Activity trail</a></li>
-        <li><a href="#states-title">Empty and error states</a></li>
-      </ul>
-    </nav>
+    <div class="jm-app__sidebar">
+      <nav class="jm-toc" aria-label="On this page">
+        <details class="jm-toc__details">
+          <summary class="jm-toc__summary">On this page <span class="jm-toc__current"></span></summary>
+          <p class="jm-toc__title">On this page</p>
+          <ol class="jm-toc__list">
+            <li><a href="#tasks-title">Tasks table</a></li>
+            <li><a href="#figures-title">Key figures</a></li>
+            <li><a href="#bars-title">Charts</a></li>
+            <li><a href="#trail-title">Activity trail</a></li>
+            <li><a href="#states-title">Empty and error states</a></li>
+          </ol>
+        </details>
+      </nav>
+    </div>
 
     <main id="main" class="jm-app__main jm-stack jm-stack--loose">
       <div class="site-intro jm-stack jm-stack--tight">

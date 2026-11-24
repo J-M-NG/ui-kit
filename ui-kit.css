@@ -119,6 +119,7 @@
 
     /* Readable line length for prose. */
     --jm-measure: 70ch;
+    --jm-toc-offset: 0px; /* height of a sticky header, if a project adds one */
 
     /* Corner radius. --jm-radius-scale is a project hook: 0 gives square corners. */
     --jm-radius-scale: 1;
@@ -1126,6 +1127,186 @@
     text-decoration: underline;
     text-decoration-thickness: var(--jm-border-width-thick);
     text-underline-offset: 0.25em;
+  }
+
+  /* On this page: links to the page's h2 sections that stay in view while scrolling.
+     <main class="jm-container jm-container--wide jm-with-toc">
+       <div class="jm-with-toc__intro">h1 and lead</div>
+       <nav class="jm-toc" aria-label="On this page">
+         <details class="jm-toc__details">
+           <summary class="jm-toc__summary">On this page <span class="jm-toc__current"></span></summary>
+           <p class="jm-toc__title">On this page</p>
+           <ol class="jm-toc__list"><li><a href="#section-id">Section</a></li></ol>
+         </details>
+       </nav>
+       <div class="jm-with-toc__main">sections</div>
+     </main>
+     From 48em: a sticky side column that scrolls on its own when taller than the
+     viewport. Below 48em: a sticky bar whose <details> opens to the list.
+     Browsers without ::details-content show the collapsible version at every width.
+     Set --jm-toc-offset to the height of any sticky header. Also works inside
+     .jm-app__sidebar. ui-kit.js marks the current section and closes the bar after
+     a link is chosen; without it the list still works. */
+  .jm-with-toc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--jm-space-6);
+  }
+
+  .jm-with-toc [id] {
+    scroll-margin-top: calc(var(--jm-toc-offset) + var(--jm-space-4));
+  }
+
+  .jm-toc {
+    font-size: var(--jm-font-size-sm);
+  }
+
+  .jm-toc__summary {
+    display: flex;
+    gap: var(--jm-space-2);
+    align-items: baseline;
+    min-height: 2.75rem;
+    padding: var(--jm-space-3) 0;
+    font-weight: var(--jm-font-weight-semibold);
+    cursor: pointer;
+  }
+
+  .jm-toc__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .jm-toc__summary::after {
+    content: "▾" / "";
+    margin-left: auto;
+    color: var(--jm-colour-text-secondary);
+  }
+
+  .jm-toc__details[open] > .jm-toc__summary::after {
+    content: "▴" / "";
+  }
+
+  .jm-toc__current {
+    overflow: hidden;
+    color: var(--jm-colour-text-secondary);
+    font-weight: var(--jm-font-weight-normal);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .jm-toc__current:empty {
+    display: none;
+  }
+
+  .jm-toc__current::before {
+    content: "· ";
+  }
+
+  .jm-toc__title {
+    display: none;
+    margin: 0 0 var(--jm-space-2);
+    font-weight: var(--jm-font-weight-semibold);
+  }
+
+  .jm-toc__list {
+    margin: 0;
+    padding: 0 0 var(--jm-space-3);
+    list-style: none;
+  }
+
+  .jm-toc__list a {
+    display: block;
+    padding: var(--jm-space-1) var(--jm-space-3);
+    border-left: var(--jm-border-width-thick) solid var(--jm-colour-border);
+    color: var(--jm-colour-text-secondary);
+    text-decoration: none;
+  }
+
+  .jm-toc__list a:hover {
+    color: var(--jm-colour-text);
+    text-decoration: underline;
+  }
+
+  /* Colour and border only: a weight change would widen the link. */
+  .jm-toc__list a[aria-current="true"] {
+    border-left-color: var(--jm-colour-accent);
+    color: var(--jm-colour-text);
+  }
+
+  @media (max-width: 47.99em) {
+    .jm-toc {
+      position: sticky;
+      top: var(--jm-toc-offset);
+      z-index: 5;
+      margin-inline: calc(-1 * var(--jm-space-4));
+      padding-inline: var(--jm-space-4);
+      border-block: var(--jm-border-width) solid var(--jm-colour-border);
+      background: var(--jm-colour-surface);
+    }
+
+    .jm-app .jm-toc {
+      margin-inline: 0;
+    }
+
+    .jm-app__sidebar:has(> .jm-toc) {
+      display: contents;
+    }
+
+    .jm-toc__list {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .jm-with-toc [id],
+    .jm-app [id] {
+      scroll-margin-top: calc(var(--jm-toc-offset) + 2.75rem + var(--jm-space-4));
+    }
+  }
+
+  @media (min-width: 48em) {
+    .jm-with-toc {
+      grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr);
+      grid-template-rows: auto 1fr;
+      column-gap: var(--jm-space-7);
+      row-gap: var(--jm-space-7);
+    }
+
+    .jm-with-toc > .jm-toc {
+      grid-column: 1;
+      grid-row: 1 / -1;
+    }
+
+    .jm-with-toc__intro,
+    .jm-with-toc__main {
+      grid-column: 2;
+    }
+
+    .jm-toc {
+      position: sticky;
+      top: calc(var(--jm-toc-offset) + var(--jm-space-5));
+      align-self: start;
+      max-height: calc(100vh - var(--jm-toc-offset) - 2 * var(--jm-space-5));
+      overflow-y: auto;
+    }
+
+    .jm-app__sidebar .jm-toc {
+      top: calc(var(--jm-toc-offset) + var(--jm-space-4));
+    }
+  }
+
+  @supports selector(::details-content) {
+    @media (min-width: 48em) {
+      .jm-toc__summary {
+        display: none;
+      }
+
+      .jm-toc__title {
+        display: block;
+      }
+
+      .jm-toc__details::details-content {
+        content-visibility: visible;
+      }
+    }
   }
 
   /* Flat panel: a raised surface and a border, no shadow. Put content in __body. */

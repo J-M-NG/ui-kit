@@ -54,13 +54,31 @@
     </div>
   </header>
 
-  <main id="main" class="jm-container jm-stack jm-stack--loose sheet">
-  <div class="site-intro jm-stack jm-stack--tight">
+  <main id="main" class="jm-container jm-container--wide jm-with-toc sheet">
+  <div class="site-intro jm-stack jm-stack--tight jm-with-toc__intro">
     <p class="site-kicker">Chapter 1</p>
     <h1>Foundation</h1>
     <p class="site-lead">The tokens everything else is built from. Use the semantic colour tokens (<code>--jm-colour-text</code>), not palette names. The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
     <p class="jm-secondary-text">Swatches update when you change theme. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and borders, focus rings and status marks for 3:1.</p>
   </div>
+    <nav class="jm-toc" aria-label="On this page">
+      <details class="jm-toc__details">
+        <summary class="jm-toc__summary">On this page <span class="jm-toc__current"></span></summary>
+        <p class="jm-toc__title">On this page</p>
+        <ol class="jm-toc__list">
+          <li><a href="#surfaces">Surfaces, text and borders</a></li>
+          <li><a href="#accent">Accent, links and focus</a></li>
+          <li><a href="#status">Status</a></li>
+          <li><a href="#links">Links and focus</a></li>
+          <li><a href="#type">Type scale</a></li>
+          <li><a href="#space">Spacing</a></li>
+          <li><a href="#radius">Radius and shadow</a></li>
+          <li><a href="#breakpoints">Breakpoints</a></li>
+        </ol>
+      </details>
+    </nav>
+
+    <div class="jm-with-toc__main jm-stack jm-stack--loose">
 
   <section aria-labelledby="surfaces">
     <h2 id="surfaces">Surfaces, text and borders</h2>
@@ -161,6 +179,7 @@
       </tbody>
     </table>
   </section>
+    </div>
   </main>
 
   <footer class="jm-footer">
@@ -222,5 +241,6 @@
     renderSwatches();
   })();
 </script>
+<script src="../ui-kit.js"></script>
 </body>
 </html>
