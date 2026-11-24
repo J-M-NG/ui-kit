@@ -18,7 +18,15 @@ The CSS I use for forms, tables and dashboards across my projects. It's one styl
 
 ## Adopt the kit
 1. Copy `ui-kit.css` and the `fonts/` folder (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`. Keep `fonts/` next to `ui-kit.css`; without it the kit falls back to system fonts.
-2. Link the stylesheet before your project CSS.
+2. Link the stylesheet before your project CSS, and preload the two fonts used above the fold so headings get the real face on a first visit:
+
+   ```html
+   <link rel="preload" href="/static/ui-kit/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="preload" href="/static/ui-kit/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+   <link rel="stylesheet" href="/static/ui-kit/ui-kit.css">
+   ```
+
+   Body text swaps in when its font arrives; headings use `font-display: optional` and keep the fallback if the font is late, so they never re-wrap after first paint. Fallback faces matched to Source's widths keep text in place while it loads.
 3. Optionally link a [preset](presets/README.md) after `ui-kit.css`, or override only the [documented hooks](#project-hooks).
 4. Run `python3 tests/check_contrast.py --project path/to/project.css` when changing colours.
 
