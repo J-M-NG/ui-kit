@@ -4,7 +4,7 @@
   "description": "Development checks for ui-kit. Not needed to use the kit: projects copy ui-kit.css.",
   "type": "module",
   "scripts": {
-    "test": "python3 tests/check_contrast.py && node tests/a11y.mjs",
+    "test": "python3 tests/check_contrast.py && python3 tests/test_streamlit_helpers.py && node tests/a11y.mjs",
     "test:a11y": "node tests/a11y.mjs"
   },
   "devDependencies": {
