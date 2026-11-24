@@ -33,9 +33,9 @@
 
   <main id="main" class="jm-container jm-container--wide jm-stack jm-stack--loose">
     <section class="jm-stack jm-stack--tight" aria-labelledby="hero-title">
-      <p class="jm-secondary-text">v1.0.0 — framework-free house style</p>
-      <h1 id="hero-title">Tokens, components and dashboard patterns in one CSS file</h1>
-      <p>Copy <code>ui-kit.css</code> into your project, optionally add <code>ui-kit.js</code> for sortable tables, filters, tabs and dialogs. Semantic HTML first, WCAG 2.2 AA, light and dark themes, no build step.</p>
+      <p class="jm-secondary-text">v1.0.1 — framework-free house style</p>
+      <h1 id="hero-title">Accessible UI patterns with room for your voice</h1>
+      <p>Copy <code>ui-kit.css</code> into your project, optionally add <code>ui-kit.js</code> for sortable tables, filters, tabs and dialogs. Serif headings, flat controls, WCAG 2.2 AA, light and dark themes — no build step.</p>
       <div class="jm-cluster">
         <a class="jm-button" href="examples/components.html">Browse components</a>
         <a class="jm-button jm-button--secondary" href="https://github.com/J-M-NG/ui-kit">View on GitHub</a>
@@ -48,7 +48,7 @@
       <div class="jm-filters">
         <div class="jm-field">
           <label class="jm-label" for="hook-accent">Accent colour</label>
-          <input class="jm-input jm-input--width-10" id="hook-accent" type="text" value="#1f5296" spellcheck="false" aria-describedby="hook-accent-hint">
+          <input class="jm-input jm-input--width-10" id="hook-accent" type="text" value="#2b67b5" spellcheck="false" aria-describedby="hook-accent-hint">
           <div class="jm-hint" id="hook-accent-hint">Maps to <code>--jm-colour-accent</code> and links</div>
         </div>
         <div class="jm-field">
@@ -61,8 +61,8 @@
         <div class="jm-field">
           <label class="jm-label" for="hook-heading">Heading font</label>
           <select class="jm-select" id="hook-heading">
-            <option value="system" selected>System UI</option>
-            <option value="georgia">Georgia</option>
+            <option value="kit" selected>Kit default (serif)</option>
+            <option value="system">System UI</option>
           </select>
         </div>
       </div>
@@ -93,7 +93,7 @@
     <section class="jm-stack" aria-labelledby="start">
       <h2 id="start">Adopt the kit</h2>
       <ol class="jm-stack jm-stack--tight">
-        <li>Copy tagged <code>ui-kit.css</code> (and optionally <code>ui-kit.js</code>) from the <a href="https://github.com/J-M-NG/ui-kit/releases/tag/v1.0.0">v1.0.0 release</a> or this repo.</li>
+        <li>Copy tagged <code>ui-kit.css</code> (and optionally <code>ui-kit.js</code>) from the <a href="https://github.com/J-M-NG/ui-kit/releases">latest release</a> or this repo.</li>
         <li>Link the stylesheet after your reset, before your project CSS.</li>
         <li>Override hooks documented in the README if you need a distinct accent.</li>
         <li>Run <code>npm test</code> in this repository when you change tokens or examples.</li>
@@ -104,7 +104,7 @@
 
   <footer class="jm-footer">
     <div class="jm-footer__inner">
-      <span>ui-kit v1.0.0, MIT licence</span>
+      <span>ui-kit · MIT</span>
       <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
     </div>
   </footer>
@@ -132,7 +132,9 @@
     function applyHooks() {
       var accent = accentInput.value.trim();
       var radius = radiusSelect.value;
-      var heading = headingSelect.value === 'georgia' ? 'Georgia, "Times New Roman", serif' : 'system-ui, sans-serif';
+      var heading = headingSelect.value === 'system'
+        ? 'system-ui, sans-serif'
+        : 'Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif';
       hookStyle.textContent = ':root{--jm-radius-scale:' + radius + ';--jm-font-family-heading:' + heading + ';}' + (accent.match(/^#[0-9a-fA-F]{6}$/) ? hooksCss(accent) : '');
     }
 

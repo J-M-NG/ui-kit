@@ -2,9 +2,9 @@
 
 ![test](https://github.com/J-M-NG/ui-kit/actions/workflows/test.yml/badge.svg)
 
-A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible interaction patterns (semantic HTML, error summaries, visible focus) without government-service chrome — default cool grey and blue tokens.
+A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible patterns (semantic HTML, error summaries, visible focus) with a calm product voice — serif headings, flat buttons, cool grey and blue tokens you can override with hooks.
 
-**Status:** v1.0.0 (phases 0–4 complete). Portfolio at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/). Copy `ui-kit.css` from the [v1.0.0 tag](https://github.com/J-M-NG/ui-kit/releases/tag/v1.0.0) (tag after merge).
+**Status:** v1.0.1 (phases 0–4 complete). Portfolio at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/). Copy `ui-kit.css` from the latest [release tag](https://github.com/J-M-NG/ui-kit/releases).
 
 ## What's in the repo
 - `ui-kit.css` — tokens, base styles and `jm-` components in cascade layers.
@@ -23,7 +23,8 @@ A small, framework-free house style for my projects: design tokens and component
 ## Principles
 - WCAG 2.2 AA: contrast, visible focus, keyboard use, 400% zoom.
 - Semantic HTML first; classes style real elements.
-- No build step, no framework; system font stack; OS-driven light/dark themes.
+- No build step, no framework; system body type and distinctive heading face by default; OS-driven light/dark themes.
+- Example copy uses product and dashboard language — borrow patterns, not tone.
 
 ## Tokens
 Use semantic tokens (`--jm-colour-text`, `--jm-colour-accent`, …), not palette steps (`--jm-blue-600`, …). Force a theme with `data-theme` on `<html>`, or follow the OS default.
@@ -44,7 +45,7 @@ In your own stylesheet loaded **after** `ui-kit.css`:
 ```css
 :root {
   --jm-radius-scale: 0;
-  --jm-font-family-heading: Georgia, serif;
+  --jm-font-family-heading: system-ui, sans-serif;
   --jm-colour-accent: #0b6e8f;
   --jm-colour-accent-hover: #095a75;
   --jm-colour-link: #0b6e8f;

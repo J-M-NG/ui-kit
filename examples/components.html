@@ -58,10 +58,10 @@
       <h2 id="buttons">Buttons</h2>
       <p>Say what the button does. Use one primary button per screen; warning buttons only for actions that destroy something.</p>
       <div class="example jm-cluster">
-        <button class="jm-button" type="button">Save and continue</button>
-        <button class="jm-button jm-button--secondary" type="button">Save as draft</button>
+        <button class="jm-button" type="button">Save changes</button>
+        <button class="jm-button jm-button--secondary" type="button">Save draft</button>
         <button class="jm-button jm-button--warning" type="button">Delete task</button>
-        <button class="jm-button" type="button" disabled>Submit (disabled)</button>
+        <button class="jm-button" type="button" disabled>Save (disabled)</button>
         <a class="jm-button jm-button--secondary" href="#buttons">Link styled as a button</a>
       </div>
       <p class="example-code"><code>.jm-button</code>, <code>--secondary</code>, <code>--warning</code>; works on <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code>.</p>
@@ -84,7 +84,7 @@
 
         <div class="jm-field jm-field--error">
           <label class="jm-label" for="email">Email address</label>
-          <p class="jm-error-message" id="email-error"><span class="jm-visually-hidden">Error:</span> Enter an email address in the correct format, like name@example.com</p>
+          <p class="jm-error-message" id="email-error"><span class="jm-visually-hidden">Error:</span> Use an email address with an @ and a domain, for example name@example.com</p>
           <input class="jm-input jm-input--error" id="email" name="email" type="email" autocomplete="email" value="name.example.com" aria-describedby="email-error" aria-invalid="true">
         </div>
 
@@ -175,11 +175,11 @@
 
     <section class="jm-stack" aria-labelledby="error-summary">
       <h2 id="error-summary">Error summary</h2>
-      <p>Show at the top of the page after a failed submit. Each link moves focus to the field with the problem. Give it <code>tabindex="-1"</code> and move focus to it when the page loads.</p>
+      <p>Place at the top after validation fails. Each link moves focus to the matching field. Give it <code>tabindex="-1"</code> and move focus there when the page loads.</p>
       <div class="jm-error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1">
-        <h3 class="jm-error-summary__title" id="error-summary-title">There is a problem</h3>
+        <h3 class="jm-error-summary__title" id="error-summary-title">Fix these fields</h3>
         <ul>
-          <li><a href="#email">Enter an email address in the correct format, like name@example.com</a></li>
+          <li><a href="#email">Use an email address with an @ and a domain, for example name@example.com</a></li>
           <li><a href="#due-day">Due date must be in the future</a></li>
         </ul>
       </div>
@@ -187,7 +187,7 @@
 
     <section class="jm-stack" aria-labelledby="summary-list">
       <h2 id="summary-list">Summary list</h2>
-      <p>Show a read-only review of answers before submit, with links to change each row.</p>
+      <p>Read-only review rows with links to edit individual values.</p>
       <div class="example">
         <dl class="jm-summary-list">
           <div class="jm-summary-list__row">
