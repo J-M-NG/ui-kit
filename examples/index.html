@@ -3,20 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ui-kit: tokens</title>
+  <title>ui-kit: foundation</title>
   <link rel="stylesheet" href="../ui-kit.css">
   <style>
     /* Page-only layout for this sheet. Not part of the kit. */
-    .sheet { max-width: 72rem; margin: 0 auto; padding: var(--jm-space-6) var(--jm-space-4) var(--jm-space-8); }
     .sheet section { margin-top: var(--jm-space-7); }
     .sheet-header { display: flex; flex-wrap: wrap; gap: var(--jm-space-4); align-items: end; justify-content: space-between; }
-    .theme-switch { display: flex; gap: var(--jm-space-2); align-items: center; }
-    .theme-switch button {
-      font: inherit; padding: var(--jm-space-1) var(--jm-space-3); cursor: pointer;
-      color: var(--jm-colour-text); background: var(--jm-colour-surface);
-      border: var(--jm-border-width) solid var(--jm-colour-border-strong); border-radius: var(--jm-radius-md);
-    }
-    .theme-switch button[aria-pressed="true"] { background: var(--jm-colour-accent); color: var(--jm-colour-on-accent); border-color: var(--jm-colour-accent); }
+    .theme-switch button[aria-pressed="true"] { text-decoration: underline; text-decoration-thickness: 3px; }
     .grid { display: grid; gap: var(--jm-space-4); grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); padding: 0; margin: 0; list-style: none; }
     .swatch { border: var(--jm-border-width) solid var(--jm-colour-border); border-radius: var(--jm-radius-lg); overflow: hidden; background: var(--jm-colour-background); }
     .swatch-chip { height: 4rem; border-bottom: var(--jm-border-width) solid var(--jm-colour-border); }
@@ -39,17 +32,35 @@
   </style>
 </head>
 <body>
-<main class="sheet" id="main">
-  <div class="sheet-header">
-    <div>
-      <h1>Tokens</h1>
-      <p><a href="components.html">See the components</a>.</p>
-      <p>Design tokens in <code>ui-kit.css</code>, shown in the current theme. Every text pair on this page is checked for 4.5:1 contrast, and every border, focus ring and status mark for 3:1, by <code>tests/check_contrast.py</code>.</p>
+<div class="jm-page">
+  <a class="jm-skip-link" href="#main">Skip to main content</a>
+
+  <header class="jm-header">
+    <div class="jm-header__inner">
+      <a class="jm-header__name" href="../index.html">ui-kit</a>
+      <nav class="jm-header__nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Foundation</a></li>
+          <li><a href="components.html">Components</a></li>
+          <li><a href="dashboard.html">Composition</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="theme-switch" role="group" aria-label="Theme" hidden>
-      <button type="button" data-set-theme="system" aria-pressed="true">System</button>
-      <button type="button" data-set-theme="light" aria-pressed="false">Light</button>
-      <button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+  </header>
+
+  <main id="main" class="jm-container jm-stack jm-stack--loose sheet">
+  <div class="sheet-header">
+    <div class="jm-stack jm-stack--tight">
+      <p class="jm-secondary-text">Chapter 1</p>
+      <h1>Foundation</h1>
+      <p>Everything in the kit rests on these tokens in <code>ui-kit.css</code>. Use semantic colour tokens (<code>--jm-colour-text</code>, not palette names). The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
+      <p class="jm-secondary-text">Swatches update when you change theme. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and borders, focus rings and status marks for 3:1.</p>
+    </div>
+    <div class="jm-cluster theme-switch" role="group" aria-label="Theme" hidden>
+      <span class="jm-secondary-text">Theme:</span>
+      <button class="jm-button jm-button--secondary" type="button" data-set-theme="system" aria-pressed="true">System</button>
+      <button class="jm-button jm-button--secondary" type="button" data-set-theme="light" aria-pressed="false">Light</button>
+      <button class="jm-button jm-button--secondary" type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
     </div>
   </div>
 
@@ -152,7 +163,15 @@
       </tbody>
     </table>
   </section>
-</main>
+  </main>
+
+  <footer class="jm-footer">
+    <div class="jm-footer__inner">
+      <span>ui-kit, MIT licence</span>
+      <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
+    </div>
+  </footer>
+</div>
 
 <script>
   // Progressive enhancement: builds the colour swatch lists and the theme switch.

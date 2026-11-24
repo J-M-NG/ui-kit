@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ui-kit</title>
+  <link rel="stylesheet" href="ui-kit.css">
+</head>
+<body>
+<div class="jm-page">
+  <a class="jm-skip-link" href="#main">Skip to main content</a>
+
+  <header class="jm-header">
+    <div class="jm-header__inner">
+      <a class="jm-header__name" href="index.html">ui-kit</a>
+      <nav class="jm-header__nav" aria-label="Main">
+        <ul>
+          <li><a href="examples/index.html">Foundation</a></li>
+          <li><a href="examples/components.html">Components</a></li>
+          <li><a href="examples/dashboard.html">Composition</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="jm-container jm-stack jm-stack--loose">
+    <div class="jm-stack jm-stack--tight">
+      <h1>ui-kit</h1>
+      <p>A framework-free house style: design tokens and components in plain CSS, with HTML examples you can copy from. Borrowed from GOV.UK patterns, not its branding.</p>
+      <p class="jm-secondary-text">Walk through the kit in three chapters — foundation tokens, core components, then dashboard patterns composed from those pieces.</p>
+    </div>
+
+    <section class="jm-stack" aria-labelledby="chapters">
+      <h2 id="chapters">Chapters</h2>
+      <ul class="jm-stack jm-stack--tight">
+        <li>
+          <p><strong><a href="examples/index.html">Foundation</a></strong> — colour, type, spacing and elevation tokens in <code>ui-kit.css</code>, with live swatches and contrast notes.</p>
+        </li>
+        <li>
+          <p><strong><a href="examples/components.html">Components</a></strong> — buttons, forms, tables, tags, banners and layout primitives; each section explains when to use the pattern and shows every state.</p>
+        </li>
+        <li>
+          <p><strong><a href="examples/dashboard.html">Composition</a></strong> — panels, key figures, sortable tables, charts and activity trails built only from kit classes; optional <code>ui-kit.js</code> for table sort and filter.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="start">
+      <h2 id="start">Get started</h2>
+      <p>Copy <code>ui-kit.css</code> (and optionally <code>ui-kit.js</code>) into your project. Override tokens in your own stylesheet loaded after the kit. Run <code>npm test</code> in this repository for contrast and accessibility checks.</p>
+      <p class="jm-secondary-text">When GitHub Pages is enabled on <code>main</code>, this site will live at <a href="https://j-m-ng.github.io/ui-kit/">https://j-m-ng.github.io/ui-kit/</a>.</p>
+    </section>
+  </main>
+
+  <footer class="jm-footer">
+    <div class="jm-footer__inner">
+      <span>ui-kit, MIT licence</span>
+      <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
