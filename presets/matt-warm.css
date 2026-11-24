@@ -1,0 +1,31 @@
+/*!
+ * ui-kit preset: matt-warm
+ * Sky accent leaning warmer; headings stay editorial serif.
+ */
+:root {
+  --jm-radius-scale: 1;
+  --jm-font-family-heading: "Palatino Linotype", Palatino, Georgia, serif;
+  --jm-colour-accent: #0b6e8f;
+  --jm-colour-accent-hover: #095a75;
+  --jm-colour-link: #0b6e8f;
+  --jm-colour-link-hover: #095a75;
+  --jm-colour-focus: #095a75;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --jm-colour-accent: #5fb6d6;
+    --jm-colour-accent-hover: #7fcfe8;
+    --jm-colour-link: #5fb6d6;
+    --jm-colour-link-hover: #7fcfe8;
+    --jm-colour-focus: #5fb6d6;
+  }
+}
+
+:root[data-theme="dark"] {
+  --jm-colour-accent: #5fb6d6;
+  --jm-colour-accent-hover: #7fcfe8;
+  --jm-colour-link: #5fb6d6;
+  --jm-colour-link-hover: #7fcfe8;
+  --jm-colour-focus: #5fb6d6;
+}

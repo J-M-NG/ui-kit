@@ -4,6 +4,16 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-24
+### Added
+- Theme **presets** in `presets/` (default-serif, minimal-square, matt-warm) using hooks only.
+- `examples/content-style.html` content voice guide; portfolio identity block and dashboard hero section.
+- CSS-only empty (`jm-empty--pattern`) and loading (`jm-loading--blocks`) motifs.
+
+### Changed
+- Editorial type: Palatino-first headings, larger h1, warmer light page background (grey-50).
+- Bar charts use chart token sequence; dashboard and Streamlit alignment docs updated.
+
 ## [1.0.1] - 2026-11-24
 ### Changed
 - Default personality: serif heading stack, slightly rounder radius, brighter blue accent, flat buttons (no GDS-style bottom shadow).

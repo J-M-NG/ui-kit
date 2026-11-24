@@ -22,6 +22,7 @@
           <li><a href="index.html">Foundation</a></li>
           <li><a href="components.html">Components</a></li>
           <li><a href="dashboard.html" aria-current="page">Composition</a></li>
+          <li><a href="content-style.html">Content style</a></li>
         </ul>
       </nav>
     </div>
@@ -43,7 +44,7 @@
     <main id="main" class="jm-app__main jm-stack jm-stack--loose">
       <div class="jm-stack jm-stack--tight">
         <h1>Composition</h1>
-        <p>Dashboard patterns built only from kit classes, plus optional <code>ui-kit.js</code> for sortable headers and client-side filtering. The layout uses <code>.jm-app</code> with a sidebar; numbers below are illustrative.</p>
+        <p>Product dashboards built from kit classes: cards, figures, charts and trails with token colours — not a service portal layout. Optional <code>ui-kit.js</code> adds sortable headers and client-side filtering.</p>
       </div>
 
       <section class="jm-panel" aria-labelledby="tasks-title">
@@ -153,12 +154,12 @@
       <section class="jm-stack" aria-labelledby="states-title">
         <h2 id="states-title">Empty and error states</h2>
         <p>Panels, loading text and banners for when data is missing, slow or failed.</p>
-        <div class="jm-panel jm-empty">
+        <div class="jm-panel jm-empty jm-empty--pattern">
           <p class="jm-empty__title">No tasks yet</p>
-          <p>Post the first task to populate this view.</p>
-          <p><a class="jm-button" href="#states-title">Post a task</a></p>
+          <p>Create a task to populate this view.</p>
+          <p><a class="jm-button" href="#states-title">Create task</a></p>
         </div>
-        <div class="jm-loading" role="status">Loading tasks</div>
+        <div class="jm-loading jm-loading--blocks" role="status">Loading tasks</div>
         <div class="jm-banner jm-banner--error" role="alert">
           <p class="jm-banner__title">Tasks could not be loaded</p>
           <p>Try again in a minute, or check the network.</p>

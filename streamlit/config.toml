@@ -4,13 +4,13 @@
 [theme]
 
 # Chart series (matches --jm-colour-chart-1 … 5, light theme)
-chartCategoricalColors = ["#1f5296", "#9a5b00", "#6a3d9a", "#17623a", "#9e2222"]
+chartCategoricalColors = ["#2b67b5", "#9a5b00", "#6a3d9a", "#17623a", "#9e2222"]
 
 [theme.light]
 # --jm-colour-accent, --jm-colour-background, --jm-colour-surface, --jm-colour-text, --jm-colour-link
 primaryColor = "#2b67b5"
-backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#f5f6f8"
+backgroundColor = "#f5f6f8"
+secondaryBackgroundColor = "#ffffff"
 textColor = "#17191c"
 linkColor = "#2b67b5"
 linkUnderline = false

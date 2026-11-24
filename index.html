@@ -8,6 +8,40 @@
   <style id="jm-hooks-style">
     /* Project hooks demo: only the documented tokens change here. */
   </style>
+  <style>
+    /* Page-only: identity signature sample (focus ring motif). */
+    .jm-identity__signature {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--jm-space-4);
+      padding: var(--jm-space-4);
+      border-radius: var(--jm-radius-lg);
+      background: var(--jm-colour-surface);
+      border: var(--jm-border-width) solid var(--jm-colour-border);
+    }
+    .jm-identity__focus-demo {
+      padding: var(--jm-space-2) var(--jm-space-4);
+      border-radius: var(--jm-radius-md);
+      background: var(--jm-colour-accent);
+      color: var(--jm-colour-on-accent);
+      font-weight: var(--jm-font-weight-medium);
+      box-shadow: var(--jm-focus-ring);
+    }
+    .jm-identity__rule {
+      flex: 1 1 12rem;
+      height: 0.35rem;
+      border-radius: var(--jm-radius-pill);
+      background: linear-gradient(90deg, var(--jm-colour-accent), var(--jm-colour-chart-2), var(--jm-colour-chart-3));
+    }
+    .jm-feature-dashboard {
+      display: grid;
+      gap: var(--jm-space-5);
+    }
+    @media (min-width: 48em) {
+      .jm-feature-dashboard { grid-template-columns: 1.2fr 1fr; align-items: start; }
+    }
+  </style>
 </head>
 <body>
 <div class="jm-page">
@@ -21,6 +55,7 @@
           <li><a href="examples/index.html">Foundation</a></li>
           <li><a href="examples/components.html">Components</a></li>
           <li><a href="examples/dashboard.html">Composition</a></li>
+          <li><a href="examples/content-style.html">Content style</a></li>
         </ul>
       </nav>
       <div class="jm-cluster theme-switch" role="group" aria-label="Theme">
@@ -33,13 +68,44 @@
 
   <main id="main" class="jm-container jm-container--wide jm-stack jm-stack--loose">
     <section class="jm-stack jm-stack--tight" aria-labelledby="hero-title">
-      <p class="jm-secondary-text">v1.0.1 — framework-free house style</p>
+      <p class="jm-secondary-text">v1.1.0 — framework-free house style</p>
       <h1 id="hero-title">Accessible UI patterns with room for your voice</h1>
-      <p>Copy <code>ui-kit.css</code> into your project, optionally add <code>ui-kit.js</code> for sortable tables, filters, tabs and dialogs. Serif headings, flat controls, WCAG 2.2 AA, light and dark themes — no build step.</p>
+      <p>Copy <code>ui-kit.css</code> into your project, optionally add <code>ui-kit.js</code> for sortable tables, filters, tabs and dialogs. Editorial headings, flat controls, WCAG 2.2 AA, light and dark themes — no build step.</p>
       <div class="jm-cluster">
-        <a class="jm-button" href="examples/components.html">Browse components</a>
+        <a class="jm-button" href="examples/dashboard.html">Open dashboard demo</a>
+        <a class="jm-button jm-button--secondary" href="examples/components.html">Browse components</a>
         <a class="jm-button jm-button--secondary" href="https://github.com/J-M-NG/ui-kit">View on GitHub</a>
       </div>
+    </section>
+
+    <section class="jm-card jm-stack" aria-labelledby="identity-title">
+      <div class="jm-stack jm-stack--tight">
+        <p class="jm-secondary-text" id="identity-title">Kit identity</p>
+        <h2>ui-kit</h2>
+        <p>Framework-free patterns for products and dashboards: semantic HTML, token-driven themes, hooks for accent and type — not a government service skin.</p>
+      </div>
+      <div class="jm-identity__signature" aria-hidden="true">
+        <span class="jm-identity__focus-demo">Focus ring</span>
+        <span class="jm-identity__rule" title="Chart sequence colours"></span>
+      </div>
+      <p class="jm-secondary-text">Signature: two-tone focus ring on accent surfaces; chart colours stay in fixed order. See <a href="examples/index.html#accent">Foundation</a> for tokens.</p>
+    </section>
+
+    <section class="jm-panel jm-feature-dashboard" aria-labelledby="dashboard-hero">
+      <div class="jm-stack jm-stack--tight">
+        <p class="jm-secondary-text" id="dashboard-hero">Featured · Composition</p>
+        <h2>Dashboard patterns as the centrepiece</h2>
+        <p>Panels, figures, sortable tables, charts and trails — the chapter most adopting projects copy first.</p>
+        <div class="jm-cluster">
+          <a class="jm-button" href="examples/dashboard.html">Composition demo</a>
+          <a class="jm-button jm-button--secondary" href="examples/content-style.html">Content style guide</a>
+        </div>
+      </div>
+      <dl class="jm-figures">
+        <div><dt>Open tasks</dt><dd>14</dd></div>
+        <div><dt>Verified this week</dt><dd>31<span class="jm-figures__note">sample figures</span></dd></div>
+        <div><dt>Presets</dt><dd>3<span class="jm-figures__note"><a href="presets/README.md">hooks-only CSS</a></span></dd></div>
+      </dl>
     </section>
 
     <section class="jm-panel jm-stack" aria-labelledby="hooks-title">
@@ -87,14 +153,18 @@
         <li>
           <p><strong><a href="examples/dashboard.html">Composition</a></strong> — panels, figures, sortable tables, charts and activity trails; optional <code>ui-kit.js</code>.</p>
         </li>
+        <li>
+          <p><strong><a href="examples/content-style.html">Content style</a></strong> — voice for headings, buttons, errors and British spelling.</p>
+        </li>
       </ul>
+      <p>Theme <strong>presets</strong> in <code>presets/</code> (<a href="presets/default-serif.css">default-serif</a>, <a href="presets/minimal-square.css">minimal-square</a>, <a href="presets/matt-warm.css">matt-warm</a>) load after <code>ui-kit.css</code>.</p>
     </section>
 
     <section class="jm-stack" aria-labelledby="start">
       <h2 id="start">Adopt the kit</h2>
       <ol class="jm-stack jm-stack--tight">
         <li>Copy tagged <code>ui-kit.css</code> (and optionally <code>ui-kit.js</code>) from the <a href="https://github.com/J-M-NG/ui-kit/releases">latest release</a> or this repo.</li>
-        <li>Link the stylesheet after your reset, before your project CSS.</li>
+        <li>Link the stylesheet after your reset, before your project CSS; optionally add a file from <code>presets/</code>.</li>
         <li>Override hooks documented in the README if you need a distinct accent.</li>
         <li>Run <code>npm test</code> in this repository when you change tokens or examples.</li>
       </ol>
@@ -134,7 +204,7 @@
       var radius = radiusSelect.value;
       var heading = headingSelect.value === 'system'
         ? 'system-ui, sans-serif'
-        : 'Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif';
+        : '"Palatino Linotype", Palatino, Georgia, "Iowan Old Style", serif';
       hookStyle.textContent = ':root{--jm-radius-scale:' + radius + ';--jm-font-family-heading:' + heading + ';}' + (accent.match(/^#[0-9a-fA-F]{6}$/) ? hooksCss(accent) : '');
     }
 

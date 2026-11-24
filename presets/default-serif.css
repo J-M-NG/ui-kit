@@ -1,0 +1,31 @@
+/*!
+ * ui-kit preset: default-serif
+ * Load after ui-kit.css. Re-states stock v1.1 defaults for copy-paste projects.
+ */
+:root {
+  --jm-radius-scale: 1;
+  --jm-font-family-heading: "Palatino Linotype", Palatino, Georgia, "Iowan Old Style", serif;
+  --jm-colour-accent: #2b67b5;
+  --jm-colour-accent-hover: #1f5296;
+  --jm-colour-link: #2b67b5;
+  --jm-colour-link-hover: #1a4378;
+  --jm-colour-focus: #1f5296;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --jm-colour-accent: #7fa8dd;
+    --jm-colour-accent-hover: #adc8eb;
+    --jm-colour-link: #7fa8dd;
+    --jm-colour-link-hover: #adc8eb;
+    --jm-colour-focus: #7fa8dd;
+  }
+}
+
+:root[data-theme="dark"] {
+  --jm-colour-accent: #7fa8dd;
+  --jm-colour-accent-hover: #adc8eb;
+  --jm-colour-link: #7fa8dd;
+  --jm-colour-link-hover: #adc8eb;
+  --jm-colour-focus: #7fa8dd;
+}
