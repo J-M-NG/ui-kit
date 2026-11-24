@@ -11,4 +11,4 @@ When an adopting project needs UI that is not in the kit yet, log it here so the
 | Date | Project | What is needed | Interim class / markup | Priority | Status |
 |------|---------|----------------|------------------------|----------|--------|
 | _YYYY-MM-DD_ | _project-name_ | _Short description of the missing pattern_ | _e.g. `.jm-project-timeline` on `<ol class="jm-trail">` with extra spacing_ | low / medium / high | open / done |
-| 2026-11-24 | _(example only — delete when real rows exist)_ | _(example)_ Animated skeleton placeholder for wide tables | `<div class="jm-loading" role="status">Loading</div>` reused; no skeleton bars yet | medium | open |
+| 2026-11-24 | ui-kit v1 | Breadcrumbs, pagination, tabs, card, dialog | Shipped as `.jm-breadcrumbs`, `.jm-pagination`, `.jm-tabs`, `.jm-card`, `.jm-dialog` in v1.0.0 | medium | done |

@@ -1,5 +1,5 @@
 /*!
- * ui-kit (unreleased, phase 3: dashboard patterns)
+ * ui-kit v1.0.0 (tokens, components, dashboard patterns)
  * https://github.com/J-M-NG/ui-kit
  * MIT licence. See LICENSE.
  *
@@ -1430,6 +1430,195 @@
       animation: none;
       border-top-color: var(--jm-colour-border-strong);
     }
+  }
+
+  /* Breadcrumbs: <nav class="jm-breadcrumbs" aria-label="Breadcrumb"><ol>...</ol></nav> */
+  .jm-breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--jm-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--jm-font-size-sm);
+  }
+
+  .jm-breadcrumbs li + li::before {
+    content: "/";
+    margin-right: var(--jm-space-2);
+    color: var(--jm-colour-text-secondary);
+  }
+
+  .jm-breadcrumbs [aria-current="page"] {
+    color: var(--jm-colour-text);
+    font-weight: var(--jm-font-weight-medium);
+    text-decoration: none;
+  }
+
+  /* Pagination: <nav class="jm-pagination" aria-label="Results pages"><ul>...</ul></nav> */
+  .jm-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--jm-space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jm-pagination a,
+  .jm-pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: var(--jm-space-1) var(--jm-space-3);
+    border: var(--jm-border-width) solid var(--jm-colour-border-strong);
+    border-radius: var(--jm-radius-sm);
+    color: var(--jm-colour-link);
+    text-decoration: none;
+    font-size: var(--jm-font-size-sm);
+  }
+
+  .jm-pagination a:hover {
+    background: var(--jm-colour-surface);
+  }
+
+  .jm-pagination [aria-current="page"] {
+    border-color: var(--jm-colour-accent);
+    background: var(--jm-colour-accent);
+    color: var(--jm-colour-on-accent);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  /* Tabs: pair tab buttons with panels; ui-kit.js wires keyboard and selection when data-jm-tabs is set. */
+  .jm-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--jm-space-1);
+    margin: 0 0 var(--jm-space-4);
+    padding: 0;
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+    list-style: none;
+  }
+
+  .jm-tabs__tab {
+    margin: 0;
+    padding: var(--jm-space-2) var(--jm-space-4);
+    border: var(--jm-border-width) solid transparent;
+    border-bottom: 0;
+    border-radius: var(--jm-radius-sm) var(--jm-radius-sm) 0 0;
+    background: none;
+    color: var(--jm-colour-link);
+    font: inherit;
+    font-size: var(--jm-font-size-sm);
+    font-weight: var(--jm-font-weight-medium);
+    cursor: pointer;
+  }
+
+  .jm-tabs__tab[aria-selected="true"] {
+    border-color: var(--jm-colour-border);
+    border-bottom-color: var(--jm-colour-background);
+    margin-bottom: calc(-1 * var(--jm-border-width));
+    background: var(--jm-colour-background);
+    color: var(--jm-colour-text);
+    font-weight: var(--jm-font-weight-bold);
+  }
+
+  .jm-tabs__panel {
+    margin: 0;
+  }
+
+  .jm-tabs__panel[hidden] {
+    display: none;
+  }
+
+  /* Card: bordered content block with optional header/footer (distinct from dashboard .jm-panel). */
+  .jm-card {
+    border: var(--jm-border-width) solid var(--jm-colour-border);
+    border-radius: var(--jm-radius-md);
+    background: var(--jm-colour-background);
+  }
+
+  .jm-card__header,
+  .jm-card__footer {
+    padding: var(--jm-space-3) var(--jm-space-4);
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+  }
+
+  .jm-card__footer {
+    border-bottom: 0;
+    border-top: var(--jm-border-width) solid var(--jm-colour-border);
+  }
+
+  .jm-card__title {
+    margin: 0;
+    font-size: var(--jm-font-size-lg);
+  }
+
+  .jm-card__body {
+    padding: var(--jm-space-4);
+  }
+
+  .jm-card__body > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Dialog: native <dialog class="jm-dialog">; open with showModal() (ui-kit.js optional). */
+  .jm-dialog {
+    width: min(32rem, calc(100vw - var(--jm-space-8)));
+    max-height: calc(100vh - var(--jm-space-8));
+    margin: auto;
+    padding: 0;
+    border: var(--jm-border-width) solid var(--jm-colour-border-strong);
+    border-radius: var(--jm-radius-md);
+    background: var(--jm-colour-background);
+    color: var(--jm-colour-text);
+    box-shadow: var(--jm-shadow-lg);
+  }
+
+  .jm-dialog::backdrop {
+    background: rgb(23 25 28 / 0.55);
+  }
+
+  .jm-dialog__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--jm-space-3);
+    padding: var(--jm-space-4) var(--jm-space-4) var(--jm-space-3);
+    border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+  }
+
+  .jm-dialog__title {
+    margin: 0;
+    font-size: var(--jm-font-size-xl);
+    line-height: var(--jm-line-height-tight);
+  }
+
+  .jm-dialog__body {
+    padding: var(--jm-space-4);
+  }
+
+  .jm-dialog__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--jm-space-3);
+    padding: var(--jm-space-3) var(--jm-space-4) var(--jm-space-4);
+    border-top: var(--jm-border-width) solid var(--jm-colour-border);
+  }
+
+  .jm-dialog__close {
+    min-height: 2.75rem;
+    padding: var(--jm-space-1) var(--jm-space-3);
+    border: 0;
+    background: none;
+    color: var(--jm-colour-link);
+    font: inherit;
+    font-size: var(--jm-font-size-sm);
+    cursor: pointer;
   }
 }
 
