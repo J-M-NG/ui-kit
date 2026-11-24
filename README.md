@@ -51,6 +51,18 @@ A project may change only these, in its own stylesheet loaded after `ui-kit.css`
 
 Check a project's colours with `python3 tests/check_contrast.py --project path/to/project.css`.
 
+## Live examples (GitHub Pages)
+
+The portfolio walkthrough is static HTML at the repository root and in `examples/`. After merging to `main`, enable Pages once:
+
+1. Open the repository on GitHub → **Settings** → **Pages**.
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. Choose branch **`main`**, folder **`/ (root)`**, then **Save**.
+
+The site will be at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/) (root `index.html` links to the three chapters under `examples/`). A `.nojekyll` file at the root tells GitHub not to run Jekyll, so paths like `ui-kit.css` are served as-is.
+
+Locally, run `python3 -m http.server` in the repository root and open `http://localhost:8000/`.
+
 ## Checks
 ```bash
 python3 tests/check_contrast.py

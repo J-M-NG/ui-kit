@@ -18,12 +18,12 @@
 
   <header class="jm-header">
     <div class="jm-header__inner">
-      <a class="jm-header__name" href="components.html">ui-kit</a>
+      <a class="jm-header__name" href="../index.html">ui-kit</a>
       <nav class="jm-header__nav" aria-label="Main">
         <ul>
-          <li><a href="index.html">Tokens</a></li>
+          <li><a href="index.html">Foundation</a></li>
           <li><a href="components.html" aria-current="page">Components</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="dashboard.html">Composition</a></li>
         </ul>
       </nav>
     </div>
@@ -31,8 +31,9 @@
 
   <main id="main" class="jm-container jm-stack jm-stack--loose">
     <div class="jm-stack jm-stack--tight">
+      <p class="jm-secondary-text">Chapter 2</p>
       <h1>Components</h1>
-      <p>Every phase 2 component in each of its states. Each one styles a real HTML element, so it works without JavaScript and with assistive technology.</p>
+      <p>Walk through each building block in order: typography and copy, actions, forms, feedback, data display and page chrome. Every class styles a real HTML element, so it works without JavaScript and with assistive technology.</p>
       <div class="jm-cluster theme-switch" role="group" aria-label="Theme" hidden>
         <span class="jm-secondary-text">Theme:</span>
         <button class="jm-button jm-button--secondary" type="button" data-set-theme="system" aria-pressed="true">System</button>
@@ -40,6 +41,18 @@
         <button class="jm-button jm-button--secondary" type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
       </div>
     </div>
+
+    <section class="jm-stack" aria-labelledby="typography">
+      <h2 id="typography">Typography</h2>
+      <p>Headings, body copy and links come from the base layer in <code>ui-kit.css</code>. Sizes map to the tokens on the <a href="index.html#type">Foundation</a> page; do not set font sizes ad hoc.</p>
+      <div class="example jm-stack">
+        <h3>Section heading</h3>
+        <p>Use clear, active sentences. Keep line length comfortable — paragraphs are capped with <code>--jm-measure</code>.</p>
+        <p class="jm-secondary-text">Secondary text for metadata, hints and timestamps.</p>
+        <p><a href="#typography">Inline link</a> with underline and visible focus.</p>
+      </div>
+      <p class="example-code">Semantic <code>&lt;h1&gt;</code>–<code>&lt;h4&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>; utility <code>.jm-secondary-text</code> for de-emphasised copy.</p>
+    </section>
 
     <section class="jm-stack" aria-labelledby="buttons">
       <h2 id="buttons">Buttons</h2>
@@ -56,6 +69,7 @@
 
     <section class="jm-stack" aria-labelledby="text-input">
       <h2 id="text-input">Text input, textarea and select</h2>
+      <p>Group each control with a label, optional hint and error message. Hints use <code>aria-describedby</code> so screen readers announce them with the field.</p>
       <div class="example jm-stack">
         <div class="jm-field">
           <label class="jm-label" for="task-title">Task title</label>
@@ -94,6 +108,7 @@
 
     <section class="jm-stack" aria-labelledby="choices">
       <h2 id="choices">Radios and checkboxes</h2>
+      <p>Use a fieldset and legend for a related group. Inline layouts suit short lists; stack vertically when labels wrap.</p>
       <div class="example jm-stack">
         <fieldset class="jm-fieldset">
           <legend class="jm-label jm-label--large">Who should verify the task?</legend>
@@ -172,6 +187,7 @@
 
     <section class="jm-stack" aria-labelledby="summary-list">
       <h2 id="summary-list">Summary list</h2>
+      <p>Show a read-only review of answers before submit, with links to change each row.</p>
       <div class="example">
         <dl class="jm-summary-list">
           <div class="jm-summary-list__row">
@@ -208,6 +224,7 @@
 
     <section class="jm-stack" aria-labelledby="banners">
       <h2 id="banners">Notification banners</h2>
+      <p>Draw attention without blocking the page. Use <code>role="region"</code> for information; <code>role="alert"</code> after an action succeeds.</p>
       <div class="jm-banner" role="region" aria-labelledby="banner-info-title">
         <p class="jm-banner__title" id="banner-info-title">2 claims need a second check</p>
         <p>Verify them before they count as done. <a href="#tables">Go to tasks needing review</a></p>
@@ -221,6 +238,7 @@
 
     <section class="jm-stack" aria-labelledby="tables">
       <h2 id="tables">Table</h2>
+      <p>Tables suit comparative data. Use a caption, scope on headers and a keyboard-scrollable wrapper when the table is wider than the viewport.</p>
       <div class="jm-table-wrap" role="region" aria-labelledby="tasks-caption" tabindex="0">
         <table class="jm-table">
           <caption id="tasks-caption">Tasks this week</caption>
@@ -246,6 +264,7 @@
 
     <section class="jm-stack" aria-labelledby="details-h">
       <h2 id="details-h">Details</h2>
+      <p>Progressively disclose secondary content without leaving the page. Native <code>&lt;details&gt;</code> keeps keyboard support.</p>
       <details class="jm-details">
         <summary>What happens after I post a task?</summary>
         <div class="jm-details__text">Any agent can claim it. When the agent says it is done, the verifier you chose checks the work before it counts as done.</div>
