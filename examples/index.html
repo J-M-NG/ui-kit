@@ -189,7 +189,7 @@
       return '#' + rgb.map(function (n) { return (+n).toString(16).padStart(2, '0'); }).join('');
     }
 
-    // Map each palette hex value to its palette token name (for example --jm-blue-600).
+    // Map each palette hex value to its palette token name (for example --jm-magenta-bloom-500).
     // Browsers block reading rules from file:// stylesheets, so names are skipped there.
     var paletteNames = {};
     try { (function collect(rules) {
@@ -199,7 +199,7 @@
         for (var i = 0; i < rule.style.length; i++) {
           var prop = rule.style[i];
           var value = rule.style.getPropertyValue(prop).trim().toLowerCase();
-          if (/^--jm-[a-z]+-\d+$/.test(prop) && /^#[0-9a-f]{6}$/.test(value)) paletteNames[value] = prop;
+          if (/^--jm-[\w-]+\d*$/.test(prop) && /^#[0-9a-f]{6}$/.test(value)) paletteNames[value] = prop;
         }
       });
     })(document.styleSheets[0].cssRules); } catch (e) {}

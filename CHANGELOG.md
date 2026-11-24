@@ -3,6 +3,10 @@
 All notable changes to this project are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Distinct palette refresh: graphite, dim grey and ivory mist neutrals; magenta bloom accent; coral glow warnings (replacing cool blue/grey GDS-adjacent defaults). GOV.UK heritage noted in changelog only; examples and portfolio copy de-emphasise government borrowing.
+- Flatter surfaces and buttons, lighter table headers, squarer tags, softer error summary chrome; heading weight tuned (system body unchanged).
+
 ### Added
 - `COMPONENT_REQUESTS.md` and `CLAUDE.md` guidance for logging missing `jm-` patterns from adopting projects.
 - `streamlit/config.toml` (light and dark theme mapped to `--jm-colour-*`), `streamlit/helpers.py`, `streamlit/README.md`; `tests/test_streamlit_helpers.py` in `npm test`.
