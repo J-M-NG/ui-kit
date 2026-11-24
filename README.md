@@ -1,93 +1,79 @@
 # ui-kit
 
-A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. It borrows the component, accessibility and content patterns of the [GOV.UK Design System](https://design-system.service.gov.uk/), but not its branding or look.
+![test](https://github.com/J-M-NG/ui-kit/actions/workflows/test.yml/badge.svg)
 
-Status: phase 3 dashboard patterns and portfolio on GitHub Pages; phase 4 (Streamlit theme, helpers, component-request workflow) pending merge. Not released yet (no git tag).
+A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible interaction patterns (semantic HTML, error summaries, visible focus) without government-service chrome — default cool grey and blue tokens.
 
-## Planned contents
-- `ui-kit.css`: design tokens (CSS custom properties) and component classes in cascade layers.
-- `ui-kit.js`: optional, dependency-free behaviour (for example sortable tables). Every component works without it.
-- `examples/`: pages showing every component and state; they are the documentation and the accessibility test target.
-- `streamlit/`: [`config.toml`](streamlit/config.toml) theme (copy to `.streamlit/config.toml`), [`helpers.py`](streamlit/helpers.py) for tags and figures via `st.html`; see [streamlit/README.md](streamlit/README.md).
-- [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md): backlog when adopting projects need a pattern the kit does not ship yet.
+**Status:** v1.0.0 (phases 0–4 complete). Portfolio at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/). Copy `ui-kit.css` from the [v1.0.0 tag](https://github.com/J-M-NG/ui-kit/releases/tag/v1.0.0) (tag after merge).
+
+## What's in the repo
+- `ui-kit.css` — tokens, base styles and `jm-` components in cascade layers.
+- `ui-kit.js` — optional behaviour: sortable tables, filters, tabs, dialogs.
+- `index.html` — portfolio hero with theme toggle and live project-hooks demo.
+- `examples/` — Foundation, Components and Composition chapters (documentation and axe targets).
+- `streamlit/` — [`config.toml`](streamlit/config.toml), [`helpers.py`](streamlit/helpers.py); see [streamlit/README.md](streamlit/README.md).
+- [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md) — backlog for patterns not in the kit yet.
+
+## Adopt the kit
+1. Copy `ui-kit.css` (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`.
+2. Link the stylesheet before your project CSS.
+3. Override only the [documented hooks](#project-hooks) if you need a distinct accent, heading face or corner radius.
+4. Run `python3 tests/check_contrast.py --project path/to/project.css` when changing colours.
 
 ## Principles
-- WCAG 2.2 AA: text contrast at least 4.5:1, visible focus, keyboard-only use, works at 400% zoom.
-- Semantic HTML first; classes style it, they do not replace it.
-- No build step, no npm, no framework.
-- System font stack; light and dark themes from the same tokens.
+- WCAG 2.2 AA: contrast, visible focus, keyboard use, 400% zoom.
+- Semantic HTML first; classes style real elements.
+- No build step, no framework; system font stack; OS-driven light/dark themes.
 
 ## Tokens
-`ui-kit.css` currently holds the design tokens (colours for light and dark, spacing, type, radius, shadow, focus, breakpoints) and a minimal base layer. Every token starts with `--jm-`; classes will start with `jm-`.
+Use semantic tokens (`--jm-colour-text`, `--jm-colour-accent`, …), not palette steps (`--jm-blue-600`, …). Force a theme with `data-theme` on `<html>`, or follow the OS default.
 
-- Use the semantic colour tokens (`--jm-colour-text`, `--jm-colour-accent`, `--jm-colour-error-text`, ...), not the palette tokens (`--jm-blue-600`, ...).
-- The theme follows the operating system. Force one with `data-theme="light"` or `data-theme="dark"` on `<html>`.
-- Everything is in cascade layers (`jm.tokens`, `jm.base`, `jm.components`, `jm.utilities`), so your own CSS overrides the kit without `!important`.
-
-See the token sheet: open `examples/index.html` in a browser, or run `python3 -m http.server` in the repository root and visit `http://localhost:8000/examples/` (palette names on the swatches only appear when served over HTTP).
+Open [`examples/index.html`](examples/index.html) for the token sheet with swatches (serve the repo over HTTP so palette names resolve).
 
 ## Components
-Open `examples/components.html` to see every component in each state, with the classes to use. Phase 2 covers buttons, text input, textarea, select, checkboxes, radios, fields with hints and errors, date input, error summary, summary list, status tags, notification banners, tables, details, and page layout (skip link, header, footer, container, stack, cluster). Every class starts with `jm-` and styles a real HTML element.
+[`examples/components.html`](examples/components.html) documents buttons, forms, feedback, tables, layout, **breadcrumbs**, **pagination**, **tabs**, **cards**, **dialogs**, and more.
+
+[`examples/dashboard.html`](examples/dashboard.html) shows composition patterns (panels, figures, charts, trails). Sort/filter needs `ui-kit.js`.
 
 ## Streamlit
-
-Copy `streamlit/config.toml` to your app’s `.streamlit/config.toml`, load `ui-kit.css` in the app, and use `streamlit/helpers.py` for `jm-tag`, `jm-figures` and `jm-summary-list` HTML. Full steps and a code sample are in [streamlit/README.md](streamlit/README.md).
-
-When a Streamlit layout needs a pattern that is not in the kit, log it in [COMPONENT_REQUESTS.md](COMPONENT_REQUESTS.md) and build an interim `jm-` solution with kit tokens (see root `CLAUDE.md`).
-
-## Dashboard examples
-
-Open `examples/dashboard.html` for the dashboard patterns: sidebar layout, panel, key figures, sortable and filterable table, trail of events, bar chart and sparkline, and empty, loading and error states. Sorting and filtering need the optional `ui-kit.js` (`<script src="ui-kit.js"></script>`); the table works without it.
+Copy `streamlit/config.toml` to `.streamlit/config.toml`, load `ui-kit.css`, use `helpers.py` for tags and figures. See [streamlit/README.md](streamlit/README.md).
 
 ## Project hooks
-A project may change only these, in its own stylesheet loaded after `ui-kit.css`:
+In your own stylesheet loaded **after** `ui-kit.css`:
 
 ```css
-/* project.css */
 :root {
-  --jm-radius-scale: 0;                 /* 0 = square corners, 1 = default */
-  --jm-font-family-heading: Georgia, serif; /* optional heading face */
+  --jm-radius-scale: 0;
+  --jm-font-family-heading: Georgia, serif;
   --jm-colour-accent: #0b6e8f;
   --jm-colour-accent-hover: #095a75;
   --jm-colour-link: #0b6e8f;
   --jm-colour-focus: #095a75;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --jm-colour-accent: #5fb6d6; --jm-colour-link: #5fb6d6; }
+  :root:not([data-theme="light"]) {
+    --jm-colour-accent: #5fb6d6;
+    --jm-colour-link: #5fb6d6;
+  }
 }
-:root[data-theme="dark"] { --jm-colour-accent: #5fb6d6; --jm-colour-link: #5fb6d6; }
+:root[data-theme="dark"] {
+  --jm-colour-accent: #5fb6d6;
+  --jm-colour-link: #5fb6d6;
+}
 ```
 
-Check a project's colours with `python3 tests/check_contrast.py --project path/to/project.css`.
-
-## Live examples (GitHub Pages)
-
-The portfolio walkthrough is static HTML at the repository root and in `examples/`. After merging to `main`, enable Pages once:
-
-1. Open the repository on GitHub → **Settings** → **Pages**.
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-3. Choose branch **`main`**, folder **`/ (root)`**, then **Save**.
-
-The site will be at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/) (root `index.html` links to the three chapters under `examples/`). A `.nojekyll` file at the root tells GitHub not to run Jekyll, so paths like `ui-kit.css` are served as-is.
-
-Locally, run `python3 -m http.server` in the repository root and open `http://localhost:8000/`.
+The portfolio [`index.html`](index.html) includes a live hooks demo (accent, radius, heading font).
 
 ## Checks
-```bash
-python3 tests/check_contrast.py
-```
-Checks every text and background pair for at least 4.5:1 contrast, and borders, focus rings and status marks for at least 3:1, in both themes (WCAG 2.2 AA). Python 3 standard library only.
-
 ```bash
 npm install
 npm test
 ```
-Runs the contrast check, then [axe-core](https://github.com/dequelabs/axe-core) (WCAG 2.0 to 2.2, A and AA) on every page in `examples/`, in light and dark, at 1280px and 375px, and fails if a page scrolls sideways. Node and npm are for these checks only; using the kit needs neither.
+Runs contrast pairs, Streamlit helper smoke tests, and axe on the portfolio and every example page (light/dark, desktop/phone).
 
-Automated checks catch only part of the problem. Before a release, also tab through `examples/components.html` with the keyboard only, and try it at 400% zoom.
-
-## Using it (once released)
-Copy the tagged `ui-kit.css` (and optionally `ui-kit.js`) into your project, for example `static/ui-kit/`. The version is in the file's header comment.
+```bash
+python3 tests/check_contrast.py
+```
 
 ## Licence
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE) (copyright Matt Ng).

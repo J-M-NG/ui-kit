@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ui-kit</title>
   <link rel="stylesheet" href="ui-kit.css">
+  <style id="jm-hooks-style">
+    /* Project hooks demo: only the documented tokens change here. */
+  </style>
 </head>
 <body>
 <div class="jm-page">
@@ -20,44 +23,137 @@
           <li><a href="examples/dashboard.html">Composition</a></li>
         </ul>
       </nav>
+      <div class="jm-cluster theme-switch" role="group" aria-label="Theme">
+        <button class="jm-button jm-button--secondary" type="button" data-set-theme="system" aria-pressed="true">System</button>
+        <button class="jm-button jm-button--secondary" type="button" data-set-theme="light" aria-pressed="false">Light</button>
+        <button class="jm-button jm-button--secondary" type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+      </div>
     </div>
   </header>
 
-  <main id="main" class="jm-container jm-stack jm-stack--loose">
-    <div class="jm-stack jm-stack--tight">
-      <h1>ui-kit</h1>
-      <p>A framework-free house style: design tokens and components in plain CSS, with HTML examples you can copy from. Borrowed from GOV.UK patterns, not its branding.</p>
-      <p class="jm-secondary-text">Walk through the kit in three chapters — foundation tokens, core components, then dashboard patterns composed from those pieces.</p>
-    </div>
+  <main id="main" class="jm-container jm-container--wide jm-stack jm-stack--loose">
+    <section class="jm-stack jm-stack--tight" aria-labelledby="hero-title">
+      <p class="jm-secondary-text">v1.0.0 — framework-free house style</p>
+      <h1 id="hero-title">Tokens, components and dashboard patterns in one CSS file</h1>
+      <p>Copy <code>ui-kit.css</code> into your project, optionally add <code>ui-kit.js</code> for sortable tables, filters, tabs and dialogs. Semantic HTML first, WCAG 2.2 AA, light and dark themes, no build step.</p>
+      <div class="jm-cluster">
+        <a class="jm-button" href="examples/components.html">Browse components</a>
+        <a class="jm-button jm-button--secondary" href="https://github.com/J-M-NG/ui-kit">View on GitHub</a>
+      </div>
+    </section>
+
+    <section class="jm-panel jm-stack" aria-labelledby="hooks-title">
+      <p class="jm-secondary-text" id="hooks-title">Project hooks (live)</p>
+      <p>Projects may override accent colours, heading font and corner radius in their own stylesheet. Try it here — changes apply only to this demo block.</p>
+      <div class="jm-filters">
+        <div class="jm-field">
+          <label class="jm-label" for="hook-accent">Accent colour</label>
+          <input class="jm-input jm-input--width-10" id="hook-accent" type="text" value="#1f5296" spellcheck="false" aria-describedby="hook-accent-hint">
+          <div class="jm-hint" id="hook-accent-hint">Maps to <code>--jm-colour-accent</code> and links</div>
+        </div>
+        <div class="jm-field">
+          <label class="jm-label" for="hook-radius">Corner radius scale</label>
+          <select class="jm-select" id="hook-radius">
+            <option value="1" selected>Default (1)</option>
+            <option value="0">Square (0)</option>
+          </select>
+        </div>
+        <div class="jm-field">
+          <label class="jm-label" for="hook-heading">Heading font</label>
+          <select class="jm-select" id="hook-heading">
+            <option value="system" selected>System UI</option>
+            <option value="georgia">Georgia</option>
+          </select>
+        </div>
+      </div>
+      <div class="jm-card" id="hooks-preview">
+        <div class="jm-card__body jm-stack jm-stack--tight">
+          <h2 class="jm-card__title">Preview heading</h2>
+          <p>Accent appears on <a href="#hooks-title">links</a> and the primary button below.</p>
+          <button class="jm-button" type="button">Primary action</button>
+        </div>
+      </div>
+    </section>
 
     <section class="jm-stack" aria-labelledby="chapters">
-      <h2 id="chapters">Chapters</h2>
+      <h2 id="chapters">Documentation chapters</h2>
       <ul class="jm-stack jm-stack--tight">
         <li>
-          <p><strong><a href="examples/index.html">Foundation</a></strong> — colour, type, spacing and elevation tokens in <code>ui-kit.css</code>, with live swatches and contrast notes.</p>
+          <p><strong><a href="examples/index.html">Foundation</a></strong> — palette, type, spacing, elevation and contrast checks with a theme switch.</p>
         </li>
         <li>
-          <p><strong><a href="examples/components.html">Components</a></strong> — buttons, forms, tables, tags, banners and layout primitives; each section explains when to use the pattern and shows every state.</p>
+          <p><strong><a href="examples/components.html">Components</a></strong> — forms, buttons, tables, tags, breadcrumbs, tabs, dialogs and layout primitives.</p>
         </li>
         <li>
-          <p><strong><a href="examples/dashboard.html">Composition</a></strong> — panels, key figures, sortable tables, charts and activity trails built only from kit classes; optional <code>ui-kit.js</code> for table sort and filter.</p>
+          <p><strong><a href="examples/dashboard.html">Composition</a></strong> — panels, figures, sortable tables, charts and activity trails; optional <code>ui-kit.js</code>.</p>
         </li>
       </ul>
     </section>
 
     <section class="jm-stack" aria-labelledby="start">
-      <h2 id="start">Get started</h2>
-      <p>Copy <code>ui-kit.css</code> (and optionally <code>ui-kit.js</code>) into your project. Override tokens in your own stylesheet loaded after the kit. Run <code>npm test</code> in this repository for contrast and accessibility checks.</p>
-      <p class="jm-secondary-text">When GitHub Pages is enabled on <code>main</code>, this site will live at <a href="https://j-m-ng.github.io/ui-kit/">https://j-m-ng.github.io/ui-kit/</a>.</p>
+      <h2 id="start">Adopt the kit</h2>
+      <ol class="jm-stack jm-stack--tight">
+        <li>Copy tagged <code>ui-kit.css</code> (and optionally <code>ui-kit.js</code>) from the <a href="https://github.com/J-M-NG/ui-kit/releases/tag/v1.0.0">v1.0.0 release</a> or this repo.</li>
+        <li>Link the stylesheet after your reset, before your project CSS.</li>
+        <li>Override hooks documented in the README if you need a distinct accent.</li>
+        <li>Run <code>npm test</code> in this repository when you change tokens or examples.</li>
+      </ol>
+      <p class="jm-secondary-text">Live portfolio: <a href="https://j-m-ng.github.io/ui-kit/">https://j-m-ng.github.io/ui-kit/</a></p>
     </section>
   </main>
 
   <footer class="jm-footer">
     <div class="jm-footer__inner">
-      <span>ui-kit, MIT licence</span>
+      <span>ui-kit v1.0.0, MIT licence</span>
       <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
     </div>
   </footer>
 </div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var hookStyle = document.getElementById('jm-hooks-style');
+    var accentInput = document.getElementById('hook-accent');
+    var radiusSelect = document.getElementById('hook-radius');
+    var headingSelect = document.getElementById('hook-heading');
+
+    function hooksCss(lightAccent) {
+      var darkAccent = '#7fa8dd';
+      var darkHover = '#adc8eb';
+      function block(a, h, on) {
+        return '--jm-colour-accent:' + a + ';--jm-colour-link:' + a + ';--jm-colour-accent-hover:' + h + ';--jm-colour-focus:' + h + ';--jm-colour-on-accent:' + on;
+      }
+      return '#hooks-preview{' + block(lightAccent, lightAccent, '#ffffff') + '}' +
+        '@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #hooks-preview{' + block(darkAccent, darkHover, '#0e1012') + '}}' +
+        ':root[data-theme="dark"] #hooks-preview{' + block(darkAccent, darkHover, '#0e1012') + '}';
+    }
+
+    function applyHooks() {
+      var accent = accentInput.value.trim();
+      var radius = radiusSelect.value;
+      var heading = headingSelect.value === 'georgia' ? 'Georgia, "Times New Roman", serif' : 'system-ui, sans-serif';
+      hookStyle.textContent = ':root{--jm-radius-scale:' + radius + ';--jm-font-family-heading:' + heading + ';}' + (accent.match(/^#[0-9a-fA-F]{6}$/) ? hooksCss(accent) : '');
+    }
+
+    [accentInput, radiusSelect, headingSelect].forEach(function (el) {
+      el.addEventListener('input', applyHooks);
+      el.addEventListener('change', applyHooks);
+    });
+    applyHooks();
+
+    var buttons = document.querySelectorAll('[data-set-theme]');
+    function setTheme(theme) {
+      if (theme === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', theme);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setTheme === theme)); });
+      try { localStorage.setItem('jm-theme', theme); } catch (e) {}
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setTheme(b.dataset.setTheme); }); });
+    var saved = null;
+    try { saved = localStorage.getItem('jm-theme'); } catch (e) {}
+    setTheme(saved || 'system');
+  })();
+</script>
 </body>
 </html>

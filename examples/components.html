@@ -272,6 +272,66 @@
       <p class="example-code"><code>.jm-details</code> on <code>&lt;details&gt;</code>; opens and closes without JavaScript.</p>
     </section>
 
+    <section class="jm-stack" aria-labelledby="navigation-patterns">
+      <h2 id="navigation-patterns">Navigation patterns</h2>
+      <p>Breadcrumbs, pagination and tabs for moving through content. Tabs need <code>ui-kit.js</code> for keyboard support; breadcrumbs and pagination work without it.</p>
+      <div class="example jm-stack">
+        <nav class="jm-breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li><span aria-current="page">Navigation patterns</span></li>
+          </ol>
+        </nav>
+        <nav class="jm-pagination" aria-label="Results pages">
+          <ul>
+            <li><a href="#navigation-patterns">Previous</a></li>
+            <li><a href="#navigation-patterns" aria-current="page">1</a></li>
+            <li><a href="#navigation-patterns">2</a></li>
+            <li><a href="#navigation-patterns">Next</a></li>
+          </ul>
+        </nav>
+        <div class="jm-tabs" data-jm-tabs>
+          <div class="jm-tabs__list" role="tablist" aria-label="Example tabs">
+            <button class="jm-tabs__tab" type="button" role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="true">Summary</button>
+            <button class="jm-tabs__tab" type="button" role="tab" id="tab-audit" aria-controls="panel-audit" aria-selected="false" tabindex="-1">Audit</button>
+          </div>
+          <div class="jm-tabs__panel" role="tabpanel" id="panel-summary" aria-labelledby="tab-summary">
+            <p>Overview text for the active tab panel.</p>
+          </div>
+          <div class="jm-tabs__panel" role="tabpanel" id="panel-audit" aria-labelledby="tab-audit" hidden>
+            <p>Supporting detail for reviewers.</p>
+          </div>
+        </div>
+      </div>
+      <p class="example-code"><code>.jm-breadcrumbs</code>, <code>.jm-pagination</code>, <code>.jm-tabs</code> with <code>data-jm-tabs</code>.</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="card-dialog">
+      <h2 id="card-dialog">Card and dialog</h2>
+      <p>Cards group related content; dialogs interrupt for a focused task. Use the native <code>&lt;dialog&gt;</code> element.</p>
+      <div class="example jm-cluster">
+        <article class="jm-card" style="max-width: 20rem;">
+          <div class="jm-card__header"><h3 class="jm-card__title">Release notes</h3></div>
+          <div class="jm-card__body"><p class="jm-secondary-text">v1.0.0 ships portfolio hero, common components and CI checks.</p></div>
+          <div class="jm-card__footer"><a href="../index.html">Open portfolio</a></div>
+        </article>
+        <button class="jm-button jm-button--secondary" type="button" data-jm-dialog-open="demo-dialog">Open dialog</button>
+      </div>
+      <dialog class="jm-dialog" id="demo-dialog" aria-labelledby="demo-dialog-title">
+        <div class="jm-dialog__header">
+          <h2 class="jm-dialog__title" id="demo-dialog-title">Confirm export</h2>
+          <form method="dialog"><button class="jm-dialog__close" type="submit" value="cancel">Close</button></form>
+        </div>
+        <div class="jm-dialog__body"><p>Your file will download when you confirm.</p></div>
+        <div class="jm-dialog__footer">
+          <form method="dialog"><button class="jm-button jm-button--secondary" type="submit" value="cancel">Cancel</button></form>
+          <form method="dialog"><button class="jm-button" type="submit" value="ok">Export</button></form>
+        </div>
+      </dialog>
+      <p class="example-code"><code>.jm-card</code>, <code>.jm-dialog</code>, <code>data-jm-dialog-open</code>.</p>
+    </section>
+
     <section class="jm-stack" aria-labelledby="layout">
       <h2 id="layout">Page layout</h2>
       <p>This page is built from the layout classes: <code>.jm-page</code> (header, main and footer, footer at the bottom), <code>.jm-skip-link</code>, <code>.jm-header</code>, <code>.jm-container</code> (<code>--wide</code>), <code>.jm-stack</code> (<code>--tight</code>, <code>--loose</code>), <code>.jm-cluster</code> and <code>.jm-footer</code>. Press Tab once to see the skip link.</p>
@@ -285,7 +345,7 @@
     </div>
   </footer>
 </div>
-
+<script src="../ui-kit.js"></script>
 <script>
   // Progressive enhancement: theme switch only. Everything else works without JavaScript.
   (function () {

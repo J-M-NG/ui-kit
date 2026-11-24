@@ -14,7 +14,13 @@ import { chromium } from 'playwright';
 const require = createRequire(import.meta.url);
 const axeSource = readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = readdirSync(join(root, 'examples')).filter((f) => f.endsWith('.html')).sort();
+const pages = [
+  { file: join(root, 'index.html'), label: 'portfolio (root index.html)' },
+  ...readdirSync(join(root, 'examples'))
+    .filter((f) => f.endsWith('.html'))
+    .sort()
+    .map((f) => ({ file: join(root, 'examples', f), label: f })),
+];
 const tags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 const viewports = [
   { name: 'desktop', width: 1280, height: 900 },
@@ -30,11 +36,11 @@ for (const page of pages) {
       const tab = await browser.newPage({ viewport: { width: vp.width, height: vp.height }, colorScheme });
       const errors = [];
       tab.on('pageerror', (e) => errors.push(e.message));
-      await tab.goto(pathToFileURL(join(root, 'examples', page)).href);
+      await tab.goto(pathToFileURL(page.file).href);
       await tab.addScriptTag({ content: axeSource });
       const result = await tab.evaluate((runTags) => window.axe.run(document, { runOnly: { type: 'tag', values: runTags } }), tags);
       const overflow = await tab.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-      const label = `${page} ${colorScheme} ${vp.name}`;
+      const label = `${page.label} ${colorScheme} ${vp.name}`;
       const problems = [];
       for (const v of result.violations) {
         problems.push(`${v.id} (${v.impact}): ${v.help}`);

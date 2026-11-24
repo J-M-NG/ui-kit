@@ -3,10 +3,19 @@
 All notable changes to this project are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Changed
-- Restored the pre–palette-experiment colour tokens (cool grey/blue palette at commit `6605370`), reverting the distinct-palette and carbon–almond v2 refreshes.
 
+## [1.0.0] - 2026-11-24
 ### Added
+- Portfolio hero (`index.html`) with light/dark/system theme toggle and live project-hooks demo.
+- Common components: breadcrumbs, pagination, tabs, cards, native dialog; optional `ui-kit.js` support for tabs and dialogs.
+- GitHub Actions workflow running `npm test`; pull request template with accessibility checklist.
+- Axe coverage for root portfolio page.
+
+### Changed
+- Restored default cool grey/blue palette (pre–palette experiments).
+- README and `LICENSE` updated for v1.0.0 release (copyright Matt Ng).
+
+### Added (phases 0–4, included in v1.0.0)
 - `COMPONENT_REQUESTS.md` and `CLAUDE.md` guidance for logging missing `jm-` patterns from adopting projects.
 - `streamlit/config.toml` (light and dark theme mapped to `--jm-colour-*`), `streamlit/helpers.py`, `streamlit/README.md`; `tests/test_streamlit_helpers.py` in `npm test`.
 - Chart tokens: fixed-order series colours `--jm-colour-chart-1` to `-5` and `-other`, and a five-step sequential scale `--jm-colour-heat-1` to `-5` with matching text colours, for both themes; `jm-series-*`, `jm-heat-*`, `jm-chart` (title and note), `jm-lines` (line chart with direct labels). `tests/check_contrast.py` now checks 93 pairs per theme.

@@ -8,6 +8,8 @@
  * Table filter: <input data-jm-filter="table-id"> hides rows whose text does not
  *   contain the typed words. An element with role="status" and
  *   data-jm-filter-status="table-id" receives the count in words.
+ * Tabs: add data-jm-tabs to .jm-tabs; buttons use role="tab" with aria-controls.
+ * Dialog: buttons with data-jm-dialog-open="id" call showModal() on <dialog id="id">.
  */
 (function () {
   'use strict';
@@ -71,6 +73,51 @@
     apply();
   }
 
+  function makeTabs(root) {
+    var tabs = root.querySelectorAll('[role="tab"]');
+    var panels = root.querySelectorAll('[role="tabpanel"]');
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p) {
+        p.hidden = p.id !== tab.getAttribute('aria-controls');
+      });
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab); });
+      tab.addEventListener('keydown', function (e) {
+        var next = i;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        tabs[next].focus();
+        select(tabs[next]);
+      });
+    });
+    var current = root.querySelector('[role="tab"][aria-selected="true"]') || tabs[0];
+    if (current) select(current);
+  }
+
+  function makeDialogs() {
+    document.querySelectorAll('[data-jm-dialog-open]').forEach(function (btn) {
+      var id = btn.getAttribute('data-jm-dialog-open');
+      var dialog = document.getElementById(id);
+      if (!dialog || !dialog.showModal) return;
+      btn.addEventListener('click', function () { dialog.showModal(); });
+    });
+    document.querySelectorAll('.jm-dialog').forEach(function (dialog) {
+      dialog.addEventListener('cancel', function (e) { e.preventDefault(); dialog.close(); });
+    });
+  }
+
   document.querySelectorAll('table[data-jm-sortable]').forEach(makeSortable);
   document.querySelectorAll('input[data-jm-filter]').forEach(makeFilter);
+  document.querySelectorAll('[data-jm-tabs]').forEach(makeTabs);
+  makeDialogs();
 })();
