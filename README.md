@@ -1,6 +1,6 @@
 # ui-kit
 
-A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible interaction patterns (semantic HTML, error summaries, visible focus) without government-service chrome — warm graphite, ivory and magenta-bloom accents.
+A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible interaction patterns (semantic HTML, error summaries, visible focus) without government-service chrome — **carbon–almond** palette v2: almond silk surfaces, charcoal-blue accent, muted lilac and rosy granite secondary (see [Matt’s Coolors reference](https://coolors.co/172121-444554-7f7b82-bfacb5-e5d0cc)).
 
 Status: phase 3 dashboard patterns and portfolio on GitHub Pages; phase 4 (Streamlit theme, helpers, component-request workflow) pending merge. Not released yet (no git tag).
 
@@ -20,7 +20,7 @@ Status: phase 3 dashboard patterns and portfolio on GitHub Pages; phase 4 (Strea
 ## Tokens
 `ui-kit.css` currently holds the design tokens (colours for light and dark, spacing, type, radius, shadow, focus, breakpoints) and a minimal base layer. Every token starts with `--jm-`; classes will start with `jm-`.
 
-- Use the semantic colour tokens (`--jm-colour-text`, `--jm-colour-accent`, `--jm-colour-error-text`, ...), not the palette tokens (`--jm-graphite-100`, `--jm-magenta-bloom-500`, ...).
+- Use the semantic colour tokens (`--jm-colour-text`, `--jm-colour-accent`, `--jm-colour-error-text`, ...), not the palette tokens (`--jm-carbon-500`, `--jm-charcoal-blue-500`, ...).
 - The theme follows the operating system. Force one with `data-theme="light"` or `data-theme="dark"` on `<html>`.
 - Everything is in cascade layers (`jm.tokens`, `jm.base`, `jm.components`, `jm.utilities`), so your own CSS overrides the kit without `!important`.
 
@@ -47,15 +47,15 @@ A project may change only these, in its own stylesheet loaded after `ui-kit.css`
 :root {
   --jm-radius-scale: 0;                 /* 0 = square corners, 1 = default */
   --jm-font-family-heading: Georgia, serif; /* optional heading face */
-  --jm-colour-accent: #a82848;
-  --jm-colour-accent-hover: #8a2038;
-  --jm-colour-link: #a82848;
-  --jm-colour-focus: #a82a4e;
+  --jm-colour-accent: #444554;
+  --jm-colour-accent-hover: #353642;
+  --jm-colour-link: #444554;
+  --jm-colour-focus: #172121;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --jm-colour-accent: #e5446d; --jm-colour-link: #ea6687; }
+  :root:not([data-theme="light"]) { --jm-colour-accent: #bfacb5; --jm-colour-link: #ebdad7; }
 }
-:root[data-theme="dark"] { --jm-colour-accent: #e5446d; --jm-colour-link: #ea6687; }
+:root[data-theme="dark"] { --jm-colour-accent: #bfacb5; --jm-colour-link: #ebdad7; }
 ```
 
 Check a project's colours with `python3 tests/check_contrast.py --project path/to/project.css`.
