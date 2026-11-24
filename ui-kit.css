@@ -385,9 +385,12 @@
     display: none !important;
   }
 
+  /* Reserve the scrollbar's space on every page, so content does not move
+     sideways between pages that scroll and pages that do not. */
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    scrollbar-gutter: stable;
   }
 
   body {
@@ -607,10 +610,11 @@
     }
   }
 
+  /* No weight change: a bolder current link is wider on fonts with a medium
+     face, which moves every other link as you change page. */
   .jm-header__nav a[aria-current="page"] {
     background: var(--jm-colour-accent-subtle);
     color: var(--jm-colour-accent);
-    font-weight: var(--jm-font-weight-medium);
   }
 
   .jm-footer {
@@ -1585,10 +1589,10 @@
     color: var(--jm-colour-text);
   }
 
+  /* Same weight as unselected tabs, so selecting one does not shift the row. */
   .jm-tabs__tab[aria-selected="true"] {
     border-bottom-color: var(--jm-colour-accent);
     color: var(--jm-colour-text);
-    font-weight: var(--jm-font-weight-semibold);
   }
 
   .jm-tabs__panel {

@@ -30,10 +30,14 @@
   color: var(--jm-colour-text);
 }
 
+:root:not([data-site-js]) .theme-switch {
+  display: none;
+}
+
+/* Same weight as the other buttons, so pressing one does not resize the group. */
 .theme-switch button[aria-pressed="true"] {
   background: var(--jm-colour-accent-subtle);
   color: var(--jm-colour-text);
-  font-weight: var(--jm-font-weight-semibold);
 }
 
 /* Page intro: kicker, h1, lead. */
