@@ -58,8 +58,8 @@
       <h2 id="buttons">Buttons</h2>
       <p>Say what the button does. Use one primary button per screen; warning buttons only for actions that destroy something.</p>
       <div class="example jm-cluster">
-        <button class="jm-button" type="button">Save changes</button>
-        <button class="jm-button jm-button--secondary" type="button">Save draft</button>
+        <button class="jm-button" type="button">Save and continue</button>
+        <button class="jm-button jm-button--secondary" type="button">Save as draft</button>
         <button class="jm-button jm-button--warning" type="button">Delete task</button>
         <button class="jm-button" type="button" disabled>Submit (disabled)</button>
         <a class="jm-button jm-button--secondary" href="#buttons">Link styled as a button</a>
@@ -177,7 +177,7 @@
       <h2 id="error-summary">Error summary</h2>
       <p>Show at the top of the page after a failed submit. Each link moves focus to the field with the problem. Give it <code>tabindex="-1"</code> and move focus to it when the page loads.</p>
       <div class="jm-error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1">
-        <h3 class="jm-error-summary__title" id="error-summary-title">Fix the following</h3>
+        <h3 class="jm-error-summary__title" id="error-summary-title">There is a problem</h3>
         <ul>
           <li><a href="#email">Enter an email address in the correct format, like name@example.com</a></li>
           <li><a href="#due-day">Due date must be in the future</a></li>

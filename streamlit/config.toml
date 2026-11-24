@@ -4,33 +4,33 @@
 [theme]
 
 # Chart series (matches --jm-colour-chart-1 … 5, light theme)
-chartCategoricalColors = ["#444554", "#704b29", "#4c4a4f", "#17623a", "#9e2222"]
+chartCategoricalColors = ["#1f5296", "#9a5b00", "#6a3d9a", "#17623a", "#9e2222"]
 
 [theme.light]
 # --jm-colour-accent, --jm-colour-background, --jm-colour-surface, --jm-colour-text, --jm-colour-link
-primaryColor = "#444554"
-backgroundColor = "#e5d0cc"
-secondaryBackgroundColor = "#f8efed"
-textColor = "#172121"
-linkColor = "#444554"
+primaryColor = "#1f5296"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f5f6f8"
+textColor = "#17191c"
+linkColor = "#1f5296"
 linkUnderline = false
 
 [theme.light.sidebar]
-backgroundColor = "#f8efed"
-secondaryBackgroundColor = "#f2e5e2"
-textColor = "#172121"
+backgroundColor = "#f5f6f8"
+secondaryBackgroundColor = "#eaecef"
+textColor = "#17191c"
 
 [theme.dark]
-# Dark semantic tokens (lilac-ash accent, carbon-black background, etc.)
-primaryColor = "#bfacb5"
-backgroundColor = "#172121"
-secondaryBackgroundColor = "#111818"
-textColor = "#e5d0cc"
-linkColor = "#ebdad7"
+# Dark semantic tokens (--jm-blue-300 accent, grey-900 background, etc.)
+primaryColor = "#7fa8dd"
+backgroundColor = "#17191c"
+secondaryBackgroundColor = "#24282d"
+textColor = "#f5f6f8"
+linkColor = "#7fa8dd"
 linkUnderline = false
-chartCategoricalColors = ["#bfacb5", "#f5e8d9", "#949097", "#6cc08a", "#ee8a8a"]
+chartCategoricalColors = ["#7fa8dd", "#f0b44c", "#c3a6e6", "#6cc08a", "#ee8a8a"]
 
 [theme.dark.sidebar]
-backgroundColor = "#111818"
-secondaryBackgroundColor = "#0b1010"
-textColor = "#e5d0cc"
+backgroundColor = "#24282d"
+secondaryBackgroundColor = "#0e1012"
+textColor = "#f5f6f8"
