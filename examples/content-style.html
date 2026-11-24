@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ui-kit: content style</title>
+  <link rel="stylesheet" href="../ui-kit.css">
+  <style>
+    .example { padding: var(--jm-space-5); border: var(--jm-border-width) solid var(--jm-colour-border); border-radius: var(--jm-radius-lg); }
+  </style>
+</head>
+<body>
+<div class="jm-page">
+  <a class="jm-skip-link" href="#main">Skip to main content</a>
+
+  <header class="jm-header">
+    <div class="jm-header__inner">
+      <a class="jm-header__name" href="../index.html">ui-kit</a>
+      <nav class="jm-header__nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Foundation</a></li>
+          <li><a href="components.html">Components</a></li>
+          <li><a href="dashboard.html">Composition</a></li>
+          <li><a href="content-style.html" aria-current="page">Content style</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="jm-container jm-stack jm-stack--loose">
+    <div class="jm-stack jm-stack--tight">
+      <p class="jm-secondary-text">Guide</p>
+      <h1>Content style</h1>
+      <p>How to write copy that fits the kit: plain, active sentences; British spelling; accessible patterns without government-service tone.</p>
+    </div>
+
+    <section class="jm-stack" aria-labelledby="voice">
+      <h2 id="voice">Voice</h2>
+      <ul class="jm-stack jm-stack--tight">
+        <li>Prefer <strong>you</strong> and name the action (“Save changes”, not “Save and continue”).</li>
+        <li>Headings state the topic; buttons state the outcome.</li>
+        <li>Errors say what to fix, with an example when format matters.</li>
+        <li>Status tags always include a word; never rely on colour alone.</li>
+      </ul>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="headings">
+      <h2 id="headings">Headings</h2>
+      <p>Editorial serif by default; body stays system UI. Use sentence case unless a proper noun needs capitals.</p>
+      <div class="example jm-stack jm-panel">
+        <h3>Good</h3>
+        <p><strong>Tasks this week</strong> — scannable, specific.</p>
+        <h3>Avoid</h3>
+        <p><strong>Your tasks</strong> — vague service phrasing when the screen already shows tasks.</p>
+      </div>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="actions">
+      <h2 id="actions">Buttons and links</h2>
+      <div class="example jm-cluster">
+        <button class="jm-button" type="button">Export CSV</button>
+        <button class="jm-button jm-button--secondary" type="button">Cancel</button>
+        <button class="jm-button jm-button--warning" type="button">Delete board</button>
+      </div>
+      <p>Use one primary button per view. Link text should describe the destination (“Open composition demo”).</p>
+    </section>
+
+    <section class="jm-stack" aria-labelledby="errors">
+      <h2 id="errors">Errors and validation</h2>
+      <div class="jm-error-summary" role="alert" aria-labelledby="err-title" tabindex="-1">
+        <h3 class="jm-error-summary__title" id="err-title">Fix these fields</h3>
+        <ul>
+          <li><a href="#errors">Enter a board name with at least three characters</a></li>
+        </ul>
+      </div>
+      <p class="jm-secondary-text">British spelling: “colour” in documentation; user-facing product copy may follow your product’s locale.</p>
+    </section>
+  </main>
+
+  <footer class="jm-footer">
+    <div class="jm-footer__inner">
+      <span>ui-kit · MIT</span>
+      <a href="https://github.com/J-M-NG/ui-kit">Source on GitHub</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

@@ -4,20 +4,21 @@
 
 A small, framework-free house style for my projects: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Accessible patterns (semantic HTML, error summaries, visible focus) with a calm product voice — serif headings, flat buttons, cool grey and blue tokens you can override with hooks.
 
-**Status:** v1.0.1 (phases 0–4 complete). Portfolio at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/). Copy `ui-kit.css` from the latest [release tag](https://github.com/J-M-NG/ui-kit/releases).
+**Status:** v1.1.0 (phases 0–4 complete). Portfolio at [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/). Copy `ui-kit.css` from the latest [release tag](https://github.com/J-M-NG/ui-kit/releases).
 
 ## What's in the repo
 - `ui-kit.css` — tokens, base styles and `jm-` components in cascade layers.
 - `ui-kit.js` — optional behaviour: sortable tables, filters, tabs, dialogs.
 - `index.html` — portfolio hero with theme toggle and live project-hooks demo.
-- `examples/` — Foundation, Components and Composition chapters (documentation and axe targets).
+- `examples/` — Foundation, Components, Composition and Content style (documentation and axe targets).
+- `presets/` — optional hook-only stylesheets ([`presets/README.md`](presets/README.md)).
 - `streamlit/` — [`config.toml`](streamlit/config.toml), [`helpers.py`](streamlit/helpers.py); see [streamlit/README.md](streamlit/README.md).
 - [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md) — backlog for patterns not in the kit yet.
 
 ## Adopt the kit
 1. Copy `ui-kit.css` (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`.
 2. Link the stylesheet before your project CSS.
-3. Override only the [documented hooks](#project-hooks) if you need a distinct accent, heading face or corner radius.
+3. Optionally link a [preset](presets/README.md) after `ui-kit.css`, or override only the [documented hooks](#project-hooks).
 4. Run `python3 tests/check_contrast.py --project path/to/project.css` when changing colours.
 
 ## Principles

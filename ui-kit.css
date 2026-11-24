@@ -1,5 +1,5 @@
 /*!
- * ui-kit v1.0.1 (tokens, components, dashboard patterns)
+ * ui-kit v1.1.0 (tokens, components, dashboard patterns)
  * https://github.com/J-M-NG/ui-kit
  * MIT licence. See LICENSE.
  *
@@ -96,7 +96,7 @@
 
     /* Typography: system body; serif-forward headings (hook can reset to sans). */
     --jm-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    --jm-font-family-heading: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif; /* hook: optional heading face */
+    --jm-font-family-heading: "Palatino Linotype", Palatino, Georgia, "Iowan Old Style", serif; /* hook: optional heading face */
     --jm-font-family-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     --jm-font-size-xs: 0.8125rem; /* 13px: captions only, never body text */
@@ -105,7 +105,7 @@
     --jm-font-size-lg: 1.1875rem; /* 19px: lead text, h4 */
     --jm-font-size-xl: 1.5rem; /* 24px: h3 */
     --jm-font-size-2xl: 2rem; /* 32px: h2 */
-    --jm-font-size-3xl: 2.5rem; /* 40px: h1 */
+    --jm-font-size-3xl: 2.75rem; /* 44px: h1 */
 
     --jm-line-height-tight: 1.2;
     --jm-line-height-normal: 1.5;
@@ -162,8 +162,8 @@
   :root {
     color-scheme: light;
 
-    --jm-colour-background: var(--jm-grey-0);
-    --jm-colour-surface: var(--jm-grey-50);
+    --jm-colour-background: var(--jm-grey-50);
+    --jm-colour-surface: var(--jm-grey-0);
     --jm-colour-surface-sunken: var(--jm-grey-100);
 
     --jm-colour-text: var(--jm-grey-900);
@@ -406,8 +406,12 @@
     font-weight: var(--jm-font-weight-bold);
   }
 
-  h1 { font-size: var(--jm-font-size-3xl); letter-spacing: -0.02em; }
-  h2 { font-size: var(--jm-font-size-2xl); letter-spacing: -0.015em; }
+  h1 {
+    font-size: var(--jm-font-size-3xl);
+    font-weight: var(--jm-font-weight-bold);
+    letter-spacing: -0.035em;
+  }
+  h2 { font-size: var(--jm-font-size-2xl); letter-spacing: -0.02em; }
   h3 { font-size: var(--jm-font-size-xl); }
   h4 { font-size: var(--jm-font-size-lg); }
 
@@ -1302,9 +1306,15 @@
     display: block;
     width: var(--jm-bar, 0%);
     height: 100%;
-    background: var(--jm-series, var(--jm-colour-accent));
-    border-radius: var(--jm-radius-sm);
+    background: var(--jm-series, var(--jm-colour-chart-1));
+    border-radius: var(--jm-radius-pill);
   }
+
+  .jm-bars > li:nth-child(1) { --jm-series: var(--jm-colour-chart-1); }
+  .jm-bars > li:nth-child(2) { --jm-series: var(--jm-colour-chart-2); }
+  .jm-bars > li:nth-child(3) { --jm-series: var(--jm-colour-chart-3); }
+  .jm-bars > li:nth-child(4) { --jm-series: var(--jm-colour-chart-4); }
+  .jm-bars > li:nth-child(5) { --jm-series: var(--jm-colour-chart-5); }
 
   .jm-bars__value {
     font-family: var(--jm-font-family-mono);
@@ -1404,10 +1414,32 @@
     text-align: center;
   }
 
+  /* Optional CSS-only motif above the title (no image assets). */
+  .jm-empty--pattern::before {
+    content: "";
+    display: block;
+    width: 5rem;
+    height: 3.25rem;
+    margin: 0 auto var(--jm-space-4);
+    border: var(--jm-border-width) dashed var(--jm-colour-border-strong);
+    border-radius: var(--jm-radius-lg);
+    background:
+      linear-gradient(165deg, var(--jm-colour-accent-subtle) 40%, transparent 40%),
+      repeating-linear-gradient(
+        -12deg,
+        transparent,
+        transparent 6px,
+        var(--jm-colour-border) 6px,
+        var(--jm-colour-border) 7px
+      );
+    opacity: 0.85;
+  }
+
   .jm-empty__title {
     margin: 0 0 var(--jm-space-2);
-    font-size: var(--jm-font-size-lg);
-    font-weight: var(--jm-font-weight-bold);
+    font-family: var(--jm-font-family-heading);
+    font-size: var(--jm-font-size-xl);
+    font-weight: var(--jm-font-weight-medium);
   }
 
   .jm-empty > :last-child {
@@ -1431,6 +1463,22 @@
     border-top-color: var(--jm-colour-accent);
     border-radius: 50%;
     animation: jm-spin 0.9s linear infinite;
+  }
+
+  /* Static block motif instead of the spinner (still use role="status" text). */
+  .jm-loading--blocks::before {
+    width: 3.5rem;
+    height: 1.125rem;
+    border: none;
+    border-radius: var(--jm-radius-sm);
+    animation: none;
+    background: linear-gradient(
+      90deg,
+      var(--jm-colour-border) 0 28%,
+      var(--jm-colour-surface-sunken) 28% 52%,
+      var(--jm-colour-border) 52% 72%,
+      var(--jm-colour-surface-sunken) 72% 100%
+    );
   }
 
   @keyframes jm-spin {

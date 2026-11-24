@@ -4,7 +4,17 @@ Phase 4 maps Streamlit chrome to the same semantic colours as `ui-kit.css`, and 
 
 ## 1. Theme
 
-Copy `streamlit/config.toml` from this repository into your app as **`.streamlit/config.toml`** (create the folder if needed). Light and dark blocks follow `--jm-colour-*` tokens. Viewers can still switch theme from Streamlit’s app menu.
+Copy `streamlit/config.toml` from this repository into your app as **`.streamlit/config.toml`** (create the folder if needed). Light and dark blocks follow `--jm-colour-*` tokens (accent `#2b67b5` light / `#7fa8dd` dark; page background `#f5f6f8` light to match the kit’s warmer surface). Viewers can still switch theme from Streamlit’s app menu.
+
+### Does not look like default Streamlit
+
+Out of the box, Streamlit uses saturated red primary buttons and bright white chrome. With this config plus `ui-kit.css` on custom HTML:
+
+- Primary actions use the same blue accent as the kit (not Streamlit red).
+- Background and sidebar greys align with `--jm-colour-background` / `--jm-colour-surface`.
+- Chart categorical colours match `--jm-colour-chart-1` … `5`.
+
+**Manual check:** run your app, toggle light/dark in Streamlit’s menu, and confirm widgets and any `st.html` blocks share one accent. A screenshot is optional; the contrast script and `npm test` Streamlit smoke test cover token alignment in this repo.
 
 ## 2. Load `ui-kit.css`
 
