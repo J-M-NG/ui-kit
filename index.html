@@ -85,8 +85,8 @@
             <div class="jm-field">
               <label class="jm-label" for="hook-heading">Heading face</label>
               <select class="jm-select" id="hook-heading">
-                <option value="kit" selected>Serif (kit default)</option>
-                <option value="system">System sans</option>
+                <option value="kit" selected>Source Serif (kit default)</option>
+                <option value="system">Source Sans</option>
               </select>
             </div>
             <div class="jm-field">
@@ -161,7 +161,7 @@
       var accent = accentInput.value.trim();
       var s = radiusSelect.value;
       var heading = headingSelect.value === 'system'
-        ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+        ? 'var(--jm-font-family)'
         : '';
       var base = '--jm-radius-sm:calc(3px * ' + s + ');--jm-radius-md:calc(6px * ' + s + ');--jm-radius-lg:calc(10px * ' + s + ');' +
         (heading ? '--jm-font-family-heading:' + heading + ';' : '');

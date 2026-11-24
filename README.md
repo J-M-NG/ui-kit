@@ -8,6 +8,7 @@ The CSS I use for forms, tables and dashboards across my projects. It's one styl
 
 ## What's in the repo
 - `ui-kit.css`: tokens, base styles and `jm-` components in cascade layers.
+- `fonts/`: Source Serif 4 and Source Sans 3 as variable WOFF2 files (about 400 KB in total, browsers only download the subsets a page uses), with their SIL Open Font Licences.
 - `ui-kit.js`: optional script for sortable tables, filters, tabs and dialogs.
 - `index.html`: documentation home with a live project-hooks demo.
 - `examples/`: Foundation, Components, Composition and Content style chapters (also the axe test targets). `examples/site.css` and `site.js` are the documentation site's own chrome (theme switch, example frames), not part of the kit.
@@ -16,7 +17,7 @@ The CSS I use for forms, tables and dashboards across my projects. It's one styl
 - [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md): backlog for patterns not in the kit yet.
 
 ## Adopt the kit
-1. Copy `ui-kit.css` (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`.
+1. Copy `ui-kit.css` and the `fonts/` folder (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`. Keep `fonts/` next to `ui-kit.css`; without it the kit falls back to system fonts.
 2. Link the stylesheet before your project CSS.
 3. Optionally link a [preset](presets/README.md) after `ui-kit.css`, or override only the [documented hooks](#project-hooks).
 4. Run `python3 tests/check_contrast.py --project path/to/project.css` when changing colours.
@@ -24,8 +25,8 @@ The CSS I use for forms, tables and dashboards across my projects. It's one styl
 ## Principles
 - WCAG 2.2 AA: contrast, visible focus, keyboard use, 400% zoom.
 - Semantic HTML first; classes style real elements.
-- No build step, no framework, no web fonts; OS-driven light and dark themes.
-- Type: serif for page and section headings (h1 to h3), system sans for everything else; monospace only for code, ids, timestamps and table numbers.
+- No build step, no framework, no third-party font requests; OS-driven light and dark themes.
+- Type: Source Serif 4 for page and section headings (h1 to h3), Source Sans 3 for everything else; system monospace only for code, ids, timestamps and table numbers. The two Source faces were drawn as companions, so they share proportions and x-height.
 - Copy follows [`examples/content-style.html`](examples/content-style.html).
 
 ## Tokens
@@ -47,7 +48,7 @@ In your own stylesheet loaded **after** `ui-kit.css`:
 ```css
 :root {
   --jm-radius-scale: 0;
-  --jm-font-family-heading: system-ui, sans-serif;
+  --jm-font-family-heading: var(--jm-font-family); /* sans headings */
   --jm-colour-accent: #0b6e8f;
   --jm-colour-accent-hover: #095a75;
   --jm-colour-link: #0b6e8f;

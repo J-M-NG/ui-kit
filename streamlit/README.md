@@ -4,7 +4,7 @@ Maps Streamlit chrome to the same semantic colours as `ui-kit.css`, and provides
 
 ## 1. Theme
 
-Copy `streamlit/config.toml` from this repository into your app as **`.streamlit/config.toml`** (create the folder if needed). Light and dark blocks follow the `--jm-colour-*` tokens: accent `#2b67b5` light and `#7fa8dd` dark, page background `#f5f6f8` light and `#17191c` dark, and chart colours in the same order as `--jm-colour-chart-1` to `-5`. Viewers can still switch theme from Streamlit’s app menu.
+Copy `streamlit/config.toml` from this repository into your app as **`.streamlit/config.toml`** (create the folder if needed). Light and dark blocks follow the `--jm-colour-*` tokens: accent `#2b67b5` light and `#7fa8dd` dark, page background `#f5f6f8` light and `#17191c` dark, and chart colours in the same order as `--jm-colour-chart-1` to `-5`. Fonts match too: Streamlit already ships Source Sans and Source Serif, so the config sets `font = "sans-serif"` and `headingFont = "serif"` (Streamlit 1.45 or later) with nothing extra to load. Viewers can still switch theme from Streamlit’s app menu.
 
 With this config, primary actions use the kit's blue instead of Streamlit's default red, and backgrounds, sidebar and charts match pages built with the kit.
 

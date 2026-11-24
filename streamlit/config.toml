@@ -3,6 +3,11 @@
 
 [theme]
 
+# Streamlit ships Source Sans and Source Serif, the same faces as ui-kit.css.
+# headingFont needs Streamlit 1.45 or later.
+font = "sans-serif"
+headingFont = "serif"
+
 # Chart series (matches --jm-colour-chart-1 … 5, light theme)
 chartCategoricalColors = ["#1f5296", "#9a5b00", "#6a3d9a", "#17623a", "#9e2222"]
 

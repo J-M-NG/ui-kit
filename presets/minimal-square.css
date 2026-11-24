@@ -1,8 +1,8 @@
 /*!
  * ui-kit preset: minimal-square
- * Sans headings, square corners — calm utilitarian chrome.
+ * Sans headings (the body font, Source Sans 3) and square corners.
  */
 :root {
   --jm-radius-scale: 0;
-  --jm-font-family-heading: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --jm-font-family-heading: var(--jm-font-family);
 }
