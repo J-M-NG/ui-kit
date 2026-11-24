@@ -5,6 +5,10 @@
   var root = document.documentElement;
   var key = 'jm-theme';
 
+  // Set before the body is parsed so the switch takes its space from the first
+  // paint; site.css hides it only when this script has not run.
+  root.setAttribute('data-site-js', '');
+
   function apply(theme) {
     if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
     else root.removeAttribute('data-theme');
@@ -20,7 +24,6 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     apply(saved || 'system');
-    document.querySelectorAll('.theme-switch').forEach(function (group) { group.hidden = false; });
     document.querySelectorAll('[data-set-theme]').forEach(function (b) {
       b.addEventListener('click', function () {
         var theme = b.dataset.setTheme;

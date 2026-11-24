@@ -10,7 +10,8 @@ No version has been tagged yet. Earlier drafts of this file listed 1.0.1 and 1.1
 - Surfaces: the page sits on `--jm-colour-background` (grey-50 in light) and `jm-panel`, `jm-card`, `jm-dialog` and the header sit on `--jm-colour-surface`, so raised content reads as raised in both themes. Table headers use a rule instead of a filled band; the information banner uses its own tint like the other banners; hover states use `--jm-colour-surface-sunken`.
 - Type: one pairing rule. Serif (`--jm-font-family-heading`) for h1 to h3 only; h4, panel, card, dialog, caption, chart, error-summary and empty-state titles use the system sans at semibold. Headings use weight 600 (new token `--jm-font-weight-semibold`) with milder tracking; h1 scales from 2rem on phones to 2.75rem. The heading stack now ends in Noto Serif and DejaVu Serif instead of a generic serif.
 - Key figures use tabular sans figures instead of monospace; numeric table headers are no longer monospace (cells still are).
-- Tabs mark the selected tab with an accent underline, so they work on any surface.
+- Tabs mark the selected tab with an accent underline, so they work on any surface. The selected tab and the current header link no longer change font weight, so selecting a tab or changing page does not shift the items beside them.
+- `html` reserves the scrollbar's space (`scrollbar-gutter: stable`), so content does not move sideways between pages that scroll and pages that do not.
 - `jm-empty` centres its content properly. Buttons placed directly in a `jm-stack` keep their own width.
 - Header: on phones the navigation takes its own row under the name; nav links are smaller.
 - Secondary buttons are transparent, so they sit correctly on any surface.
@@ -20,6 +21,7 @@ No version has been tagged yet. Earlier drafts of this file listed 1.0.1 and 1.1
 - `presets/default-serif.css`, which only restated the defaults. `presets/matt-warm.css` is renamed `presets/teal.css` and its dark hover now uses a palette colour.
 
 ### Fixed
+- Documentation site: the theme switch takes its space from the first paint instead of appearing after the page has loaded, which moved the header nav about 200px (layout shift score 0.13 to 0.16 at 1280px, now 0). Pressing a theme button no longer resizes the switch.
 - Documentation site: one shared header with a compact theme switch on every page (`examples/site.css`, `examples/site.js`); the chosen theme now persists across all pages, including Composition and Content style.
 - Portfolio rebuilt: panels had no inner padding, and the identity block, "signature" bar, placeholder metrics and duplicate links were removed. The hooks demo now really is scoped to its preview (radius and heading font previously changed the whole page).
 - Foundation type scale shows the actual heading face and sizes; status samples match the banners.
