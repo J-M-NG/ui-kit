@@ -2,18 +2,18 @@
 
 ![test](https://github.com/J-M-NG/ui-kit/actions/workflows/test.yml/badge.svg)
 
-A small, framework-free house style for products and dashboards: design tokens and components in plain CSS, with HTML examples and a Streamlit theme. Semantic HTML, visible focus and WCAG 2.2 AA contrast in light and dark; serif headings over a system sans, flat controls, cool grey and blue tokens you can override with hooks.
+The CSS I use for forms, tables and dashboards across my projects. It's one stylesheet with no framework and no build step, plus an optional script and a Streamlit theme. Colours pass WCAG 2.2 AA contrast in light and dark. Projects can change the accent colour, heading font and corner radius; everything else is shared.
 
 **Status:** 1.0.0, not yet tagged. Until a release is tagged, copy `ui-kit.css` from a specific commit on `main` so your copy does not move under you. Documentation site: [https://j-m-ng.github.io/ui-kit/](https://j-m-ng.github.io/ui-kit/).
 
 ## What's in the repo
-- `ui-kit.css` — tokens, base styles and `jm-` components in cascade layers.
-- `ui-kit.js` — optional behaviour: sortable tables, filters, tabs, dialogs.
-- `index.html` — documentation home with a live project-hooks demo.
-- `examples/` — Foundation, Components, Composition and Content style chapters (also the axe test targets). `examples/site.css` and `site.js` are the documentation site's own chrome (theme switch, example frames), not part of the kit.
-- `presets/` — optional hook-only stylesheets ([`presets/README.md`](presets/README.md)).
-- `streamlit/` — [`config.toml`](streamlit/config.toml), [`helpers.py`](streamlit/helpers.py); see [streamlit/README.md](streamlit/README.md).
-- [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md) — backlog for patterns not in the kit yet.
+- `ui-kit.css`: tokens, base styles and `jm-` components in cascade layers.
+- `ui-kit.js`: optional script for sortable tables, filters, tabs and dialogs.
+- `index.html`: documentation home with a live project-hooks demo.
+- `examples/`: Foundation, Components, Composition and Content style chapters (also the axe test targets). `examples/site.css` and `site.js` are the documentation site's own chrome (theme switch, example frames), not part of the kit.
+- `presets/`: optional hook-only stylesheets ([`presets/README.md`](presets/README.md)).
+- `streamlit/`: [`config.toml`](streamlit/config.toml), [`helpers.py`](streamlit/helpers.py); see [streamlit/README.md](streamlit/README.md).
+- [`COMPONENT_REQUESTS.md`](COMPONENT_REQUESTS.md): backlog for patterns not in the kit yet.
 
 ## Adopt the kit
 1. Copy `ui-kit.css` (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`.

@@ -58,7 +58,7 @@
   <div class="site-intro jm-stack jm-stack--tight">
     <p class="site-kicker">Chapter 1</p>
     <h1>Foundation</h1>
-    <p class="site-lead">Everything in the kit rests on these tokens. Use the semantic colour tokens (<code>--jm-colour-text</code>), not palette names. The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
+    <p class="site-lead">The tokens everything else is built from. Use the semantic colour tokens (<code>--jm-colour-text</code>), not palette names. The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
     <p class="jm-secondary-text">Swatches update when you change theme. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and borders, focus rings and status marks for 3:1.</p>
   </div>
 
@@ -74,7 +74,7 @@
 
   <section aria-labelledby="status">
     <h2 id="status">Status</h2>
-    <p>Each status has a mark colour (icons, borders), a text colour and a tinted background. Never rely on colour alone: pair it with a word or icon.</p>
+    <p>Each status has a colour for icons and borders, a text colour and a tinted background. Always pair the colour with a word or icon.</p>
     <div class="grid">
       <div class="pair" style="background: var(--jm-colour-success-background); border-left-color: var(--jm-colour-success)">
         <strong style="color: var(--jm-colour-success-text)">Success</strong>
@@ -101,7 +101,7 @@
 
   <section aria-labelledby="links">
     <h2 id="links">Links and focus</h2>
-    <p>A <a href="#links">link to this section</a> and a <a href="index.html">link to this page</a> (visited). Press Tab to see the focus ring; it has a gap in the background colour so it stays visible on accent-filled elements.</p>
+    <p>A <a href="#links">link to this section</a> and a <a href="index.html">link to this page</a> (visited). Press Tab to see the focus ring. There’s a gap between the ring and the element, so you can still see it on a button filled with the accent colour.</p>
     <div class="focus-demo">
       <span class="on-accent-block forced-focus">Focus ring on an accent block</span>
       <span class="forced-focus" style="padding: var(--jm-space-2) var(--jm-space-4)">Focus ring on the background</span>
@@ -123,7 +123,7 @@
 
   <section aria-labelledby="space">
     <h2 id="space">Spacing</h2>
-    <p>4px base. Use for margin, padding and gap.</p>
+    <p>Steps of 4px. Use them for margin, padding and gap.</p>
     <div class="scale-row"><code>--jm-space-1, 0.25rem (4px)</code><div class="bar" style="width: var(--jm-space-1)"></div></div>
     <div class="scale-row"><code>--jm-space-2, 0.5rem (8px)</code><div class="bar" style="width: var(--jm-space-2)"></div></div>
     <div class="scale-row"><code>--jm-space-3, 0.75rem (12px)</code><div class="bar" style="width: var(--jm-space-3)"></div></div>
