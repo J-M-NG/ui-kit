@@ -15,7 +15,7 @@
  *
  * Token names use British spelling ("colour"). Use the semantic tokens
  * (--jm-colour-text, --jm-colour-accent, ...) in components and projects;
- * the palette tokens (--jm-carbon-500, ...) exist only to define them.
+ * the palette tokens (--jm-blue-600, ...) exist only to define them.
  */
 
 @layer jm.tokens, jm.base, jm.components, jm.utilities;
@@ -23,71 +23,32 @@
 @layer jm.tokens {
   /* ------------------------------------------------------------------
      Palette (theme independent). Do not use directly in components.
-     Carbon–almond v2 (Matt, Nov 2026). Five families from Coolors anchors:
-     carbon-black, charcoal-blue, rosy-granite, lilac-ash, almond-silk;
-     100–900 steps interpolated from each anchor. Semantic tokens pick steps
-     for WCAG 2.2 AA (e.g. rosy-granite-500 is too light on almond for body).
-     Success/error stay green/red; warnings use warm steps, not charcoal-blue.
      ------------------------------------------------------------------ */
   :root {
-    --jm-surface-0: #ffffff;
+    --jm-grey-0: #ffffff;
+    --jm-grey-50: #f5f6f8;
+    --jm-grey-100: #eaecef;
+    --jm-grey-200: #d9dce1;
+    --jm-grey-300: #bcc1c8;
+    --jm-grey-400: #8a919b;
+    --jm-grey-500: #646b75;
+    --jm-grey-600: #4b515a;
+    --jm-grey-700: #363b42;
+    --jm-grey-800: #24282d;
+    --jm-grey-900: #17191c;
+    --jm-grey-950: #0e1012;
 
-    --jm-carbon-100: #000000;
-    --jm-carbon-200: #050808;
-    --jm-carbon-300: #0b1010;
-    --jm-carbon-400: #111818;
-    --jm-carbon-500: #172121;
-    --jm-carbon-600: #333f3f;
-    --jm-carbon-700: #505d5d;
-    --jm-carbon-800: #6d7b7b;
-    --jm-carbon-900: #8a9a9a;
-
-    --jm-charcoal-blue-100: #0a0a0f;
-    --jm-charcoal-blue-200: #181820;
-    --jm-charcoal-blue-300: #272731;
-    --jm-charcoal-blue-400: #353642;
-    --jm-charcoal-blue-500: #444554;
-    --jm-charcoal-blue-600: #595a69;
-    --jm-charcoal-blue-700: #6f6f7f;
-    --jm-charcoal-blue-800: #848495;
-    --jm-charcoal-blue-900: #9a9aab;
-
-    --jm-rosy-granite-100: #1a191c;
-    --jm-rosy-granite-200: #333135;
-    --jm-rosy-granite-300: #4c4a4f;
-    --jm-rosy-granite-400: #656268;
-    --jm-rosy-granite-500: #7f7b82;
-    --jm-rosy-granite-600: #949097;
-    --jm-rosy-granite-700: #a9a5ac;
-    --jm-rosy-granite-800: #bebac1;
-    --jm-rosy-granite-900: #d4cfd6;
-
-    --jm-lilac-ash-100: #2a2528;
-    --jm-lilac-ash-200: #4f464b;
-    --jm-lilac-ash-300: #74686e;
-    --jm-lilac-ash-400: #998a91;
-    --jm-lilac-ash-500: #bfacb5;
-    --jm-lilac-ash-600: #ccbcc4;
-    --jm-lilac-ash-700: #dacdd3;
-    --jm-lilac-ash-800: #e7dde2;
-    --jm-lilac-ash-900: #f5eef1;
-
-    --jm-almond-silk-100: #2a2220;
-    --jm-almond-silk-200: #584d4b;
-    --jm-almond-silk-300: #877976;
-    --jm-almond-silk-400: #b6a4a1;
-    --jm-almond-silk-500: #e5d0cc;
-    --jm-almond-silk-600: #ebdad7;
-    --jm-almond-silk-700: #f2e5e2;
-    --jm-almond-silk-800: #f8efed;
-    --jm-almond-silk-900: #fffaf9;
-
-    /* Warnings: warm browns so they never read as charcoal-blue accent. */
-    --jm-warm-50: #f8efe6;
-    --jm-warm-600: #8f6035;
-    --jm-warm-700: #704b29;
-    --jm-warm-100: #2a1c10;
-    --jm-warm-900: #f5e8d9;
+    --jm-blue-50: #eef4fb;
+    --jm-blue-100: #d6e4f5;
+    --jm-blue-200: #adc8eb;
+    --jm-blue-300: #7fa8dd;
+    --jm-blue-400: #4f86cc;
+    --jm-blue-500: #2b67b5;
+    --jm-blue-600: #1f5296;
+    --jm-blue-700: #1a4378;
+    --jm-blue-800: #15355e;
+    --jm-blue-900: #0f2644;
+    --jm-blue-950: #0b1a2e;
 
     --jm-green-50: #eaf6ee;
     --jm-green-300: #6cc08a;
@@ -95,11 +56,26 @@
     --jm-green-700: #17623a;
     --jm-green-950: #0d2818;
 
+    --jm-amber-50: #fdf5e3;
+    --jm-amber-300: #f0b44c;
+    --jm-amber-600: #9a5b00;
+    --jm-amber-700: #7a4800;
+    --jm-amber-950: #2e1d02;
+
     --jm-red-50: #fcecec;
     --jm-red-300: #ee8a8a;
     --jm-red-600: #c02b2b;
     --jm-red-700: #9e2222;
     --jm-red-950: #2e0f0f;
+
+    --jm-sky-50: #e8f5fa;
+    --jm-sky-300: #5fb6d6;
+    --jm-sky-600: #0b6e8f;
+    --jm-sky-700: #095a75;
+    --jm-sky-950: #062633;
+
+    --jm-purple-300: #c3a6e6;
+    --jm-purple-600: #6a3d9a;
   }
 
   /* ------------------------------------------------------------------
@@ -120,8 +96,7 @@
 
     /* Typography: system fonts only (no web fonts in v1). */
     --jm-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    /* hook: optional heading face — e.g. "Trebuchet MS", Georgia, serif */
-    --jm-font-family-heading: var(--jm-font-family);
+    --jm-font-family-heading: var(--jm-font-family); /* hook: optional heading face */
     --jm-font-family-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     --jm-font-size-xs: 0.8125rem; /* 13px: captions only, never body text */
@@ -137,7 +112,6 @@
 
     --jm-font-weight-normal: 400;
     --jm-font-weight-medium: 500;
-    --jm-font-weight-semibold: 600;
     --jm-font-weight-bold: 700;
 
     /* Readable line length for prose. */
@@ -146,8 +120,8 @@
     /* Corner radius. --jm-radius-scale is a project hook: 0 gives square corners. */
     --jm-radius-scale: 1;
     --jm-radius-sm: calc(2px * var(--jm-radius-scale));
-    --jm-radius-md: calc(3px * var(--jm-radius-scale));
-    --jm-radius-lg: calc(6px * var(--jm-radius-scale));
+    --jm-radius-md: calc(4px * var(--jm-radius-scale));
+    --jm-radius-lg: calc(8px * var(--jm-radius-scale));
     --jm-radius-pill: 999px;
 
     /* Borders. */
@@ -188,68 +162,68 @@
   :root {
     color-scheme: light;
 
-    --jm-colour-background: var(--jm-almond-silk-500);
-    --jm-colour-surface: var(--jm-almond-silk-800);
-    --jm-colour-surface-sunken: var(--jm-almond-silk-700);
+    --jm-colour-background: var(--jm-grey-0);
+    --jm-colour-surface: var(--jm-grey-50);
+    --jm-colour-surface-sunken: var(--jm-grey-100);
 
-    --jm-colour-text: var(--jm-carbon-500);
-    --jm-colour-text-secondary: var(--jm-rosy-granite-300);
+    --jm-colour-text: var(--jm-grey-900);
+    --jm-colour-text-secondary: var(--jm-grey-600);
 
-    --jm-colour-border: var(--jm-lilac-ash-700); /* decorative dividers only */
-    --jm-colour-border-strong: var(--jm-charcoal-blue-500); /* form controls: 3:1 */
+    --jm-colour-border: var(--jm-grey-200); /* decorative dividers only */
+    --jm-colour-border-strong: var(--jm-grey-500); /* form controls: 3:1 */
 
-    --jm-colour-accent: var(--jm-charcoal-blue-500);
-    --jm-colour-accent-hover: var(--jm-charcoal-blue-400);
-    --jm-colour-accent-subtle: var(--jm-lilac-ash-900);
-    --jm-colour-on-accent: var(--jm-surface-0);
+    --jm-colour-accent: var(--jm-blue-600);
+    --jm-colour-accent-hover: var(--jm-blue-700);
+    --jm-colour-accent-subtle: var(--jm-blue-50);
+    --jm-colour-on-accent: var(--jm-grey-0);
 
-    --jm-colour-link: var(--jm-charcoal-blue-500);
-    --jm-colour-link-hover: var(--jm-charcoal-blue-300);
-    --jm-colour-link-visited: var(--jm-rosy-granite-300);
+    --jm-colour-link: var(--jm-blue-600);
+    --jm-colour-link-hover: var(--jm-blue-800);
+    --jm-colour-link-visited: var(--jm-purple-600);
 
-    --jm-colour-focus: var(--jm-carbon-500);
+    --jm-colour-focus: var(--jm-blue-700);
 
     --jm-colour-success: var(--jm-green-600);
     --jm-colour-success-text: var(--jm-green-700);
     --jm-colour-success-background: var(--jm-green-50);
 
-    --jm-colour-warning: var(--jm-warm-600);
-    --jm-colour-warning-text: var(--jm-warm-700);
-    --jm-colour-warning-background: var(--jm-warm-900);
+    --jm-colour-warning: var(--jm-amber-600);
+    --jm-colour-warning-text: var(--jm-amber-700);
+    --jm-colour-warning-background: var(--jm-amber-50);
 
     --jm-colour-error: var(--jm-red-600);
     --jm-colour-error-text: var(--jm-red-700);
     --jm-colour-error-background: var(--jm-red-50);
 
-    --jm-colour-info: var(--jm-rosy-granite-400);
-    --jm-colour-info-text: var(--jm-carbon-500);
-    --jm-colour-info-background: var(--jm-lilac-ash-900);
+    --jm-colour-info: var(--jm-sky-600);
+    --jm-colour-info-text: var(--jm-sky-700);
+    --jm-colour-info-background: var(--jm-sky-50);
 
     /* Chart series, in fixed order: always use 1, 2, 3 ... so one colour keeps one meaning.
        Five or fewer series; grey for "other". Label series directly; never rely on colour alone. */
-    --jm-colour-chart-1: var(--jm-charcoal-blue-500);
-    --jm-colour-chart-2: var(--jm-warm-700);
-    --jm-colour-chart-3: var(--jm-rosy-granite-300);
+    --jm-colour-chart-1: var(--jm-blue-600);
+    --jm-colour-chart-2: var(--jm-amber-600);
+    --jm-colour-chart-3: var(--jm-purple-600);
     --jm-colour-chart-4: var(--jm-green-700);
     --jm-colour-chart-5: var(--jm-red-700);
-    --jm-colour-chart-other: var(--jm-charcoal-blue-600);
+    --jm-colour-chart-other: var(--jm-grey-500);
 
     /* Sequential scale for heat cells and ranked values: five steps with the matching text colour.
        Light theme: darkest = largest. Dark theme: lightest = largest. Always print the value in the cell. */
-    --jm-colour-heat-1: var(--jm-lilac-ash-900);
-    --jm-colour-heat-2: var(--jm-lilac-ash-600);
-    --jm-colour-heat-3: var(--jm-lilac-ash-400);
-    --jm-colour-heat-4: var(--jm-charcoal-blue-500);
-    --jm-colour-heat-5: var(--jm-charcoal-blue-300);
-    --jm-colour-heat-text-1: var(--jm-carbon-500);
-    --jm-colour-heat-text-2: var(--jm-carbon-500);
-    --jm-colour-heat-text-3: var(--jm-carbon-500);
-    --jm-colour-heat-text-4: var(--jm-surface-0);
-    --jm-colour-heat-text-5: var(--jm-surface-0);
+    --jm-colour-heat-1: var(--jm-blue-100);
+    --jm-colour-heat-2: var(--jm-blue-200);
+    --jm-colour-heat-3: var(--jm-blue-300);
+    --jm-colour-heat-4: var(--jm-blue-600);
+    --jm-colour-heat-5: var(--jm-blue-800);
+    --jm-colour-heat-text-1: var(--jm-grey-900);
+    --jm-colour-heat-text-2: var(--jm-grey-900);
+    --jm-colour-heat-text-3: var(--jm-grey-900);
+    --jm-colour-heat-text-4: var(--jm-grey-0);
+    --jm-colour-heat-text-5: var(--jm-grey-0);
 
-    --jm-shadow-sm: 0 1px 2px rgb(23 33 33 / 0.06);
-    --jm-shadow-md: 0 2px 4px rgb(23 33 33 / 0.08);
-    --jm-shadow-lg: 0 6px 16px rgb(23 33 33 / 0.10);
+    --jm-shadow-sm: 0 1px 2px rgb(14 16 18 / 0.08);
+    --jm-shadow-md: 0 2px 6px rgb(14 16 18 / 0.10), 0 1px 2px rgb(14 16 18 / 0.06);
+    --jm-shadow-lg: 0 8px 24px rgb(14 16 18 / 0.14), 0 2px 6px rgb(14 16 18 / 0.08);
   }
 
   /* ------------------------------------------------------------------
@@ -260,128 +234,128 @@
     :root:not([data-theme="light"]) {
       color-scheme: dark;
 
-      --jm-colour-background: var(--jm-carbon-500);
-      --jm-colour-surface: var(--jm-carbon-400);
-      --jm-colour-surface-sunken: var(--jm-carbon-300);
+      --jm-colour-background: var(--jm-grey-900);
+      --jm-colour-surface: var(--jm-grey-800);
+      --jm-colour-surface-sunken: var(--jm-grey-950);
 
-      --jm-colour-text: var(--jm-almond-silk-500);
-      --jm-colour-text-secondary: var(--jm-lilac-ash-500);
+      --jm-colour-text: var(--jm-grey-50);
+      --jm-colour-text-secondary: var(--jm-grey-300);
 
-      --jm-colour-border: var(--jm-carbon-700);
-      --jm-colour-border-strong: var(--jm-charcoal-blue-700);
+      --jm-colour-border: var(--jm-grey-700);
+      --jm-colour-border-strong: var(--jm-grey-400);
 
-      --jm-colour-accent: var(--jm-lilac-ash-500);
-      --jm-colour-accent-hover: var(--jm-almond-silk-600);
-      --jm-colour-accent-subtle: var(--jm-lilac-ash-200);
-      --jm-colour-on-accent: var(--jm-carbon-500);
+      --jm-colour-accent: var(--jm-blue-300);
+      --jm-colour-accent-hover: var(--jm-blue-200);
+      --jm-colour-accent-subtle: var(--jm-blue-950);
+      --jm-colour-on-accent: var(--jm-grey-950);
 
-      --jm-colour-link: var(--jm-almond-silk-600);
-      --jm-colour-link-hover: var(--jm-lilac-ash-600);
-      --jm-colour-link-visited: var(--jm-rosy-granite-700);
+      --jm-colour-link: var(--jm-blue-300);
+      --jm-colour-link-hover: var(--jm-blue-200);
+      --jm-colour-link-visited: var(--jm-purple-300);
 
-      --jm-colour-focus: var(--jm-lilac-ash-500);
+      --jm-colour-focus: var(--jm-blue-300);
 
       --jm-colour-success: var(--jm-green-300);
       --jm-colour-success-text: var(--jm-green-300);
       --jm-colour-success-background: var(--jm-green-950);
 
-      --jm-colour-warning: var(--jm-warm-900);
-      --jm-colour-warning-text: var(--jm-warm-900);
-      --jm-colour-warning-background: var(--jm-warm-100);
+      --jm-colour-warning: var(--jm-amber-300);
+      --jm-colour-warning-text: var(--jm-amber-300);
+      --jm-colour-warning-background: var(--jm-amber-950);
 
       --jm-colour-error: var(--jm-red-300);
       --jm-colour-error-text: var(--jm-red-300);
       --jm-colour-error-background: var(--jm-red-950);
 
-      --jm-colour-info: var(--jm-rosy-granite-700);
-      --jm-colour-info-text: var(--jm-almond-silk-500);
-      --jm-colour-info-background: var(--jm-carbon-300);
+      --jm-colour-info: var(--jm-sky-300);
+      --jm-colour-info-text: var(--jm-sky-300);
+      --jm-colour-info-background: var(--jm-sky-950);
 
-      --jm-colour-chart-1: var(--jm-lilac-ash-500);
-      --jm-colour-chart-2: var(--jm-warm-900);
-      --jm-colour-chart-3: var(--jm-rosy-granite-600);
+      --jm-colour-chart-1: var(--jm-blue-300);
+      --jm-colour-chart-2: var(--jm-amber-300);
+      --jm-colour-chart-3: var(--jm-purple-300);
       --jm-colour-chart-4: var(--jm-green-300);
       --jm-colour-chart-5: var(--jm-red-300);
-      --jm-colour-chart-other: var(--jm-charcoal-blue-700);
+      --jm-colour-chart-other: var(--jm-grey-400);
 
-      --jm-colour-heat-1: var(--jm-carbon-300);
-      --jm-colour-heat-2: var(--jm-charcoal-blue-400);
-      --jm-colour-heat-3: var(--jm-charcoal-blue-600);
-      --jm-colour-heat-4: var(--jm-lilac-ash-500);
-      --jm-colour-heat-5: var(--jm-almond-silk-500);
-      --jm-colour-heat-text-1: var(--jm-almond-silk-500);
-      --jm-colour-heat-text-2: var(--jm-almond-silk-500);
-      --jm-colour-heat-text-3: var(--jm-almond-silk-500);
-      --jm-colour-heat-text-4: var(--jm-carbon-500);
-      --jm-colour-heat-text-5: var(--jm-carbon-500);
+      --jm-colour-heat-1: var(--jm-blue-900);
+      --jm-colour-heat-2: var(--jm-blue-800);
+      --jm-colour-heat-3: var(--jm-blue-700);
+      --jm-colour-heat-4: var(--jm-blue-300);
+      --jm-colour-heat-5: var(--jm-blue-200);
+      --jm-colour-heat-text-1: var(--jm-grey-0);
+      --jm-colour-heat-text-2: var(--jm-grey-0);
+      --jm-colour-heat-text-3: var(--jm-grey-0);
+      --jm-colour-heat-text-4: var(--jm-grey-900);
+      --jm-colour-heat-text-5: var(--jm-grey-900);
 
-      --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
-      --jm-shadow-md: 0 2px 4px rgb(0 0 0 / 0.40);
-      --jm-shadow-lg: 0 6px 16px rgb(0 0 0 / 0.50);
+      --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.40);
+      --jm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.30);
+      --jm-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.35);
     }
   }
 
   :root[data-theme="dark"] {
     color-scheme: dark;
 
-    --jm-colour-background: var(--jm-carbon-500);
-    --jm-colour-surface: var(--jm-carbon-400);
-    --jm-colour-surface-sunken: var(--jm-carbon-300);
+    --jm-colour-background: var(--jm-grey-900);
+    --jm-colour-surface: var(--jm-grey-800);
+    --jm-colour-surface-sunken: var(--jm-grey-950);
 
-    --jm-colour-text: var(--jm-almond-silk-500);
-    --jm-colour-text-secondary: var(--jm-lilac-ash-500);
+    --jm-colour-text: var(--jm-grey-50);
+    --jm-colour-text-secondary: var(--jm-grey-300);
 
-    --jm-colour-border: var(--jm-carbon-700);
-    --jm-colour-border-strong: var(--jm-charcoal-blue-700);
+    --jm-colour-border: var(--jm-grey-700);
+    --jm-colour-border-strong: var(--jm-grey-400);
 
-    --jm-colour-accent: var(--jm-lilac-ash-500);
-    --jm-colour-accent-hover: var(--jm-almond-silk-600);
-    --jm-colour-accent-subtle: var(--jm-lilac-ash-200);
-    --jm-colour-on-accent: var(--jm-carbon-500);
+    --jm-colour-accent: var(--jm-blue-300);
+    --jm-colour-accent-hover: var(--jm-blue-200);
+    --jm-colour-accent-subtle: var(--jm-blue-950);
+    --jm-colour-on-accent: var(--jm-grey-950);
 
-    --jm-colour-link: var(--jm-almond-silk-600);
-    --jm-colour-link-hover: var(--jm-lilac-ash-600);
-    --jm-colour-link-visited: var(--jm-rosy-granite-700);
+    --jm-colour-link: var(--jm-blue-300);
+    --jm-colour-link-hover: var(--jm-blue-200);
+    --jm-colour-link-visited: var(--jm-purple-300);
 
-    --jm-colour-focus: var(--jm-lilac-ash-500);
+    --jm-colour-focus: var(--jm-blue-300);
 
     --jm-colour-success: var(--jm-green-300);
     --jm-colour-success-text: var(--jm-green-300);
     --jm-colour-success-background: var(--jm-green-950);
 
-    --jm-colour-warning: var(--jm-warm-900);
-    --jm-colour-warning-text: var(--jm-warm-900);
-    --jm-colour-warning-background: var(--jm-warm-100);
+    --jm-colour-warning: var(--jm-amber-300);
+    --jm-colour-warning-text: var(--jm-amber-300);
+    --jm-colour-warning-background: var(--jm-amber-950);
 
     --jm-colour-error: var(--jm-red-300);
     --jm-colour-error-text: var(--jm-red-300);
     --jm-colour-error-background: var(--jm-red-950);
 
-    --jm-colour-info: var(--jm-rosy-granite-700);
-    --jm-colour-info-text: var(--jm-almond-silk-500);
-    --jm-colour-info-background: var(--jm-carbon-300);
+    --jm-colour-info: var(--jm-sky-300);
+    --jm-colour-info-text: var(--jm-sky-300);
+    --jm-colour-info-background: var(--jm-sky-950);
 
-    --jm-colour-chart-1: var(--jm-lilac-ash-500);
-    --jm-colour-chart-2: var(--jm-warm-900);
-    --jm-colour-chart-3: var(--jm-rosy-granite-600);
+    --jm-colour-chart-1: var(--jm-blue-300);
+    --jm-colour-chart-2: var(--jm-amber-300);
+    --jm-colour-chart-3: var(--jm-purple-300);
     --jm-colour-chart-4: var(--jm-green-300);
     --jm-colour-chart-5: var(--jm-red-300);
-    --jm-colour-chart-other: var(--jm-charcoal-blue-700);
+    --jm-colour-chart-other: var(--jm-grey-400);
 
-    --jm-colour-heat-1: var(--jm-carbon-300);
-    --jm-colour-heat-2: var(--jm-charcoal-blue-400);
-    --jm-colour-heat-3: var(--jm-charcoal-blue-600);
-    --jm-colour-heat-4: var(--jm-lilac-ash-500);
-    --jm-colour-heat-5: var(--jm-almond-silk-500);
-    --jm-colour-heat-text-1: var(--jm-almond-silk-500);
-    --jm-colour-heat-text-2: var(--jm-almond-silk-500);
-    --jm-colour-heat-text-3: var(--jm-almond-silk-500);
-    --jm-colour-heat-text-4: var(--jm-carbon-500);
-    --jm-colour-heat-text-5: var(--jm-carbon-500);
+    --jm-colour-heat-1: var(--jm-blue-900);
+    --jm-colour-heat-2: var(--jm-blue-800);
+    --jm-colour-heat-3: var(--jm-blue-700);
+    --jm-colour-heat-4: var(--jm-blue-300);
+    --jm-colour-heat-5: var(--jm-blue-200);
+    --jm-colour-heat-text-1: var(--jm-grey-0);
+    --jm-colour-heat-text-2: var(--jm-grey-0);
+    --jm-colour-heat-text-3: var(--jm-grey-0);
+    --jm-colour-heat-text-4: var(--jm-grey-900);
+    --jm-colour-heat-text-5: var(--jm-grey-900);
 
-    --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
-    --jm-shadow-md: 0 2px 4px rgb(0 0 0 / 0.40);
-    --jm-shadow-lg: 0 6px 16px rgb(0 0 0 / 0.50);
+    --jm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.40);
+    --jm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.30);
+    --jm-shadow-lg: 0 8px 24px rgb(0 0 0 / 0.55), 0 2px 6px rgb(0 0 0 / 0.35);
   }
 
   /* Composite focus ring, built from the colour tokens above. */
@@ -429,12 +403,12 @@
     margin: 0 0 var(--jm-space-4);
     font-family: var(--jm-font-family-heading);
     line-height: var(--jm-line-height-tight);
-    font-weight: var(--jm-font-weight-semibold);
+    font-weight: var(--jm-font-weight-bold);
   }
 
-  h1 { font-size: var(--jm-font-size-3xl); font-weight: var(--jm-font-weight-bold); }
+  h1 { font-size: var(--jm-font-size-3xl); }
   h2 { font-size: var(--jm-font-size-2xl); }
-  h3 { font-size: var(--jm-font-size-xl); font-weight: var(--jm-font-weight-bold); }
+  h3 { font-size: var(--jm-font-size-xl); }
   h4 { font-size: var(--jm-font-size-lg); }
 
   p {
@@ -630,15 +604,15 @@
     justify-content: center;
     gap: var(--jm-space-2);
     min-height: 2.75rem; /* 44px target */
-    margin: 0;
+    margin: 0 0 2px; /* room for the bottom edge */
     padding: var(--jm-space-2) var(--jm-space-4);
-    border: var(--jm-border-width-thick) solid var(--jm-colour-accent);
+    border: var(--jm-border-width-thick) solid transparent;
     border-radius: var(--jm-radius-md);
     background: var(--jm-colour-accent);
-    box-shadow: none;
+    box-shadow: 0 2px 0 var(--jm-colour-accent-hover);
     color: var(--jm-colour-on-accent);
     font: inherit;
-    font-weight: var(--jm-font-weight-medium);
+    font-weight: var(--jm-font-weight-bold);
     line-height: var(--jm-line-height-tight);
     text-align: center;
     text-decoration: none;
@@ -656,28 +630,28 @@
   }
 
   .jm-button:active {
-    filter: brightness(0.96);
+    transform: translateY(2px);
+    box-shadow: none;
   }
 
   .jm-button--secondary,
   .jm-button--secondary:visited {
     border-color: var(--jm-colour-border-strong);
-    background: transparent;
-    box-shadow: none;
+    background: var(--jm-colour-background);
+    box-shadow: 0 2px 0 var(--jm-colour-border-strong);
     color: var(--jm-colour-text);
   }
 
   .jm-button--secondary:hover {
-    background: var(--jm-colour-surface-sunken);
+    background: var(--jm-colour-surface);
     color: var(--jm-colour-text);
   }
 
   /* Destructive actions only. */
   .jm-button--warning,
   .jm-button--warning:visited {
-    border-color: var(--jm-colour-error-text);
     background: var(--jm-colour-error-text);
-    box-shadow: none;
+    box-shadow: 0 2px 0 var(--jm-colour-text);
     color: var(--jm-colour-background);
   }
 
@@ -703,8 +677,8 @@
   }
 
   .jm-field--error {
-    padding-left: var(--jm-space-3);
-    border-left: var(--jm-border-width-thick) solid var(--jm-colour-error);
+    padding-left: var(--jm-space-4);
+    border-left: var(--jm-border-width-heavy) solid var(--jm-colour-error);
   }
 
   .jm-label {
@@ -822,10 +796,9 @@
 
   /* ---- Error summary (top of the page after a failed submit) ---- */
   .jm-error-summary {
-    padding: var(--jm-space-4) var(--jm-space-5);
-    border: var(--jm-border-width) solid var(--jm-colour-error);
+    padding: var(--jm-space-5);
+    border: 4px solid var(--jm-colour-error);
     border-radius: var(--jm-radius-sm);
-    background: var(--jm-colour-error-background);
   }
 
   .jm-error-summary__title {
@@ -897,26 +870,25 @@
   /* ---- Status tag (always a word, never colour alone) ---- */
   .jm-tag {
     display: inline-block;
-    padding: 0.0625rem var(--jm-space-2);
-    border: var(--jm-border-width) solid var(--jm-colour-border);
-    border-radius: calc(1px * var(--jm-radius-scale));
-    background: var(--jm-colour-surface);
+    padding: 0.125rem var(--jm-space-2);
+    border-radius: var(--jm-radius-sm);
+    background: var(--jm-colour-surface-sunken);
     color: var(--jm-colour-text);
-    font-size: var(--jm-font-size-xs);
-    font-weight: var(--jm-font-weight-medium);
-    line-height: 1.35;
+    font-size: var(--jm-font-size-sm);
+    font-weight: var(--jm-font-weight-bold);
+    line-height: 1.4;
     white-space: nowrap;
   }
 
-  .jm-tag--success { border-color: var(--jm-colour-success); background: var(--jm-colour-success-background); color: var(--jm-colour-success-text); }
-  .jm-tag--warning { border-color: var(--jm-colour-warning); background: var(--jm-colour-warning-background); color: var(--jm-colour-warning-text); }
-  .jm-tag--error { border-color: var(--jm-colour-error); background: var(--jm-colour-error-background); color: var(--jm-colour-error-text); }
-  .jm-tag--info { border-color: var(--jm-colour-info); background: var(--jm-colour-info-background); color: var(--jm-colour-info-text); }
+  .jm-tag--success { background: var(--jm-colour-success-background); color: var(--jm-colour-success-text); }
+  .jm-tag--warning { background: var(--jm-colour-warning-background); color: var(--jm-colour-warning-text); }
+  .jm-tag--error { background: var(--jm-colour-error-background); color: var(--jm-colour-error-text); }
+  .jm-tag--info { background: var(--jm-colour-info-background); color: var(--jm-colour-info-text); }
 
   /* ---- Notification banner ---- */
   .jm-banner {
     padding: var(--jm-space-4) var(--jm-space-5);
-    border: var(--jm-border-width) solid var(--jm-colour-info);
+    border: var(--jm-border-width-thick) solid var(--jm-colour-info);
     border-radius: var(--jm-radius-sm);
     background: var(--jm-colour-info-background);
   }
@@ -970,10 +942,8 @@
   }
 
   .jm-table thead th {
-    border-bottom: var(--jm-border-width) solid var(--jm-colour-border-strong);
-    color: var(--jm-colour-text-secondary);
-    font-size: var(--jm-font-size-sm);
-    font-weight: var(--jm-font-weight-medium);
+    border-bottom: var(--jm-border-width-thick) solid var(--jm-colour-border-strong);
+    font-weight: var(--jm-font-weight-bold);
     white-space: nowrap;
   }
 
@@ -1113,8 +1083,6 @@
   .jm-panel {
     border: var(--jm-border-width) solid var(--jm-colour-border);
     border-radius: var(--jm-radius-md);
-    background: var(--jm-colour-background);
-    box-shadow: none;
   }
 
   .jm-panel__header {

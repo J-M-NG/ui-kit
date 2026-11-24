@@ -4,9 +4,7 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 ### Changed
-- Palette v2 (carbon–almond): five Coolors anchors — carbon black, charcoal blue, rosy granite, lilac ash, almond silk — replace v1 graphite/ivory/bloom families; warm brown warnings stay separate from accent. Reference: https://coolors.co/172121-444554-7f7b82-bfacb5-e5d0cc
-- Distinct palette refresh: graphite, dim grey and ivory mist neutrals; magenta bloom accent; coral glow warnings (replacing cool blue/grey GDS-adjacent defaults). GOV.UK heritage noted in changelog only; examples and portfolio copy de-emphasise government borrowing.
-- Flatter surfaces and buttons, lighter table headers, squarer tags, softer error summary chrome; heading weight tuned (system body unchanged).
+- Restored the pre–palette-experiment colour tokens (cool grey/blue palette at commit `6605370`), reverting the distinct-palette and carbon–almond v2 refreshes.
 
 ### Added
 - `COMPONENT_REQUESTS.md` and `CLAUDE.md` guidance for logging missing `jm-` patterns from adopting projects.
