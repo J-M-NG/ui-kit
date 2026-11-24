@@ -6,6 +6,9 @@ No version has been tagged yet. Earlier drafts of this file listed 1.0.1 and 1.1
 
 ## [Unreleased]
 
+### Added
+- On this page contents (`jm-toc`, with the `jm-with-toc` layout): a list of the page's sections that stays in view while scrolling. It's a sticky side column from 48em, with its own scroll when long, and a sticky bar that opens to the list on phones. It works without JavaScript; `ui-kit.js` marks the current section and closes the phone bar after a link is chosen. `--jm-toc-offset` allows for a sticky header. It's used on every documentation page, and the Composition sidebar now uses it instead of `jm-sidenav`.
+
 ### Changed
 - Surfaces: the page sits on `--jm-colour-background` (grey-50 in light) and `jm-panel`, `jm-card`, `jm-dialog` and the header sit on `--jm-colour-surface`, so raised content reads as raised in both themes. Table headers use a rule instead of a filled band; the information banner uses its own tint like the other banners; hover states use `--jm-colour-surface-sunken`.
 - Type: one pairing rule. Serif (`--jm-font-family-heading`) for h1 to h3 only; h4, panel, card, dialog, caption, chart, error-summary and empty-state titles use the system sans at semibold. Headings use weight 600 (new token `--jm-font-weight-semibold`) with milder tracking; h1 scales from 2rem on phones to 2.75rem. The heading stack now ends in Noto Serif and DejaVu Serif instead of a generic serif.

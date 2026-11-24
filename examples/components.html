@@ -31,12 +31,36 @@
     </div>
   </header>
 
-  <main id="main" class="jm-container jm-stack jm-stack--loose">
-    <div class="site-intro jm-stack jm-stack--tight">
+  <main id="main" class="jm-container jm-container--wide jm-with-toc">
+    <div class="site-intro jm-stack jm-stack--tight jm-with-toc__intro">
       <p class="site-kicker">Chapter 2</p>
       <h1>Components</h1>
       <p class="site-lead">Every component in the kit, with a live example and the classes it uses. The classes go on normal HTML elements, so these pages work without JavaScript and with screen readers.</p>
     </div>
+    <nav class="jm-toc" aria-label="On this page">
+      <details class="jm-toc__details">
+        <summary class="jm-toc__summary">On this page <span class="jm-toc__current"></span></summary>
+        <p class="jm-toc__title">On this page</p>
+        <ol class="jm-toc__list">
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#text-input">Text input, textarea and select</a></li>
+          <li><a href="#choices">Radios and checkboxes</a></li>
+          <li><a href="#error-summary">Error summary</a></li>
+          <li><a href="#summary-list">Summary list</a></li>
+          <li><a href="#tags">Status tags</a></li>
+          <li><a href="#banners">Notification banners</a></li>
+          <li><a href="#tables">Table</a></li>
+          <li><a href="#details-h">Details</a></li>
+          <li><a href="#navigation-patterns">Navigation patterns</a></li>
+          <li><a href="#card-dialog">Card and dialog</a></li>
+          <li><a href="#toc">On this page</a></li>
+          <li><a href="#layout">Page layout</a></li>
+        </ol>
+      </details>
+    </nav>
+
+    <div class="jm-with-toc__main jm-stack jm-stack--loose">
 
     <section class="jm-stack" aria-labelledby="typography">
       <h2 id="typography">Typography</h2>
@@ -328,10 +352,18 @@
       <p class="example-code"><code>.jm-card</code>, <code>.jm-dialog</code>, <code>data-jm-dialog-open</code>.</p>
     </section>
 
+    <section class="jm-stack" aria-labelledby="toc">
+      <h2 id="toc">On this page</h2>
+      <p>A list of the page’s sections that stays in view while you scroll. On wide screens it’s a column beside the content, with its own scroll if the list is long. On phones it’s a bar at the top of the screen that opens to show the list. This page uses it.</p>
+      <p>The list works without JavaScript. With <code>ui-kit.js</code>, the section you are reading is marked in the list and named in the phone bar, and choosing a link closes the bar. If your project has a sticky header, set <code>--jm-toc-offset</code> to its height.</p>
+      <p class="example-code"><code>.jm-with-toc</code> on <code>&lt;main&gt;</code> with <code>__intro</code> and <code>__main</code>; <code>.jm-toc</code> (a <code>&lt;nav&gt;</code> with <code>aria-label</code>) holding <code>__details</code>, <code>__summary</code>, <code>__current</code>, <code>__title</code> and <code>__list</code>. It also works inside <code>.jm-app__sidebar</code>, as on <a href="dashboard.html">Composition</a>.</p>
+    </section>
+
     <section class="jm-stack" aria-labelledby="layout">
       <h2 id="layout">Page layout</h2>
       <p>This page uses the layout classes: <code>.jm-page</code> (header, main and footer, footer at the bottom), <code>.jm-skip-link</code>, <code>.jm-header</code>, <code>.jm-container</code> (<code>--wide</code>), <code>.jm-stack</code> (<code>--tight</code>, <code>--loose</code>), <code>.jm-cluster</code> and <code>.jm-footer</code>. Press Tab once to see the skip link.</p>
     </section>
+    </div>
   </main>
 
   <footer class="jm-footer">

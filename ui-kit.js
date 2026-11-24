@@ -10,6 +10,8 @@
  *   data-jm-filter-status="table-id" receives the count in words.
  * Tabs: add data-jm-tabs to .jm-tabs; buttons use role="tab" with aria-controls.
  * Dialog: buttons with data-jm-dialog-open="id" call showModal() on <dialog id="id">.
+ * On this page: .jm-toc links get aria-current="true" for the section being read,
+ *   .jm-toc__current shows its name, and choosing a link closes the phone bar.
  */
 (function () {
   'use strict';
@@ -116,7 +118,58 @@
     });
   }
 
+  function makeToc(nav) {
+    var details = nav.querySelector('.jm-toc__details');
+    var label = nav.querySelector('.jm-toc__current');
+    var links = Array.prototype.slice.call(nav.querySelectorAll('.jm-toc__list a[href^="#"]'));
+    var targets = links.map(function (a) {
+      return document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    });
+    var phone = window.matchMedia('(max-width: 47.99em)');
+    var active = null;
+    var queued = false;
+
+    function update() {
+      queued = false;
+      // A section is current once its heading passes the top third of the viewport.
+      var line = window.innerHeight / 3;
+      var index = -1;
+      targets.forEach(function (t, i) {
+        if (t && t.getBoundingClientRect().top <= line) index = i;
+      });
+      var root = document.documentElement;
+      if (index !== -1 && window.innerHeight + window.scrollY >= root.scrollHeight - 2) index = targets.length - 1;
+      var link = links[index] || null;
+      if (link === active) return;
+      if (active) active.removeAttribute('aria-current');
+      active = link;
+      if (label) label.textContent = link ? link.textContent : '';
+      if (!link) return;
+      link.setAttribute('aria-current', 'true');
+      if (nav.scrollHeight > nav.clientHeight) {
+        var top = link.offsetTop;
+        if (top < nav.scrollTop || top + link.offsetHeight > nav.scrollTop + nav.clientHeight) {
+          nav.scrollTop = top - nav.clientHeight / 2;
+        }
+      }
+    }
+
+    function queue() {
+      if (!queued) { queued = true; window.requestAnimationFrame(update); }
+    }
+
+    links.forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (details && phone.matches) details.open = false;
+      });
+    });
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    update();
+  }
+
   document.querySelectorAll('table[data-jm-sortable]').forEach(makeSortable);
+  document.querySelectorAll('.jm-toc').forEach(makeToc);
   document.querySelectorAll('input[data-jm-filter]').forEach(makeFilter);
   document.querySelectorAll('[data-jm-tabs]').forEach(makeTabs);
   makeDialogs();
