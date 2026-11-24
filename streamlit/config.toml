@@ -8,11 +8,11 @@ chartCategoricalColors = ["#1f5296", "#9a5b00", "#6a3d9a", "#17623a", "#9e2222"]
 
 [theme.light]
 # --jm-colour-accent, --jm-colour-background, --jm-colour-surface, --jm-colour-text, --jm-colour-link
-primaryColor = "#1f5296"
+primaryColor = "#2b67b5"
 backgroundColor = "#ffffff"
 secondaryBackgroundColor = "#f5f6f8"
 textColor = "#17191c"
-linkColor = "#1f5296"
+linkColor = "#2b67b5"
 linkUnderline = false
 
 [theme.light.sidebar]

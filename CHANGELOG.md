@@ -4,6 +4,12 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-24
+### Changed
+- Default personality: serif heading stack, slightly rounder radius, brighter blue accent, flat buttons (no GDS-style bottom shadow).
+- Header nav uses pill-style current page; lighter footer; softer error summary, tags, banners and table headers.
+- Example and portfolio copy uses neutral product voice instead of service-government phrasing.
+
 ## [1.0.0] - 2026-11-24
 ### Added
 - Portfolio hero (`index.html`) with light/dark/system theme toggle and live project-hooks demo.
