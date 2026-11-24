@@ -35,24 +35,24 @@
     <div class="site-intro jm-stack jm-stack--tight">
       <p class="site-kicker">Chapter 2</p>
       <h1>Components</h1>
-      <p class="site-lead">Each building block in order: type, actions, forms, feedback, data display and page chrome. Every class styles a real HTML element, so it works without JavaScript and with assistive technology.</p>
+      <p class="site-lead">Every component in the kit, with a live example and the classes it uses. The classes go on normal HTML elements, so these pages work without JavaScript and with screen readers.</p>
     </div>
 
     <section class="jm-stack" aria-labelledby="typography">
       <h2 id="typography">Typography</h2>
-      <p>Headings, body copy and links come from the base layer in <code>ui-kit.css</code>. Sizes map to the tokens on the <a href="index.html#type">Foundation</a> page; do not set font sizes ad hoc.</p>
+      <p>Headings, body copy and links come from the base layer in <code>ui-kit.css</code>. Sizes come from the tokens on the <a href="index.html#type">Foundation</a> page. Use those rather than setting your own.</p>
       <div class="example jm-stack">
         <h3>Section heading</h3>
-        <p>Use clear, active sentences. Keep line length comfortable — paragraphs are capped with <code>--jm-measure</code>.</p>
-        <p class="jm-secondary-text">Secondary text for metadata, hints and timestamps.</p>
-        <p><a href="#typography">Inline link</a> with underline and visible focus.</p>
+        <p>Body text looks like this. Paragraphs stop at about 70 characters wide, set by <code>--jm-measure</code>.</p>
+        <p class="jm-secondary-text">Secondary text, for things like hints and timestamps.</p>
+        <p>An <a href="#typography">inline link</a>. It is underlined and shows a focus ring when you tab to it.</p>
       </div>
-      <p class="example-code">Semantic <code>&lt;h1&gt;</code>–<code>&lt;h4&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>; utility <code>.jm-secondary-text</code> for de-emphasised copy.</p>
+      <p class="example-code">Plain <code>&lt;h1&gt;</code> to <code>&lt;h4&gt;</code>, <code>&lt;p&gt;</code> and <code>&lt;a&gt;</code>. Add <code>.jm-secondary-text</code> for quieter text.</p>
     </section>
 
     <section class="jm-stack" aria-labelledby="buttons">
       <h2 id="buttons">Buttons</h2>
-      <p>Say what the button does. Use one primary button per screen; warning buttons only for actions that destroy something.</p>
+      <p>Say what the button does. Use one primary button per screen, and keep the warning style for things that delete data.</p>
       <div class="example jm-cluster">
         <button class="jm-button" type="button">Save changes</button>
         <button class="jm-button jm-button--secondary" type="button">Save draft</button>
@@ -65,7 +65,7 @@
 
     <section class="jm-stack" aria-labelledby="text-input">
       <h2 id="text-input">Text input, textarea and select</h2>
-      <p>Group each control with a label, optional hint and error message. Hints use <code>aria-describedby</code> so screen readers announce them with the field.</p>
+      <p>Every control needs a label. Add a hint or an error message when it helps. Link them with <code>aria-describedby</code> so screen readers read them out with the field.</p>
       <div class="example jm-stack">
         <div class="jm-field">
           <label class="jm-label" for="task-title">Task title</label>
@@ -104,7 +104,7 @@
 
     <section class="jm-stack" aria-labelledby="choices">
       <h2 id="choices">Radios and checkboxes</h2>
-      <p>Use a fieldset and legend for a related group. Inline layouts suit short lists; stack vertically when labels wrap.</p>
+      <p>Put related options in a fieldset with a legend. Short options can sit in a row; stack them when the labels are long.</p>
       <div class="example jm-stack">
         <fieldset class="jm-fieldset">
           <legend class="jm-label jm-label--large">Who should verify the task?</legend>
@@ -171,7 +171,7 @@
 
     <section class="jm-stack" aria-labelledby="error-summary">
       <h2 id="error-summary">Error summary</h2>
-      <p>Place at the top after validation fails. Each link moves focus to the matching field. Give it <code>tabindex="-1"</code> and move focus there when the page loads.</p>
+      <p>Show this at the top of the page when a form fails validation, and move focus to it (it needs <code>tabindex="-1"</code>). Each link jumps to its field.</p>
       <div class="jm-error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1">
         <h3 class="jm-error-summary__title" id="error-summary-title">Fix these fields</h3>
         <ul>
@@ -183,7 +183,7 @@
 
     <section class="jm-stack" aria-labelledby="summary-list">
       <h2 id="summary-list">Summary list</h2>
-      <p>Read-only review rows with links to edit individual values.</p>
+      <p>For checking answers before sending a form. Each row has a Change link.</p>
       <div class="example">
         <dl class="jm-summary-list">
           <div class="jm-summary-list__row">
@@ -208,7 +208,7 @@
 
     <section class="jm-stack" aria-labelledby="tags">
       <h2 id="tags">Status tags</h2>
-      <p>A tag is always a word; colour only reinforces it.</p>
+      <p>A tag is always a word. The colour is a second cue, not the only one.</p>
       <div class="example jm-cluster">
         <span class="jm-tag">Open</span>
         <span class="jm-tag jm-tag--info">In progress</span>
@@ -220,7 +220,7 @@
 
     <section class="jm-stack" aria-labelledby="banners">
       <h2 id="banners">Notification banners</h2>
-      <p>Draw attention without blocking the page. Use <code>role="region"</code> for information; <code>role="alert"</code> after an action succeeds.</p>
+      <p>For messages that should not block the page. Use <code>role="region"</code> for general information and <code>role="alert"</code> to confirm something just happened.</p>
       <div class="jm-banner" role="region" aria-labelledby="banner-info-title">
         <p class="jm-banner__title" id="banner-info-title">2 claims need a second check</p>
         <p>Verify them before they count as done. <a href="#tables">Go to tasks needing review</a></p>
@@ -234,7 +234,7 @@
 
     <section class="jm-stack" aria-labelledby="tables">
       <h2 id="tables">Table</h2>
-      <p>Tables suit comparative data. Use a caption, scope on headers and a keyboard-scrollable wrapper when the table is wider than the viewport.</p>
+      <p>Use a table when people need to compare rows. Give it a caption and put <code>scope</code> on the headers. If it might be wider than the screen, wrap it so it can scroll by keyboard.</p>
       <div class="jm-table-wrap" role="region" aria-labelledby="tasks-caption" tabindex="0">
         <table class="jm-table">
           <caption id="tasks-caption">Tasks this week</caption>
@@ -260,7 +260,7 @@
 
     <section class="jm-stack" aria-labelledby="details-h">
       <h2 id="details-h">Details</h2>
-      <p>Progressively disclose secondary content without leaving the page. Native <code>&lt;details&gt;</code> keeps keyboard support.</p>
+      <p>Hides extra detail until someone opens it. It’s the native <code>&lt;details&gt;</code> element, so the keyboard works without extra code.</p>
       <details class="jm-details">
         <summary>What happens after I post a task?</summary>
         <div class="jm-details__text">Any agent can claim it. When the agent says it is done, the verifier you chose checks the work before it counts as done.</div>
@@ -270,7 +270,7 @@
 
     <section class="jm-stack" aria-labelledby="navigation-patterns">
       <h2 id="navigation-patterns">Navigation patterns</h2>
-      <p>Breadcrumbs, pagination and tabs for moving through content. Tabs need <code>ui-kit.js</code> for keyboard support; breadcrumbs and pagination work without it.</p>
+      <p>Tabs need <code>ui-kit.js</code> for arrow-key support. Breadcrumbs and pagination are plain links and work without it.</p>
       <div class="example jm-stack">
         <nav class="jm-breadcrumbs" aria-label="Breadcrumb">
           <ol>
@@ -293,10 +293,10 @@
             <button class="jm-tabs__tab" type="button" role="tab" id="tab-audit" aria-controls="panel-audit" aria-selected="false" tabindex="-1">Audit</button>
           </div>
           <div class="jm-tabs__panel" role="tabpanel" id="panel-summary" aria-labelledby="tab-summary">
-            <p>Overview text for the active tab panel.</p>
+            <p>3 tasks open, 1 waiting for review.</p>
           </div>
           <div class="jm-tabs__panel" role="tabpanel" id="panel-audit" aria-labelledby="tab-audit" hidden>
-            <p>Supporting detail for reviewers.</p>
+            <p>Last change: qa verified #40 at 09:15.</p>
           </div>
         </div>
       </div>
@@ -305,7 +305,7 @@
 
     <section class="jm-stack" aria-labelledby="card-dialog">
       <h2 id="card-dialog">Card and dialog</h2>
-      <p>Cards group related content; dialogs interrupt for a focused task. Use the native <code>&lt;dialog&gt;</code> element.</p>
+      <p>Use a card to group a few related things. Only use a dialog when someone has to answer before carrying on, and use the native <code>&lt;dialog&gt;</code> element.</p>
       <div class="example jm-cluster">
         <article class="jm-card" style="max-width: 20rem;">
           <div class="jm-card__header"><h3 class="jm-card__title">Weekly digest</h3></div>
@@ -319,7 +319,7 @@
           <h2 class="jm-dialog__title" id="demo-dialog-title">Confirm export</h2>
           <form method="dialog"><button class="jm-dialog__close" type="submit" value="cancel">Close</button></form>
         </div>
-        <div class="jm-dialog__body"><p>Your file will download when you confirm.</p></div>
+        <div class="jm-dialog__body"><p>This downloads this week’s tasks as a CSV file.</p></div>
         <div class="jm-dialog__footer">
           <form method="dialog"><button class="jm-button jm-button--secondary" type="submit" value="cancel">Cancel</button></form>
           <form method="dialog"><button class="jm-button" type="submit" value="ok">Export</button></form>
@@ -330,7 +330,7 @@
 
     <section class="jm-stack" aria-labelledby="layout">
       <h2 id="layout">Page layout</h2>
-      <p>This page is built from the layout classes: <code>.jm-page</code> (header, main and footer, footer at the bottom), <code>.jm-skip-link</code>, <code>.jm-header</code>, <code>.jm-container</code> (<code>--wide</code>), <code>.jm-stack</code> (<code>--tight</code>, <code>--loose</code>), <code>.jm-cluster</code> and <code>.jm-footer</code>. Press Tab once to see the skip link.</p>
+      <p>This page uses the layout classes: <code>.jm-page</code> (header, main and footer, footer at the bottom), <code>.jm-skip-link</code>, <code>.jm-header</code>, <code>.jm-container</code> (<code>--wide</code>), <code>.jm-stack</code> (<code>--tight</code>, <code>--loose</code>), <code>.jm-cluster</code> and <code>.jm-footer</code>. Press Tab once to see the skip link.</p>
     </section>
   </main>
 

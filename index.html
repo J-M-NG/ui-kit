@@ -35,9 +35,9 @@
   <main id="main" class="jm-container jm-stack jm-stack--loose">
     <section class="site-split site-hero" aria-labelledby="hero-title">
       <div class="site-intro jm-stack jm-stack--tight">
-        <p class="site-kicker">Framework-free house style</p>
-        <h1 id="hero-title">Accessible patterns for products and dashboards</h1>
-        <p class="site-lead">One CSS file of tokens and components, optional JavaScript and a Streamlit theme. Semantic HTML first, WCAG 2.2 AA in light and dark, no build step.</p>
+        <p class="site-kicker">House style</p>
+        <h1 id="hero-title">The CSS I use for forms, tables and dashboards</h1>
+        <p class="site-lead">It’s one stylesheet you copy into a project. There’s an optional script for sorting tables, tabs and dialogs, and a Streamlit theme that matches. No build step.</p>
         <div class="jm-cluster site-actions">
           <a class="jm-button" href="examples/dashboard.html">See the dashboard</a>
           <a class="jm-button jm-button--secondary" href="examples/components.html">Browse components</a>
@@ -71,15 +71,15 @@
 
     <section class="jm-stack" aria-labelledby="hooks-title">
       <div class="site-intro jm-stack jm-stack--tight">
-        <h2 id="hooks-title">Make it yours with three hooks</h2>
-        <p>Projects override the accent colour, heading face and corner radius in their own stylesheet; everything else stays shared. Try them here: changes apply only to the preview.</p>
+        <h2 id="hooks-title">Changing the look</h2>
+        <p>A project can set its own accent colour, heading font and corner radius in its stylesheet. Everything else stays the same. Try them here; only the preview card changes.</p>
       </div>
       <div class="jm-panel">
         <div class="jm-panel__body site-split">
           <div class="jm-stack jm-stack--tight">
             <div class="jm-field">
               <label class="jm-label" for="hook-accent">Accent colour</label>
-              <div class="jm-hint" id="hook-accent-hint">Hex value for <code>--jm-colour-accent</code> and links</div>
+              <div class="jm-hint" id="hook-accent-hint">A hex colour. Sets <code>--jm-colour-accent</code>, which links use too.</div>
               <input class="jm-input jm-input--width-10" id="hook-accent" type="text" value="#2b67b5" spellcheck="false" aria-describedby="hook-accent-hint">
             </div>
             <div class="jm-field">
@@ -112,17 +112,17 @@
     </section>
 
     <section class="jm-stack" aria-labelledby="chapters-title">
-      <h2 id="chapters-title">Documentation</h2>
+      <h2 id="chapters-title">The pages</h2>
       <ul class="site-grid site-grid--4">
-        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/index.html">Foundation</a><p>Colour, type, spacing and radius tokens with live swatches in both themes.</p></div></li>
-        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/components.html">Components</a><p>Buttons, forms, feedback, tables, navigation, cards and dialogs.</p></div></li>
-        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/dashboard.html">Composition</a><p>Panels, key figures, sortable tables, charts and activity trails.</p></div></li>
-        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/content-style.html">Content style</a><p>How to write headings, buttons and error messages.</p></div></li>
+        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/index.html">Foundation</a><p>The tokens: colour, type, spacing and radius.</p></div></li>
+        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/components.html">Components</a><p>Every component, with the markup it needs.</p></div></li>
+        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/dashboard.html">Composition</a><p>A sample dashboard made from the components.</p></div></li>
+        <li class="jm-card site-chapter"><div class="jm-card__body"><a href="examples/content-style.html">Content style</a><p>How I write headings, buttons and error messages.</p></div></li>
       </ul>
     </section>
 
     <section class="jm-stack jm-stack--tight site-intro" aria-labelledby="start">
-      <h2 id="start">Adopt the kit</h2>
+      <h2 id="start">Using it in a project</h2>
       <ol class="jm-stack jm-stack--tight">
         <li>Copy <code>ui-kit.css</code>, and optionally <code>ui-kit.js</code>, into your project.</li>
         <li>Link it before your own stylesheet.</li>

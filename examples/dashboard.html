@@ -51,7 +51,7 @@
       <div class="site-intro jm-stack jm-stack--tight">
         <p class="site-kicker">Chapter 3</p>
         <h1>Composition</h1>
-        <p class="site-lead">A working dashboard built only from kit classes. Optional <code>ui-kit.js</code> adds sortable headers and filtering; the numbers are illustrative.</p>
+        <p class="site-lead">A dashboard made only from kit classes. The numbers are made up. Sorting and filtering need <code>ui-kit.js</code>.</p>
       </div>
 
       <section class="jm-panel" aria-labelledby="tasks-title">
@@ -60,7 +60,7 @@
           <p class="jm-secondary-text" role="status" data-jm-filter-status="tasks">5 rows</p>
         </div>
         <div class="jm-panel__body jm-stack jm-stack--tight">
-          <p>Sort by clicking a header; filter rows with the search box. Both need <code>ui-kit.js</code>.</p>
+          <p>Click a column header to sort, or type in the box to filter.</p>
           <form class="jm-filters" role="search" onsubmit="return false">
             <div class="jm-field">
               <label class="jm-label" for="task-filter">Filter tasks</label>
@@ -92,7 +92,7 @@
       <section class="jm-panel" aria-labelledby="figures-title">
         <div class="jm-panel__header"><h2 class="jm-panel__title" id="figures-title">Key figures</h2></div>
         <div class="jm-panel__body jm-stack jm-stack--tight">
-          <p class="jm-secondary-text">Top-line metrics in a definition list; a note sits under the value without breaking the scan line.</p>
+          <p class="jm-secondary-text">The main numbers, marked up as a definition list. A short note can go under a number.</p>
           <dl class="jm-figures">
             <div><dt>Open tasks</dt><dd>14</dd></div>
             <div><dt>Verified this week</dt><dd>31<span class="jm-figures__note">up from 24 last week</span></dd></div>
@@ -105,7 +105,7 @@
       <section class="jm-panel" aria-labelledby="bars-title">
         <div class="jm-panel__header"><h2 class="jm-panel__title" id="bars-title">Charts</h2></div>
         <div class="jm-panel__body jm-stack">
-          <p>CSS bar charts, SVG line charts, heat-tinted cells and sparklines share chart colour tokens. Each chart has a title, note and text alternative.</p>
+          <p>Bar charts are plain CSS and line charts are SVG. Both use the chart colour tokens. Give every chart a title and a text version for screen readers.</p>
           <figure class="jm-chart">
             <figcaption class="jm-chart__title">Claims by status</figcaption>
             <p class="jm-chart__note">Sample counts for the current week.</p>
@@ -119,7 +119,7 @@
 
           <figure class="jm-chart">
             <figcaption class="jm-chart__title">Claims per day</figcaption>
-            <p class="jm-chart__note">Two series; labels at line ends.</p>
+            <p class="jm-chart__note">Labels sit at the end of each line, so there’s no legend to look up.</p>
             <svg class="jm-lines" viewBox="0 0 320 140" role="img" aria-label="Claims per day from 6 to 12 November. Verified rose from 2 to 9; new claims fell from 8 to 5.">
               <polyline class="jm-series-1" points="6,120 44,110 82,90 120,70 158,50 196,34 228,24"/>
               <polyline class="jm-series-2" points="6,36 44,40 82,56 120,66 158,72 196,76 228,80"/>
@@ -130,7 +130,7 @@
 
           <figure class="jm-chart">
             <figcaption class="jm-chart__title">Heat table</figcaption>
-            <p class="jm-chart__note">Cell background strength reflects magnitude; the number is always visible.</p>
+            <p class="jm-chart__note">Darker cells mean bigger numbers. The number is always shown as well.</p>
             <div class="jm-table-wrap" role="region" aria-label="Claims verified by agent and weekday" tabindex="0">
               <table class="jm-table jm-table--compact">
                 <thead><tr><th scope="col">Agent</th><th scope="col" class="jm-table__num">Mon</th><th scope="col" class="jm-table__num">Tue</th><th scope="col" class="jm-table__num">Wed</th><th scope="col" class="jm-table__num">Thu</th></tr></thead>
@@ -151,7 +151,7 @@
       <section class="jm-panel" aria-labelledby="trail-title">
         <div class="jm-panel__header"><h2 class="jm-panel__title" id="trail-title">Activity trail</h2></div>
         <div class="jm-panel__body">
-          <p class="jm-secondary-text">An ordered list of recent events with timestamps and status tags.</p>
+          <p class="jm-secondary-text">Recent events, newest first.</p>
           <ol class="jm-trail">
             <li><time datetime="2026-11-12T10:42">12 November, 10:42</time><div><span class="jm-trail__id">#41</span> cloud-worker claimed <strong>Seed demo board</strong> <span class="jm-tag jm-tag--info">In progress</span></div></li>
             <li><time datetime="2026-11-12T09:15">12 November, 09:15</time><div><span class="jm-trail__id">#40</span> qa verified <strong>Add contrast check to CI</strong> <span class="jm-tag jm-tag--success">Verified</span></div></li>
@@ -162,7 +162,7 @@
 
       <section class="jm-stack" aria-labelledby="states-title">
         <h2 id="states-title">Empty and error states</h2>
-        <p>Panels, loading text and banners for when data is missing, slow or failed.</p>
+        <p>What to show when there is nothing to list yet, or the data will not load.</p>
         <div class="jm-panel jm-empty">
           <p class="jm-empty__title">No tasks yet</p>
           <p class="jm-secondary-text">Tasks you create or claim appear here.</p>
@@ -171,7 +171,7 @@
         <div class="jm-loading" role="status">Loading tasks</div>
         <div class="jm-banner jm-banner--error" role="alert">
           <p class="jm-banner__title">Tasks could not be loaded</p>
-          <p>Try again in a minute, or check the network.</p>
+          <p>Try again in a minute. If it keeps happening, check your connection.</p>
         </div>
         <div class="jm-banner jm-banner--warning" role="region" aria-label="Board frozen">
           <p class="jm-banner__title">The board is frozen</p>
