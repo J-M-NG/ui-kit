@@ -1044,11 +1044,6 @@
     text-align: right;
   }
 
-  .jm-table td.jm-table__num {
-    font-family: var(--jm-font-family-mono);
-    font-size: 0.95em;
-  }
-
   .jm-table--compact th,
   .jm-table--compact td {
     padding-block: var(--jm-space-2);
@@ -1524,15 +1519,14 @@
 
   .jm-trail time,
   .jm-trail__meta {
-    font-family: var(--jm-font-family-mono);
     color: var(--jm-colour-text-secondary);
     font-size: var(--jm-font-size-sm);
     font-variant-numeric: tabular-nums;
   }
 
   .jm-trail__id {
-    font-family: var(--jm-font-family-mono);
     font-size: var(--jm-font-size-sm);
+    font-variant-numeric: tabular-nums;
   }
 
   @media (max-width: 30em) {
@@ -1582,7 +1576,6 @@
   .jm-bars > li:nth-child(5) { --jm-series: var(--jm-colour-chart-5); }
 
   .jm-bars__value {
-    font-family: var(--jm-font-family-mono);
     text-align: right;
     font-variant-numeric: tabular-nums;
   }
@@ -1941,10 +1934,9 @@
     white-space: nowrap !important;
   }
 
-  /* Numbers, ids and timestamps: monospace with tabular figures. Use for those value types only. */
+  /* Numbers, ids and dates: tabular sans figures (monospace is for code only). */
   .jm-num {
-    font-family: var(--jm-font-family-mono);
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums lining-nums;
   }
 
   .jm-secondary-text {
