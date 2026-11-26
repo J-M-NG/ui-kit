@@ -450,6 +450,7 @@
   }
 
   pre {
+    max-width: 100%;
     margin: 0 0 var(--jm-space-4);
     padding: var(--jm-space-4);
     border: var(--jm-border-width) solid var(--jm-colour-border);

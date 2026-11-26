@@ -142,8 +142,13 @@
 /* Responsive grids for documentation pages. */
 .site-split {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: var(--jm-space-6);
+}
+
+.site-split > * {
+  min-width: 0;
 }
 
 .site-grid {
