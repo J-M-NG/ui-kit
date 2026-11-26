@@ -56,10 +56,9 @@
 
   <main id="main" class="jm-container jm-container--wide jm-with-toc sheet">
   <div class="site-intro jm-stack jm-stack--tight jm-with-toc__intro">
-    <p class="site-kicker">Chapter 1</p>
     <h1>Foundation</h1>
-    <p class="site-lead">The tokens everything else is built from. Use the semantic colour tokens (<code>--jm-colour-text</code>), not palette names. The theme follows the operating system unless you set <code>data-theme</code> on <code>&lt;html&gt;</code>.</p>
-    <p class="jm-secondary-text">Swatches update when you change theme. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and borders, focus rings and status marks for 3:1.</p>
+    <p class="site-lead">Design tokens for colour, type, spacing, radius and breakpoints. Use semantic colour tokens (<code>--jm-colour-text</code>), not palette steps.</p>
+    <p class="jm-secondary-text">Swatches update with the theme switch. <code>tests/check_contrast.py</code> checks every text pair for 4.5:1 and controls/status marks for 3:1.</p>
   </div>
     <nav class="jm-toc" aria-label="On this page">
       <details class="jm-toc__details">
@@ -129,14 +128,14 @@
   <section aria-labelledby="type">
     <h2 id="type">Type scale</h2>
     <p>No web fonts. Page and section headings (h1 to h3) use the serif stack in <code>--jm-font-family-heading</code>; body text, labels and component titles use the system sans. Body text is <code>--jm-font-size-md</code> (16px).</p>
-    <div class="scale-row"><code>3xl / h1, 44px (32px on phones)</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 600; letter-spacing: -0.02em">Monthly summary</span></div>
-    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 600; letter-spacing: -0.01em">Monthly summary</span></div>
-    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 600">Monthly summary</span></div>
-    <div class="scale-row"><code>lg / h4 and titles, 19px</code><span style="font-size: var(--jm-font-size-lg); font-weight: 600">Monthly summary for 7 November 2026</span></div>
-    <div class="scale-row"><code>md / body, 16px</code><span style="font-size: var(--jm-font-size-md)">Monthly summary for 7 November 2026</span></div>
-    <div class="scale-row"><code>sm, 14px</code><span style="font-size: var(--jm-font-size-sm)">Monthly summary for 7 November 2026</span></div>
+    <div class="scale-row"><code>3xl / h1, 44px (32px on phones)</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 500; letter-spacing: -0.025em">Winter catalogue</span></div>
+    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 500; letter-spacing: -0.015em">Winter catalogue</span></div>
+    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 500">Winter catalogue</span></div>
+    <div class="scale-row"><code>lg / h4 and titles, 19px</code><span style="font-size: var(--jm-font-size-lg); font-weight: 600">Winter catalogue — 7 November 2026</span></div>
+    <div class="scale-row"><code>md / body, 16px</code><span style="font-size: var(--jm-font-size-md)">Winter catalogue — 7 November 2026</span></div>
+    <div class="scale-row"><code>sm, 14px</code><span style="font-size: var(--jm-font-size-sm)">Winter catalogue — 7 November 2026</span></div>
     <div class="scale-row"><code>xs, 13px</code><span style="font-size: var(--jm-font-size-xs)">Captions only</span></div>
-    <div class="scale-row"><code>mono</code><code style="font-size: var(--jm-font-size-md)">run_id = 2026-11-07-a</code></div>
+    <div class="scale-row"><code>mono</code><code style="font-size: var(--jm-font-size-md)">order_id = 2026-11-07-04</code></div>
   </section>
 
   <section aria-labelledby="space">

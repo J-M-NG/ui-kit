@@ -1,4 +1,4 @@
-/* Documentation site chrome for the portfolio and examples/. Not part of the kit:
+/* Documentation site chrome for index.html and examples/. Not part of the kit:
    adopting projects copy ui-kit.css (and optionally ui-kit.js), never this file. */
 
 /* Theme switch: a compact segmented control in the header. */
@@ -40,16 +40,9 @@
   color: var(--jm-colour-text);
 }
 
-/* Page intro: kicker, h1, lead. */
+/* Page intro. */
 .site-intro {
   max-width: 46rem;
-}
-
-.site-kicker {
-  margin: 0;
-  color: var(--jm-colour-text-secondary);
-  font-size: var(--jm-font-size-sm);
-  font-weight: var(--jm-font-weight-medium);
 }
 
 .site-lead {
@@ -57,8 +50,79 @@
   color: var(--jm-colour-text-secondary);
 }
 
-.site-actions {
-  margin-top: var(--jm-space-3);
+.site-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jm-space-1) var(--jm-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--jm-colour-text-secondary);
+  font-family: var(--jm-font-family-mono);
+  font-size: var(--jm-font-size-xs);
+}
+
+/* Ruled directory list for the home page. */
+.site-directory {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--jm-border-width) solid var(--jm-colour-border);
+}
+
+.site-directory > li {
+  display: grid;
+  grid-template-columns: minmax(9rem, 13rem) minmax(0, 1fr);
+  gap: var(--jm-space-1) var(--jm-space-5);
+  align-items: baseline;
+  padding: var(--jm-space-3) 0;
+  border-bottom: var(--jm-border-width) solid var(--jm-colour-border);
+}
+
+.site-directory a {
+  font-weight: var(--jm-font-weight-semibold);
+}
+
+.site-directory p {
+  margin: 0;
+  color: var(--jm-colour-text-secondary);
+  font-size: var(--jm-font-size-sm);
+}
+
+@media (max-width: 40em) {
+  .site-directory > li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Preset buttons on the home page hooks demo. */
+.site-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jm-space-2);
+}
+
+.site-presets button {
+  min-height: 2.25rem;
+  margin: 0;
+  padding: var(--jm-space-1) var(--jm-space-3);
+  border: var(--jm-border-width) solid var(--jm-colour-border-strong);
+  border-radius: var(--jm-radius-md);
+  background: var(--jm-colour-surface);
+  color: var(--jm-colour-text);
+  font: inherit;
+  font-size: var(--jm-font-size-sm);
+  cursor: pointer;
+}
+
+.site-presets button:hover {
+  background: var(--jm-colour-surface-sunken);
+}
+
+.site-presets button[aria-pressed="true"] {
+  border-color: var(--jm-colour-accent);
+  background: var(--jm-colour-accent-subtle);
+  color: var(--jm-colour-text);
 }
 
 /* Example frame: the live sample, then its class list underneath. */
@@ -75,15 +139,16 @@
   font-size: var(--jm-font-size-sm);
 }
 
-/* Responsive grids for the portfolio. */
+/* Responsive grids for documentation pages. */
 .site-split {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: var(--jm-space-6);
 }
 
-.site-hero {
-  align-items: center;
+.site-split > * {
+  min-width: 0;
 }
 
 .site-grid {
@@ -99,31 +164,5 @@
 }
 
 @media (min-width: 64em) {
-  .site-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .site-split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-  .site-hero { grid-template-columns: minmax(0, 11fr) minmax(0, 13fr); gap: var(--jm-space-6); }
-}
-
-@media (min-width: 40em) and (max-width: 63.99em) {
-  .site-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-.site-chapter {
-  height: 100%;
-}
-
-.site-chapter .jm-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--jm-space-2);
-}
-
-.site-chapter a {
-  font-weight: var(--jm-font-weight-semibold);
-}
-
-.site-chapter p {
-  margin: 0;
-  color: var(--jm-colour-text-secondary);
-  font-size: var(--jm-font-size-sm);
 }

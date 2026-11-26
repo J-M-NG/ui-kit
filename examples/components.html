@@ -33,9 +33,8 @@
 
   <main id="main" class="jm-container jm-container--wide jm-with-toc">
     <div class="site-intro jm-stack jm-stack--tight jm-with-toc__intro">
-      <p class="site-kicker">Chapter 2</p>
       <h1>Components</h1>
-      <p class="site-lead">Every component in the kit, with a live example and the classes it uses. The classes go on normal HTML elements, so these pages work without JavaScript and with screen readers.</p>
+      <p class="site-lead">Every component in the kit, with a live sample and the classes it uses. Classes attach to standard HTML elements so forms and navigation work without JavaScript.</p>
     </div>
     <nav class="jm-toc" aria-label="On this page">
       <details class="jm-toc__details">
@@ -92,14 +91,14 @@
       <p>Every control needs a label. Add a hint or an error message when it helps. Link them with <code>aria-describedby</code> so screen readers read them out with the field.</p>
       <div class="example jm-stack">
         <div class="jm-field">
-          <label class="jm-label" for="task-title">Task title</label>
-          <div class="jm-hint" id="task-title-hint">Say what done looks like</div>
-          <input class="jm-input" id="task-title" name="task-title" type="text" aria-describedby="task-title-hint">
+          <label class="jm-label" for="job-title">Job title</label>
+          <div class="jm-hint" id="job-title-hint">Include the edition or print run if relevant</div>
+          <input class="jm-input" id="job-title" name="job-title" type="text" aria-describedby="job-title-hint">
         </div>
 
         <div class="jm-field">
-          <label class="jm-label" for="run-id">Run ID</label>
-          <input class="jm-input jm-input--width-10" id="run-id" name="run-id" type="text" spellcheck="false" value="2026-11-07a">
+          <label class="jm-label" for="order-ref">Order reference</label>
+          <input class="jm-input jm-input--width-10" id="order-ref" name="order-ref" type="text" spellcheck="false" value="2026-11-07a">
         </div>
 
         <div class="jm-field jm-field--error">
@@ -109,17 +108,17 @@
         </div>
 
         <div class="jm-field">
-          <label class="jm-label" for="details">Details (optional)</label>
-          <div class="jm-hint" id="details-hint">Include links and the files involved</div>
+          <label class="jm-label" for="details">Notes (optional)</label>
+          <div class="jm-hint" id="details-hint">Paper stock, binding, or delivery notes</div>
           <textarea class="jm-textarea" id="details" name="details" rows="4" aria-describedby="details-hint"></textarea>
         </div>
 
         <div class="jm-field">
-          <label class="jm-label" for="board">Board</label>
-          <select class="jm-select" id="board" name="board">
-            <option>ui-kit</option>
-            <option>LLM cheating arena</option>
-            <option>Agent message board</option>
+          <label class="jm-label" for="catalogue">Catalogue</label>
+          <select class="jm-select" id="catalogue" name="catalogue">
+            <option>Winter catalogue</option>
+            <option>Pocket field guides</option>
+            <option>Online shop</option>
           </select>
         </div>
       </div>
@@ -131,21 +130,21 @@
       <p>Put related options in a fieldset with a legend. Short options can sit in a row; stack them when the labels are long.</p>
       <div class="example jm-stack">
         <fieldset class="jm-fieldset">
-          <legend class="jm-label jm-label--large">Who should verify the task?</legend>
-          <div class="jm-hint">Choose an agent that did not do the task</div>
+          <legend class="jm-label jm-label--large">Who should sign off the proof?</legend>
+          <div class="jm-hint">Choose someone who did not typeset this edition</div>
           <div class="jm-choices">
             <div class="jm-choice">
-              <input class="jm-choice__input" id="verifier-qa" name="verifier" type="radio" value="qa" checked>
-              <label class="jm-choice__label" for="verifier-qa">qa agent</label>
+              <input class="jm-choice__input" id="reviewer-hannah" name="reviewer" type="radio" value="hannah" checked>
+              <label class="jm-choice__label" for="reviewer-hannah">Hannah</label>
             </div>
             <div class="jm-choice">
-              <input class="jm-choice__input" id="verifier-orchestrator" name="verifier" type="radio" value="orchestrator" aria-describedby="verifier-orchestrator-hint">
-              <label class="jm-choice__label" for="verifier-orchestrator">Orchestrator</label>
-              <div class="jm-choice__hint" id="verifier-orchestrator-hint">Slower, but sees the whole plan</div>
+              <input class="jm-choice__input" id="reviewer-priya" name="reviewer" type="radio" value="priya" aria-describedby="reviewer-priya-hint">
+              <label class="jm-choice__label" for="reviewer-priya">Priya</label>
+              <div class="jm-choice__hint" id="reviewer-priya-hint">Checks colour proofs and cover bleed</div>
             </div>
             <div class="jm-choice">
-              <input class="jm-choice__input" id="verifier-me" name="verifier" type="radio" value="me">
-              <label class="jm-choice__label" for="verifier-me">Me</label>
+              <input class="jm-choice__input" id="reviewer-me" name="reviewer" type="radio" value="me">
+              <label class="jm-choice__label" for="reviewer-me">Me</label>
             </div>
           </div>
         </fieldset>
@@ -154,16 +153,16 @@
           <legend class="jm-label">Notify me</legend>
           <div class="jm-choices jm-choices--inline">
             <div class="jm-choice">
-              <input class="jm-choice__input" id="notify-claim" name="notify" type="checkbox" value="claim" checked>
-              <label class="jm-choice__label" for="notify-claim">When it is claimed</label>
+              <input class="jm-choice__input" id="notify-proof" name="notify" type="checkbox" value="proof" checked>
+              <label class="jm-choice__label" for="notify-proof">When a proof is ready</label>
             </div>
             <div class="jm-choice">
-              <input class="jm-choice__input" id="notify-verified" name="notify" type="checkbox" value="verified">
-              <label class="jm-choice__label" for="notify-verified">When it is verified</label>
+              <input class="jm-choice__input" id="notify-dispatched" name="notify" type="checkbox" value="dispatched">
+              <label class="jm-choice__label" for="notify-dispatched">When it is dispatched</label>
             </div>
             <div class="jm-choice">
               <input class="jm-choice__input" id="notify-off" name="notify" type="checkbox" value="off" disabled>
-              <label class="jm-choice__label" for="notify-off">Daily summary (not available yet)</label>
+              <label class="jm-choice__label" for="notify-off">Weekly digest (not available yet)</label>
             </div>
           </div>
         </fieldset>
@@ -211,14 +210,14 @@
       <div class="example">
         <dl class="jm-summary-list">
           <div class="jm-summary-list__row">
-            <dt>Task title</dt>
-            <dd>Add contrast check to CI</dd>
-            <dd class="jm-summary-list__actions"><a href="#task-title">Change<span class="jm-visually-hidden"> task title</span></a></dd>
+            <dt>Job title</dt>
+            <dd>Proofread winter catalogue</dd>
+            <dd class="jm-summary-list__actions"><a href="#job-title">Change<span class="jm-visually-hidden"> job title</span></a></dd>
           </div>
           <div class="jm-summary-list__row">
-            <dt>Verifier</dt>
-            <dd>qa agent</dd>
-            <dd class="jm-summary-list__actions"><a href="#verifier-qa">Change<span class="jm-visually-hidden"> verifier</span></a></dd>
+            <dt>Reviewer</dt>
+            <dd>Hannah</dd>
+            <dd class="jm-summary-list__actions"><a href="#reviewer-hannah">Change<span class="jm-visually-hidden"> reviewer</span></a></dd>
           </div>
           <div class="jm-summary-list__row">
             <dt>Due date</dt>
@@ -234,11 +233,11 @@
       <h2 id="tags">Status tags</h2>
       <p>A tag is always a word. The colour is a second cue, not the only one.</p>
       <div class="example jm-cluster">
-        <span class="jm-tag">Open</span>
+        <span class="jm-tag">Queued</span>
         <span class="jm-tag jm-tag--info">In progress</span>
-        <span class="jm-tag jm-tag--warning">Needs review</span>
-        <span class="jm-tag jm-tag--success">Verified</span>
-        <span class="jm-tag jm-tag--error">Rejected</span>
+        <span class="jm-tag jm-tag--warning">Needs proof</span>
+        <span class="jm-tag jm-tag--success">Approved</span>
+        <span class="jm-tag jm-tag--error">Held</span>
       </div>
     </section>
 
@@ -246,12 +245,12 @@
       <h2 id="banners">Notification banners</h2>
       <p>For messages that should not block the page. Use <code>role="region"</code> for general information and <code>role="alert"</code> to confirm something just happened.</p>
       <div class="jm-banner" role="region" aria-labelledby="banner-info-title">
-        <p class="jm-banner__title" id="banner-info-title">2 claims need a second check</p>
-        <p>Verify them before they count as done. <a href="#tables">Go to tasks needing review</a></p>
+        <p class="jm-banner__title" id="banner-info-title">2 proofs waiting for sign-off</p>
+        <p>Check them before Friday’s press deadline. <a href="#tables">Go to jobs needing proof</a></p>
       </div>
       <div class="jm-banner jm-banner--success" role="alert" aria-labelledby="banner-success-title">
-        <p class="jm-banner__title" id="banner-success-title">Task posted</p>
-        <p>Agents can now claim “Add contrast check to CI”.</p>
+        <p class="jm-banner__title" id="banner-success-title">Print job saved</p>
+        <p>“Proofread winter catalogue” has been added to the queue.</p>
       </div>
       <p class="example-code"><code>.jm-banner</code> (information, <code>role="region"</code>), <code>.jm-banner--success</code> (after an action, <code>role="alert"</code>).</p>
     </section>
@@ -259,23 +258,23 @@
     <section class="jm-stack" aria-labelledby="tables">
       <h2 id="tables">Table</h2>
       <p>Use a table when people need to compare rows. Give it a caption and put <code>scope</code> on the headers. If it might be wider than the screen, wrap it so it can scroll by keyboard.</p>
-      <div class="jm-table-wrap" role="region" aria-labelledby="tasks-caption" tabindex="0">
+      <div class="jm-table-wrap" role="region" aria-labelledby="jobs-caption" tabindex="0">
         <table class="jm-table">
-          <caption id="tasks-caption">Tasks this week</caption>
+          <caption id="jobs-caption">Jobs this week</caption>
           <thead>
             <tr>
-              <th scope="col">Task</th>
-              <th scope="col">Agent</th>
+              <th scope="col">Job</th>
+              <th scope="col">Owner</th>
               <th scope="col">Status</th>
-              <th scope="col" class="jm-table__num">Attempts</th>
+              <th scope="col" class="jm-table__num">Proofs</th>
               <th scope="col" class="jm-table__num">Updated</th>
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="#tables">Add contrast check to CI</a></th><td>executor</td><td><span class="jm-tag jm-tag--warning">Needs review</span></td><td class="jm-table__num">1</td><td class="jm-table__num">14:02</td></tr>
-            <tr><th scope="row"><a href="#tables">Write status tag examples</a></th><td>executor</td><td><span class="jm-tag jm-tag--info">In progress</span></td><td class="jm-table__num">2</td><td class="jm-table__num">13:40</td></tr>
-            <tr><th scope="row"><a href="#tables">Review token names</a></th><td>qa</td><td><span class="jm-tag jm-tag--success">Verified</span></td><td class="jm-table__num">1</td><td class="jm-table__num">12:15</td></tr>
-            <tr><th scope="row"><a href="#tables">Fix focus ring in forced colours</a></th><td>executor</td><td><span class="jm-tag jm-tag--error">Rejected</span></td><td class="jm-table__num">3</td><td class="jm-table__num">11:58</td></tr>
+            <tr><th scope="row"><a href="#tables">Proofread winter catalogue</a></th><td>Hannah</td><td><span class="jm-tag jm-tag--warning">Needs proof</span></td><td class="jm-table__num">1</td><td class="jm-table__num">14:02</td></tr>
+            <tr><th scope="row"><a href="#tables">Reprint pocket field guide</a></th><td>Sam</td><td><span class="jm-tag jm-tag--info">In progress</span></td><td class="jm-table__num">2</td><td class="jm-table__num">13:40</td></tr>
+            <tr><th scope="row"><a href="#tables">Update EU shipping rates</a></th><td>Priya</td><td><span class="jm-tag jm-tag--success">Approved</span></td><td class="jm-table__num">1</td><td class="jm-table__num">12:15</td></tr>
+            <tr><th scope="row"><a href="#tables">Fix ISBN barcode on cover</a></th><td>Sam</td><td><span class="jm-tag jm-tag--error">Held</span></td><td class="jm-table__num">3</td><td class="jm-table__num">11:58</td></tr>
           </tbody>
         </table>
       </div>
@@ -286,8 +285,8 @@
       <h2 id="details-h">Details</h2>
       <p>Hides extra detail until someone opens it. It’s the native <code>&lt;details&gt;</code> element, so the keyboard works without extra code.</p>
       <details class="jm-details">
-        <summary>What happens after I post a task?</summary>
-        <div class="jm-details__text">Any agent can claim it. When the agent says it is done, the verifier you chose checks the work before it counts as done.</div>
+        <summary>What happens after a proof is approved?</summary>
+        <div class="jm-details__text">The print-ready PDF is locked and sent to the printer on the next morning’s batch. Changes after sign-off require a new job entry.</div>
       </details>
       <p class="example-code"><code>.jm-details</code> on <code>&lt;details&gt;</code>; opens and closes without JavaScript.</p>
     </section>
@@ -314,13 +313,13 @@
         <div class="jm-tabs" data-jm-tabs>
           <div class="jm-tabs__list" role="tablist" aria-label="Example tabs">
             <button class="jm-tabs__tab" type="button" role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="true">Summary</button>
-            <button class="jm-tabs__tab" type="button" role="tab" id="tab-audit" aria-controls="panel-audit" aria-selected="false" tabindex="-1">Audit</button>
+            <button class="jm-tabs__tab" type="button" role="tab" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">History</button>
           </div>
           <div class="jm-tabs__panel" role="tabpanel" id="panel-summary" aria-labelledby="tab-summary">
-            <p>3 tasks open, 1 waiting for review.</p>
+            <p>3 jobs queued, 1 waiting for proof sign-off.</p>
           </div>
-          <div class="jm-tabs__panel" role="tabpanel" id="panel-audit" aria-labelledby="tab-audit" hidden>
-            <p>Last change: qa verified #40 at 09:15.</p>
+          <div class="jm-tabs__panel" role="tabpanel" id="panel-history" aria-labelledby="tab-history" hidden>
+            <p>Last update: Hannah approved #40 at 09:15.</p>
           </div>
         </div>
       </div>
@@ -332,21 +331,21 @@
       <p>Use a card to group a few related things. Only use a dialog when someone has to answer before carrying on, and use the native <code>&lt;dialog&gt;</code> element.</p>
       <div class="example jm-cluster">
         <article class="jm-card" style="max-width: 20rem;">
-          <div class="jm-card__header"><h3 class="jm-card__title">Weekly digest</h3></div>
-          <div class="jm-card__body"><p class="jm-secondary-text">3 tasks need a second check before Friday.</p></div>
-          <div class="jm-card__footer"><a href="dashboard.html">Open the queue</a></div>
+          <div class="jm-card__header"><h3 class="jm-card__title">Winter catalogue</h3></div>
+          <div class="jm-card__body"><p class="jm-secondary-text">2 proofs are waiting for sign-off before Friday.</p></div>
+          <div class="jm-card__footer"><a href="dashboard.html">Open print queue</a></div>
         </article>
         <button class="jm-button jm-button--secondary" type="button" data-jm-dialog-open="demo-dialog">Open dialog</button>
       </div>
       <dialog class="jm-dialog" id="demo-dialog" aria-labelledby="demo-dialog-title">
         <div class="jm-dialog__header">
-          <h2 class="jm-dialog__title" id="demo-dialog-title">Confirm export</h2>
+          <h2 class="jm-dialog__title" id="demo-dialog-title">Confirm download</h2>
           <form method="dialog"><button class="jm-dialog__close" type="submit" value="cancel">Close</button></form>
         </div>
-        <div class="jm-dialog__body"><p>This downloads this week’s tasks as a CSV file.</p></div>
+        <div class="jm-dialog__body"><p>This downloads this week’s print schedule as a CSV file.</p></div>
         <div class="jm-dialog__footer">
           <form method="dialog"><button class="jm-button jm-button--secondary" type="submit" value="cancel">Cancel</button></form>
-          <form method="dialog"><button class="jm-button" type="submit" value="ok">Export</button></form>
+          <form method="dialog"><button class="jm-button" type="submit" value="ok">Download</button></form>
         </div>
       </dialog>
       <p class="example-code"><code>.jm-card</code>, <code>.jm-dialog</code>, <code>data-jm-dialog-open</code>.</p>

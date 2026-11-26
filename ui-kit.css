@@ -123,9 +123,9 @@
 
     /* Corner radius. --jm-radius-scale is a project hook: 0 gives square corners. */
     --jm-radius-scale: 1;
-    --jm-radius-sm: calc(3px * var(--jm-radius-scale));
+    --jm-radius-sm: calc(4px * var(--jm-radius-scale));
     --jm-radius-md: calc(6px * var(--jm-radius-scale));
-    --jm-radius-lg: calc(10px * var(--jm-radius-scale));
+    --jm-radius-lg: calc(8px * var(--jm-radius-scale));
     --jm-radius-pill: 999px;
 
     /* Borders. */
@@ -410,25 +410,28 @@
     margin: 0 0 var(--jm-space-4);
     font-family: var(--jm-font-family-heading);
     line-height: var(--jm-line-height-tight);
-    font-weight: var(--jm-font-weight-semibold);
+    font-weight: var(--jm-font-weight-medium);
+    text-wrap: balance;
   }
 
   h1 {
     font-size: clamp(2rem, 1.5rem + 2vw, var(--jm-font-size-3xl));
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
-  h2 { font-size: var(--jm-font-size-2xl); letter-spacing: -0.01em; }
+  h2 { font-size: var(--jm-font-size-2xl); letter-spacing: -0.015em; }
   h3 { font-size: var(--jm-font-size-xl); }
 
   /* h4 is a component-level label: sans, like panel and card titles. */
   h4 {
     font-family: var(--jm-font-family);
     font-size: var(--jm-font-size-lg);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   p {
     margin: 0 0 var(--jm-space-4);
     max-width: var(--jm-measure);
+    text-wrap: pretty;
   }
 
   code,
@@ -436,7 +439,31 @@
   pre,
   samp {
     font-family: var(--jm-font-family-mono);
-    font-size: 0.9375em;
+    font-size: 0.9em;
+  }
+
+  :not(pre) > code,
+  kbd {
+    padding: 0.1em 0.35em;
+    border-radius: var(--jm-radius-sm);
+    background: var(--jm-colour-surface-sunken);
+  }
+
+  pre {
+    max-width: 100%;
+    margin: 0 0 var(--jm-space-4);
+    padding: var(--jm-space-4);
+    border: var(--jm-border-width) solid var(--jm-colour-border);
+    border-radius: var(--jm-radius-md);
+    background: var(--jm-colour-surface-sunken);
+    overflow-x: auto;
+    line-height: var(--jm-line-height-normal);
+  }
+
+  pre code {
+    padding: 0;
+    background: none;
+    font-size: var(--jm-font-size-sm);
   }
 
   a {
@@ -564,7 +591,7 @@
     margin-right: auto;
     font-family: var(--jm-font-family-heading);
     font-size: var(--jm-font-size-lg);
-    font-weight: var(--jm-font-weight-semibold);
+    font-weight: var(--jm-font-weight-medium);
     color: var(--jm-colour-text);
     text-decoration: none;
   }
@@ -644,8 +671,8 @@
     min-height: 2.75rem; /* 44px target */
     margin: 0;
     padding: var(--jm-space-2) var(--jm-space-5);
-    border: var(--jm-border-width-thick) solid transparent;
-    border-radius: var(--jm-radius-lg);
+    border: var(--jm-border-width) solid transparent;
+    border-radius: var(--jm-radius-md);
     background: var(--jm-colour-accent);
     box-shadow: none;
     color: var(--jm-colour-on-accent);
@@ -655,7 +682,7 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color var(--jm-duration-fast), color var(--jm-duration-fast);
+    transition: background-color var(--jm-duration-fast), border-color var(--jm-duration-fast), color var(--jm-duration-fast);
   }
 
   .jm-button:visited {
@@ -675,7 +702,7 @@
   .jm-button--secondary,
   .jm-button--secondary:visited {
     border-color: var(--jm-colour-border-strong);
-    background: transparent;
+    background: var(--jm-colour-surface);
     box-shadow: none;
     color: var(--jm-colour-text);
   }
@@ -719,12 +746,13 @@
   }
 
   .jm-label {
-    font-weight: var(--jm-font-weight-bold);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   .jm-label--large {
     font-family: var(--jm-font-family-heading);
     font-size: var(--jm-font-size-xl);
+    font-weight: var(--jm-font-weight-medium);
     line-height: var(--jm-line-height-tight);
   }
 
@@ -734,7 +762,7 @@
 
   .jm-error-message {
     color: var(--jm-colour-error-text);
-    font-weight: var(--jm-font-weight-bold);
+    font-weight: var(--jm-font-weight-semibold);
   }
 
   .jm-input,
@@ -743,11 +771,12 @@
     width: 100%;
     min-height: 2.75rem;
     padding: var(--jm-space-2) var(--jm-space-3);
-    border: var(--jm-border-width-thick) solid var(--jm-colour-border-strong);
-    border-radius: var(--jm-radius-sm);
-    background: var(--jm-colour-background);
+    border: var(--jm-border-width) solid var(--jm-colour-border-strong);
+    border-radius: var(--jm-radius-md);
+    background: var(--jm-colour-surface);
     color: var(--jm-colour-text);
     font: inherit;
+    transition: border-color var(--jm-duration-fast);
   }
 
   .jm-textarea {
@@ -764,6 +793,13 @@
   .jm-select--error,
   .jm-textarea--error {
     border-color: var(--jm-colour-error);
+    box-shadow: inset 0 0 0 1px var(--jm-colour-error);
+  }
+
+  .jm-input--error:focus-visible,
+  .jm-select--error:focus-visible,
+  .jm-textarea--error:focus-visible {
+    box-shadow: var(--jm-focus-ring);
   }
 
   /* Widths in characters, sized to the expected answer. */
@@ -915,6 +951,7 @@
     padding: 0.15rem var(--jm-space-3);
     border-radius: var(--jm-radius-pill);
     background: var(--jm-colour-surface-sunken);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 18%, transparent);
     color: var(--jm-colour-text);
     font-size: var(--jm-font-size-sm);
     font-weight: var(--jm-font-weight-medium);
@@ -1518,6 +1555,7 @@
   .jm-bars__track {
     display: block;
     height: 0.75rem;
+    overflow: hidden;
     background: var(--jm-colour-surface-sunken);
     border-radius: var(--jm-radius-sm);
   }
@@ -1527,7 +1565,7 @@
     width: var(--jm-bar, 0%);
     height: 100%;
     background: var(--jm-series, var(--jm-colour-chart-1));
-    border-radius: var(--jm-radius-pill);
+    border-radius: var(--jm-radius-sm);
   }
 
   .jm-bars > li:nth-child(1) { --jm-series: var(--jm-colour-chart-1); }
@@ -1614,6 +1652,10 @@
   .jm-heat-3 { background: var(--jm-colour-heat-3); color: var(--jm-colour-heat-text-3); }
   .jm-heat-4 { background: var(--jm-colour-heat-4); color: var(--jm-colour-heat-text-4); }
   .jm-heat-5 { background: var(--jm-colour-heat-5); color: var(--jm-colour-heat-text-5); }
+
+  .jm-table td[class*="jm-heat-"] {
+    padding-inline: var(--jm-space-3);
+  }
 
   /* Sparkline: an inline SVG with role="img" and an aria-label that states the trend. */
   .jm-spark {
@@ -1821,7 +1863,7 @@
     margin: auto;
     padding: 0;
     border: var(--jm-border-width) solid var(--jm-colour-border-strong);
-    border-radius: var(--jm-radius-md);
+    border-radius: var(--jm-radius-lg);
     background: var(--jm-colour-surface);
     color: var(--jm-colour-text);
     box-shadow: var(--jm-shadow-lg);
