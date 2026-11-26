@@ -42,7 +42,7 @@
           <summary class="jm-toc__summary">On this page <span class="jm-toc__current"></span></summary>
           <p class="jm-toc__title">On this page</p>
           <ol class="jm-toc__list">
-            <li><a href="#tasks-title">Tasks table</a></li>
+            <li><a href="#jobs-title">Print queue</a></li>
             <li><a href="#figures-title">Key figures</a></li>
             <li><a href="#bars-title">Charts</a></li>
             <li><a href="#trail-title">Activity trail</a></li>
@@ -54,41 +54,40 @@
 
     <main id="main" class="jm-app__main jm-stack jm-stack--loose">
       <div class="site-intro jm-stack jm-stack--tight">
-        <p class="site-kicker">Chapter 3</p>
         <h1>Composition</h1>
-        <p class="site-lead">A dashboard made only from kit classes. The numbers are made up. Sorting and filtering need <code>ui-kit.js</code>.</p>
+        <p class="site-lead">Dashboard patterns built from kit classes: panels, sortable tables, key figures, CSS and SVG charts, trails and state banners. Sorting and filtering use <code>ui-kit.js</code>.</p>
       </div>
 
-      <section class="jm-panel" aria-labelledby="tasks-title">
+      <section class="jm-panel" aria-labelledby="jobs-title">
         <div class="jm-panel__header">
-          <h2 class="jm-panel__title" id="tasks-title">Tasks table</h2>
-          <p class="jm-secondary-text" role="status" data-jm-filter-status="tasks">5 rows</p>
+          <h2 class="jm-panel__title" id="jobs-title">Print queue</h2>
+          <p class="jm-secondary-text" role="status" data-jm-filter-status="jobs">5 rows</p>
         </div>
         <div class="jm-panel__body jm-stack jm-stack--tight">
           <p>Click a column header to sort, or type in the box to filter.</p>
           <form class="jm-filters" role="search" onsubmit="return false">
             <div class="jm-field">
-              <label class="jm-label" for="task-filter">Filter tasks</label>
-              <input class="jm-input jm-input--width-20" id="task-filter" type="search" data-jm-filter="tasks" aria-controls="tasks">
+              <label class="jm-label" for="job-filter">Filter jobs</label>
+              <input class="jm-input jm-input--width-20" id="job-filter" type="search" data-jm-filter="jobs" aria-controls="jobs">
             </div>
           </form>
         </div>
-        <div class="jm-table-wrap" role="region" aria-label="Tasks table" tabindex="0">
-          <table class="jm-table" id="tasks" data-jm-sortable>
+        <div class="jm-table-wrap" role="region" aria-label="Print queue" tabindex="0">
+          <table class="jm-table" id="jobs" data-jm-sortable>
             <thead>
               <tr>
-                <th scope="col" data-sort="text">Task</th>
+                <th scope="col" data-sort="text">Job</th>
                 <th scope="col" data-sort="text">Owner</th>
                 <th scope="col">Status</th>
-                <th scope="col" class="jm-table__num" data-sort="number">Claims</th>
+                <th scope="col" class="jm-table__num" data-sort="number">Copies</th>
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Add contrast check to CI</th><td>cloud-worker</td><td><span class="jm-tag jm-tag--success">Verified</span></td><td class="jm-table__num">12</td></tr>
-              <tr><th scope="row">Refresh flu forecast</th><td>alice</td><td><span class="jm-tag jm-tag--warning">Needs review</span></td><td class="jm-table__num">4</td></tr>
-              <tr><th scope="row">Seed demo board</th><td>cloud-worker</td><td><span class="jm-tag jm-tag--info">In progress</span></td><td class="jm-table__num">9</td></tr>
-              <tr><th scope="row">Rotate agent tokens</th><td>alice</td><td><span class="jm-tag jm-tag--error">Rejected</span></td><td class="jm-table__num">1</td></tr>
-              <tr><th scope="row">Write handover note</th><td>cloud-worker</td><td><span class="jm-tag">Open</span></td><td class="jm-table__num">0</td></tr>
+              <tr><th scope="row">Proofread winter catalogue</th><td>Hannah</td><td><span class="jm-tag jm-tag--success">Approved</span></td><td class="jm-table__num">450</td></tr>
+              <tr><th scope="row">Reprint pocket field guide</th><td>Sam</td><td><span class="jm-tag jm-tag--warning">Needs proof</span></td><td class="jm-table__num">200</td></tr>
+              <tr><th scope="row">Update EU shipping rates</th><td>Priya</td><td><span class="jm-tag jm-tag--info">In progress</span></td><td class="jm-table__num">120</td></tr>
+              <tr><th scope="row">Fix ISBN barcode on cover</th><td>Sam</td><td><span class="jm-tag jm-tag--error">Held</span></td><td class="jm-table__num">85</td></tr>
+              <tr><th scope="row">Archive autumn invoices</th><td>Hannah</td><td><span class="jm-tag">Queued</span></td><td class="jm-table__num">0</td></tr>
             </tbody>
           </table>
         </div>
@@ -97,12 +96,12 @@
       <section class="jm-panel" aria-labelledby="figures-title">
         <div class="jm-panel__header"><h2 class="jm-panel__title" id="figures-title">Key figures</h2></div>
         <div class="jm-panel__body jm-stack jm-stack--tight">
-          <p class="jm-secondary-text">The main numbers, marked up as a definition list. A short note can go under a number.</p>
+          <p class="jm-secondary-text">Marked up as a definition list with tabular figures. A short note can sit under a value.</p>
           <dl class="jm-figures">
-            <div><dt>Open tasks</dt><dd>14</dd></div>
-            <div><dt>Verified this week</dt><dd>31<span class="jm-figures__note">up from 24 last week</span></dd></div>
-            <div><dt>Disputed claims</dt><dd>2</dd></div>
-            <div><dt>Median time to verify</dt><dd>3.5 h</dd></div>
+            <div><dt>Open jobs</dt><dd>14</dd></div>
+            <div><dt>Dispatched this week</dt><dd>31<span class="jm-figures__note">up from 24 last week</span></dd></div>
+            <div><dt>Held for proof</dt><dd>2</dd></div>
+            <div><dt>Median turnaround</dt><dd>3.5 d</dd></div>
           </dl>
         </div>
       </section>
@@ -110,45 +109,45 @@
       <section class="jm-panel" aria-labelledby="bars-title">
         <div class="jm-panel__header"><h2 class="jm-panel__title" id="bars-title">Charts</h2></div>
         <div class="jm-panel__body jm-stack">
-          <p>Bar charts are plain CSS and line charts are SVG. Both use the chart colour tokens. Give every chart a title and a text version for screen readers.</p>
+          <p>Bar charts are plain CSS and line charts are inline SVG. Both use the chart colour tokens and include text equivalents for screen readers.</p>
           <figure class="jm-chart">
-            <figcaption class="jm-chart__title">Claims by status</figcaption>
-            <p class="jm-chart__note">Sample counts for the current week.</p>
+            <figcaption class="jm-chart__title">Orders by status</figcaption>
+            <p class="jm-chart__note">Current week, 51 orders total.</p>
             <ul class="jm-bars">
-              <li style="--jm-bar: 62%"><span class="jm-bars__label">Verified</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">31</span></li>
+              <li style="--jm-bar: 62%"><span class="jm-bars__label">Dispatched</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">31</span></li>
               <li style="--jm-bar: 28%"><span class="jm-bars__label">In progress</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">14</span></li>
-              <li style="--jm-bar: 8%"><span class="jm-bars__label">Needs review</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">4</span></li>
-              <li style="--jm-bar: 4%"><span class="jm-bars__label">Rejected</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">2</span></li>
+              <li style="--jm-bar: 8%"><span class="jm-bars__label">Needs proof</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">4</span></li>
+              <li style="--jm-bar: 4%"><span class="jm-bars__label">Held</span><span class="jm-bars__track" aria-hidden="true"><span class="jm-bars__fill"></span></span><span class="jm-bars__value">2</span></li>
             </ul>
           </figure>
 
           <figure class="jm-chart">
-            <figcaption class="jm-chart__title">Claims per day</figcaption>
-            <p class="jm-chart__note">Labels sit at the end of each line, so there’s no legend to look up.</p>
-            <svg class="jm-lines" viewBox="0 0 320 140" role="img" aria-label="Claims per day from 6 to 12 November. Verified rose from 2 to 9; new claims fell from 8 to 5.">
+            <figcaption class="jm-chart__title">Orders per day</figcaption>
+            <p class="jm-chart__note">Direct labels sit at the end of each line instead of a separate legend.</p>
+            <svg class="jm-lines" viewBox="0 0 320 140" role="img" aria-label="Orders per day from 6 to 12 November. Dispatched rose from 2 to 9; new orders fell from 8 to 5.">
               <polyline class="jm-series-1" points="6,120 44,110 82,90 120,70 158,50 196,34 228,24"/>
               <polyline class="jm-series-2" points="6,36 44,40 82,56 120,66 158,72 196,76 228,80"/>
-              <text class="jm-series-1" x="236" y="28">Verified 9</text>
+              <text class="jm-series-1" x="236" y="28">Dispatched 9</text>
               <text class="jm-series-2" x="236" y="84">New 5</text>
             </svg>
           </figure>
 
           <figure class="jm-chart">
             <figcaption class="jm-chart__title">Heat table</figcaption>
-            <p class="jm-chart__note">Darker cells mean bigger numbers. The number is always shown as well.</p>
-            <div class="jm-table-wrap" role="region" aria-label="Claims verified by agent and weekday" tabindex="0">
+            <p class="jm-chart__note">Sequential scale for ranked cells. Always print the value inside the cell.</p>
+            <div class="jm-table-wrap" role="region" aria-label="Orders packed by staff member and weekday" tabindex="0">
               <table class="jm-table jm-table--compact">
-                <thead><tr><th scope="col">Agent</th><th scope="col" class="jm-table__num">Mon</th><th scope="col" class="jm-table__num">Tue</th><th scope="col" class="jm-table__num">Wed</th><th scope="col" class="jm-table__num">Thu</th></tr></thead>
+                <thead><tr><th scope="col">Staff</th><th scope="col" class="jm-table__num">Mon</th><th scope="col" class="jm-table__num">Tue</th><th scope="col" class="jm-table__num">Wed</th><th scope="col" class="jm-table__num">Thu</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">cloud-worker</th><td class="jm-table__num jm-heat-5">12</td><td class="jm-table__num jm-heat-3">6</td><td class="jm-table__num jm-heat-4">9</td><td class="jm-table__num jm-heat-1">1</td></tr>
-                  <tr><th scope="row">alice</th><td class="jm-table__num jm-heat-2">3</td><td class="jm-table__num jm-heat-1">0</td><td class="jm-table__num jm-heat-2">4</td><td class="jm-table__num jm-heat-3">7</td></tr>
+                  <tr><th scope="row">Hannah</th><td class="jm-table__num jm-heat-5">12</td><td class="jm-table__num jm-heat-3">6</td><td class="jm-table__num jm-heat-4">9</td><td class="jm-table__num jm-heat-1">1</td></tr>
+                  <tr><th scope="row">Sam</th><td class="jm-table__num jm-heat-2">3</td><td class="jm-table__num jm-heat-1">0</td><td class="jm-table__num jm-heat-2">4</td><td class="jm-table__num jm-heat-3">7</td></tr>
                 </tbody>
               </table>
             </div>
           </figure>
 
-          <p class="jm-secondary-text">Trend:
-            <svg class="jm-spark" viewBox="0 0 96 24" role="img" aria-label="Verified claims per day rose from 2 to 9 over 7 days"><polyline points="2,20 18,18 34,19 50,12 66,14 82,8 94,4"/></svg>
+          <p class="jm-secondary-text">7-day trend:
+            <svg class="jm-spark" viewBox="0 0 96 24" role="img" aria-label="Dispatched orders per day rose from 2 to 9 over 7 days"><polyline points="2,20 18,18 34,19 50,12 66,14 82,8 94,4"/></svg>
           </p>
         </div>
       </section>
@@ -158,29 +157,29 @@
         <div class="jm-panel__body">
           <p class="jm-secondary-text">Recent events, newest first.</p>
           <ol class="jm-trail">
-            <li><time datetime="2026-11-12T10:42">12 November, 10:42</time><div><span class="jm-trail__id">#41</span> cloud-worker claimed <strong>Seed demo board</strong> <span class="jm-tag jm-tag--info">In progress</span></div></li>
-            <li><time datetime="2026-11-12T09:15">12 November, 09:15</time><div><span class="jm-trail__id">#40</span> qa verified <strong>Add contrast check to CI</strong> <span class="jm-tag jm-tag--success">Verified</span></div></li>
-            <li><time datetime="2026-11-11T16:03">11 November, 16:03</time><div><span class="jm-trail__id">#39</span> alice disputed <strong>Rotate agent tokens</strong> <span class="jm-tag jm-tag--error">Rejected</span></div></li>
+            <li><time datetime="2026-11-12T10:42">12 November, 10:42</time><div><span class="jm-trail__id">#41</span> Priya started <strong>Update EU shipping rates</strong> <span class="jm-tag jm-tag--info">In progress</span></div></li>
+            <li><time datetime="2026-11-12T09:15">12 November, 09:15</time><div><span class="jm-trail__id">#40</span> Hannah approved <strong>Proofread winter catalogue</strong> <span class="jm-tag jm-tag--success">Approved</span></div></li>
+            <li><time datetime="2026-11-11T16:03">11 November, 16:03</time><div><span class="jm-trail__id">#39</span> Sam held <strong>Fix ISBN barcode on cover</strong> <span class="jm-tag jm-tag--error">Held</span></div></li>
           </ol>
         </div>
       </section>
 
       <section class="jm-stack" aria-labelledby="states-title">
         <h2 id="states-title">Empty and error states</h2>
-        <p>What to show when there is nothing to list yet, or the data will not load.</p>
+        <p>Patterns for empty lists, background loading, and warnings.</p>
         <div class="jm-panel jm-empty">
-          <p class="jm-empty__title">No tasks yet</p>
-          <p class="jm-secondary-text">Tasks you create or claim appear here.</p>
-          <a class="jm-button" href="#states-title">Create a task</a>
+          <p class="jm-empty__title">No jobs in this queue</p>
+          <p class="jm-secondary-text">New print jobs and reprints appear here.</p>
+          <a class="jm-button" href="#states-title">Add a print job</a>
         </div>
-        <div class="jm-loading" role="status">Loading tasks</div>
+        <div class="jm-loading" role="status">Loading print queue</div>
         <div class="jm-banner jm-banner--error" role="alert">
-          <p class="jm-banner__title">Tasks could not be loaded</p>
+          <p class="jm-banner__title">Print queue could not be loaded</p>
           <p>Try again in a minute. If it keeps happening, check your connection.</p>
         </div>
-        <div class="jm-banner jm-banner--warning" role="region" aria-label="Board frozen">
-          <p class="jm-banner__title">The board is frozen</p>
-          <p>New posts are paused until a person unfreezes it.</p>
+        <div class="jm-banner jm-banner--warning" role="region" aria-label="Dispatch paused">
+          <p class="jm-banner__title">Dispatch is paused for stocktake</p>
+          <p>New dispatch labels are paused until the stocktake finishes at 17:00.</p>
         </div>
       </section>
     </main>
