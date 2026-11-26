@@ -588,12 +588,19 @@
   }
 
   .jm-header__name {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--jm-space-2);
     margin-right: auto;
     font-family: var(--jm-font-family-heading);
     font-size: var(--jm-font-size-lg);
     font-weight: var(--jm-font-weight-medium);
     color: var(--jm-colour-text);
     text-decoration: none;
+  }
+
+  .jm-header__name svg {
+    flex: none;
   }
 
   .jm-header__name:visited {
