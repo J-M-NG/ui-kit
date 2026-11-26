@@ -25,7 +25,7 @@ The CSS I use for forms, tables and dashboards across my projects. It's one styl
 - WCAG 2.2 AA: contrast, visible focus, keyboard use, 400% zoom.
 - Semantic HTML first; classes style real elements.
 - No build step, no framework, no web fonts; OS-driven light and dark themes.
-- Type: serif for page and section headings (h1 to h3), system sans for everything else; monospace only for code, ids, timestamps and table numbers.
+- Type: serif for page and section headings (h1 to h3), system sans for everything else (with tabular figures for numbers and dates); monospace only for code.
 - Copy follows [`examples/content-style.html`](examples/content-style.html).
 
 ## Tokens

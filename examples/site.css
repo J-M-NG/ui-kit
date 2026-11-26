@@ -58,8 +58,7 @@
   padding: 0;
   list-style: none;
   color: var(--jm-colour-text-secondary);
-  font-family: var(--jm-font-family-mono);
-  font-size: var(--jm-font-size-xs);
+  font-size: var(--jm-font-size-sm);
 }
 
 /* Ruled directory list for the home page. */
