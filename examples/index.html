@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ui-kit: foundation</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../ui-kit.css">
   <link rel="stylesheet" href="site.css">
   <script src="site.js"></script>
@@ -134,11 +137,11 @@
 
   <section aria-labelledby="type">
     <h2 id="type">Type scale</h2>
-    <p>No web fonts. Page and section headings (h1 to h3) use the serif stack in <code>--jm-font-family-heading</code>; body text, labels and component titles use the system sans. Body text is <code>--jm-font-size-md</code> (16px).</p>
-    <div class="scale-row"><code>3xl / h1, 44px (32px on phones)</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 500; letter-spacing: -0.025em">Winter catalogue</span></div>
-    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 500; letter-spacing: -0.015em">Winter catalogue</span></div>
-    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 500">Winter catalogue</span></div>
-    <div class="scale-row"><code>lg / h4 and titles, 19px</code><span style="font-size: var(--jm-font-size-lg); font-weight: 600">Winter catalogue — 7 November 2026</span></div>
+    <p>Page and section headings (h1 to h3) use <strong>DM Serif Display</strong> (<code>--jm-font-family-heading</code>); body text, labels and component titles use <strong>DM Sans</strong> (<code>--jm-font-family</code>), falling back cleanly to system fonts if Google Fonts are not loaded. Body text is <code>--jm-font-size-md</code> (16px).</p>
+    <div class="scale-row"><code>3xl / h1, 44px (32px on phones)</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-3xl); line-height: var(--jm-line-height-tight); font-weight: 400; letter-spacing: -0.025em">Winter catalogue</span></div>
+    <div class="scale-row"><code>2xl / h2, 32px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-2xl); line-height: var(--jm-line-height-tight); font-weight: 400; letter-spacing: -0.015em">Winter catalogue</span></div>
+    <div class="scale-row"><code>xl / h3, 24px</code><span style="font-family: var(--jm-font-family-heading); font-size: var(--jm-font-size-xl); line-height: var(--jm-line-height-tight); font-weight: 400">Winter catalogue</span></div>
+    <div class="scale-row"><code>lg / h4 and titles, 19px</code><span style="font-size: var(--jm-font-size-lg); font-weight: 700">Winter catalogue — 7 November 2026</span></div>
     <div class="scale-row"><code>md / body, 16px</code><span style="font-size: var(--jm-font-size-md)">Winter catalogue — 7 November 2026</span></div>
     <div class="scale-row"><code>sm, 14px</code><span style="font-size: var(--jm-font-size-sm)">Winter catalogue — 7 November 2026</span></div>
     <div class="scale-row"><code>xs, 13px</code><span style="font-size: var(--jm-font-size-xs)">Captions only</span></div>

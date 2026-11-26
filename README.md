@@ -17,15 +17,15 @@ The CSS I use for forms, tables and dashboards across my projects. It's one styl
 
 ## Adopt the kit
 1. Copy `ui-kit.css` (and optionally `ui-kit.js`) into your project, e.g. `static/ui-kit/`.
-2. Link the stylesheet before your project CSS.
+2. Load DM Serif Display and DM Sans from Google Fonts (optional — `ui-kit.css` falls back cleanly to system fonts), then link `ui-kit.css` before your project CSS.
 3. Optionally link a [preset](presets/README.md) after `ui-kit.css`, or override only the [documented hooks](#project-hooks).
 4. Run `python3 tests/check_contrast.py --project path/to/project.css` when changing colours.
 
 ## Principles
 - WCAG 2.2 AA: contrast, visible focus, keyboard use, 400% zoom.
 - Semantic HTML first; classes style real elements.
-- No build step, no framework, no web fonts; OS-driven light and dark themes.
-- Type: serif for page and section headings (h1 to h3), system sans for everything else (with tabular figures for numbers and dates); monospace only for code.
+- No build step, no framework; OS-driven light and dark themes.
+- Type: DM Serif Display for page and section headings (h1 to h3), DM Sans for everything else (with tabular figures for numbers and dates and system fallbacks); monospace only for code.
 - Copy follows [`examples/content-style.html`](examples/content-style.html).
 
 ## Tokens

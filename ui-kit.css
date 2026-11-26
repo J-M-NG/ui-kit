@@ -94,11 +94,11 @@
     --jm-space-8: 4rem; /* 64px */
     --jm-space-9: 6rem; /* 96px */
 
-    /* Typography: system sans for body and component labels; serif for page and
-       section headings (h1 to h3) only. The heading stack ends in common Linux and
-       Android serifs so it never falls back to a generic Times. Hook: set to sans. */
-    --jm-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    --jm-font-family-heading: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif", "DejaVu Serif", serif;
+    /* Typography: DM Sans for body and component labels; DM Serif Display for page and
+       section headings (h1 to h3) only, with system fallbacks if web fonts are not loaded.
+       Hook: override --jm-font-family-heading (for example to system sans). */
+    --jm-font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --jm-font-family-heading: "DM Serif Display", "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif", "DejaVu Serif", serif;
     --jm-font-family-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     --jm-font-size-xs: 0.8125rem; /* 13px: captions only, never body text */
@@ -410,7 +410,7 @@
     margin: 0 0 var(--jm-space-4);
     font-family: var(--jm-font-family-heading);
     line-height: var(--jm-line-height-tight);
-    font-weight: var(--jm-font-weight-medium);
+    font-weight: var(--jm-font-weight-normal);
     text-wrap: balance;
   }
 
@@ -594,7 +594,7 @@
     margin-right: auto;
     font-family: var(--jm-font-family-heading);
     font-size: var(--jm-font-size-lg);
-    font-weight: var(--jm-font-weight-medium);
+    font-weight: var(--jm-font-weight-normal);
     color: var(--jm-colour-text);
     text-decoration: none;
   }
@@ -759,7 +759,7 @@
   .jm-label--large {
     font-family: var(--jm-font-family-heading);
     font-size: var(--jm-font-size-xl);
-    font-weight: var(--jm-font-weight-medium);
+    font-weight: var(--jm-font-weight-normal);
     line-height: var(--jm-line-height-tight);
   }
 
